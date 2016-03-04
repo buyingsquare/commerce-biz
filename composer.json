@@ -15,10 +15,6 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/aimeos/php-coveralls"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/aimeos/slim-test-helpers"
 		}
 	],
 	"prefer-stable": true,
@@ -26,16 +22,15 @@
 	"require": {
 		"php": ">=5.3.3",
 		"aimeos/aimeos-core": "dev-master",
-		"aimeos/ai-slim": "dev-master",
-		"aimeos/ai-monolog": "dev-master",
 		"aimeos/ai-gettext": "dev-master",
+		"aimeos/ai-monolog": "dev-master",
 		"aimeos/ai-swiftmailer": "dev-master",
+		"aimeos/ai-slim": "dev-master",
 		"slim/twig-view": "~2.0",
 		"slim/slim": "~3.0"
 	},
 	"require-dev": {
-		"satooshi/php-coveralls": "dev-master",
-		"there4/slim-test-helpers": "dev-master"
+		"satooshi/php-coveralls": "dev-master"
 	},
 	"autoload": {
 		"psr-4": { "Aimeos\\Slim\\": "src/" }
