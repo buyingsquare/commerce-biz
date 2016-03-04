@@ -1,0 +1,26 @@
+sudo: false
+language: php
+
+php:
+  - hhvm
+  - 7.0
+  - 5.6
+  - 5.5
+
+env:
+  - SLIM_VERSION=3.0.*
+  - SLIM_VERSION=3.1.*
+
+before_script:
+  - travis_retry composer require "slim/slim:${SLIM_VERSION}"
+  - mysql -e 'create database slim;'
+  - php vendor/aimeos/aimeos-core/setup.php --config=src/settings.php unittest unittest
+
+script:
+  - vendor/bin/phpunit
+
+after_success:
+  - php vendor/bin/coveralls -c .coveralls.yml
+
+matrix:
+  fast_finish: true

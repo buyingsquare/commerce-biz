@@ -1,8 +1,5 @@
 <?php
 
-use There4\Slim\Test\WebTestCase;
-
-
 setlocale( LC_ALL, 'en_US.UTF-8' );
 
 // if the bundle is within a Slim project, try to reuse the project's autoload
