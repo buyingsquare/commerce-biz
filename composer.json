@@ -1,0 +1,43 @@
+{
+	"name": "aimeos/aimeos-slim",
+	"description": "Slim online shop package and e-commerce solution for high performance shops",
+	"homepage": "https://aimeos.org/SlimPHP",
+	"type": "library",
+	"license": "LGPLv3",
+	"keywords": ["aimeos", "slim", "e-commerce", "ecommerce", "shop", "portal", "market place"],
+	"support": {
+		"source": "https://github.com/Aimeos/aimeos-slim",
+		"issues": "https://github.com/Aimeos/aimeos-slim/issues",
+		"forum": "https://aimeos.org/help",
+		"wiki": "https://aimeos.org/docs"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/aimeos/php-coveralls"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/aimeos/slim-test-helpers"
+		}
+	],
+	"prefer-stable": true,
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=5.3.3",
+		"aimeos/aimeos-core": "dev-master",
+		"aimeos/ai-slim": "dev-master",
+		"aimeos/ai-monolog": "dev-master",
+		"aimeos/ai-gettext": "dev-master",
+		"aimeos/ai-swiftmailer": "dev-master",
+		"slim/twig-view": "~2.0",
+		"slim/slim": "~3.0"
+	},
+	"require-dev": {
+		"satooshi/php-coveralls": "dev-master",
+		"there4/slim-test-helpers": "dev-master"
+	},
+	"autoload": {
+		"psr-4": { "Aimeos\\Slim\\": "src/" }
+	}
+}
