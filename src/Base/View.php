@@ -10,6 +10,8 @@
 namespace Aimeos\Slim\Base;
 
 use Interop\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 
 /**
@@ -38,18 +40,20 @@ class View
 	 * Creates the view object for the HTML client.
 	 *
 	 * @param \Aimeos\MW\Config\Iface $config Configuration object
+	 * @param ServerRequestInterface $request Request object
+	 * @param ResponseInterface $response Response object
+	 * @param array $attr Associative list of URI parameters
 	 * @param array $templatePaths List of base path names with relative template paths as key/value pairs
 	 * @param string|null $locale Code of the current language or null for no translation
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public function create( \Aimeos\MW\Config\Iface $config, array $templatePaths, $locale = null )
+	public function create( ServerRequestInterface $request, ResponseInterface $response, array $attr, array $templatePaths, $locale = null )
 	{
 		$params = $fixed = array();
-		$request = $this->container->get( 'request' );
+		$config = $this->container->get( 'aimeos_config' );
 
 		if( $locale !== null )
 		{
-			$attr = (array) $request->getAttributes();
 			$params = $attr + (array) $request->getParsedBody() + (array) $request->getQueryParams();
 			$fixed = $this->getFixedParams( $attr );
 
@@ -84,7 +88,7 @@ class View
 		$helper = new \Aimeos\MW\View\Helper\Request\Slim( $view, $request );
 		$view->addHelper( 'request', $helper );
 
-		$helper = new \Aimeos\MW\View\Helper\Response\Slim( $view, $this->container->get( 'response' ) );
+		$helper = new \Aimeos\MW\View\Helper\Response\Slim( $view, $response );
 		$view->addHelper( 'response', $helper );
 
 		$csrf = $request->getAttribute( 'csrf_name' );

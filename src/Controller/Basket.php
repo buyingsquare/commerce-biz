@@ -32,7 +32,7 @@ class Basket
 	 */
 	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'basket-index' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'basket-index', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Basket/index.html.twig', $contents );
 	}
 }

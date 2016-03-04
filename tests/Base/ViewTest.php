@@ -14,7 +14,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
 
 		$object = new \Aimeos\Slim\Base\View( $container );
-		$view = $object->create( $container['aimeos_config'], array(), 'en' );
+		$view = $object->create( $container['request'], $container['response'], array(), array(), 'en' );
 
 		$this->assertInstanceOf( '\Aimeos\MW\View\Iface', $view );
 	}

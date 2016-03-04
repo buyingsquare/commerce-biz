@@ -32,7 +32,7 @@ class Checkout
 	 */
 	public static function confirmAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-confirm' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-confirm', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Checkout/confirm.html.twig', $contents );
 	}
 
@@ -47,7 +47,7 @@ class Checkout
 	 */
 	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-index' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-index', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Checkout/index.html.twig', $contents );
 	}
 
@@ -62,7 +62,7 @@ class Checkout
 	 */
 	public static function updateAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-update' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-update', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Checkout/update.html.twig', $contents );
 	}
 }

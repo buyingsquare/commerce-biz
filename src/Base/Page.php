@@ -10,6 +10,8 @@
 namespace Aimeos\Slim\Base;
 
 use Interop\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 
 /**
@@ -38,15 +40,18 @@ class Page
 	 * Returns the body and header sections created by the clients configured for the given page name.
 	 *
 	 * @param string $pageName Name of the configured page
+	 * @param ServerRequestInterface $request Request object
+	 * @param ResponseInterface $response Response object
+	 * @param array Associative list of URI attributes
 	 * @return array Associative list with body and header output separated by client name
 	 */
-	public function getSections( $pageName )
+	public function getSections( $pageName, ServerRequestInterface $request, ResponseInterface $response, array $attr )
 	{
 		$tmplPaths = $this->container->get( 'aimeos' )->getCustomPaths( 'client/html/templates' );
 		$context = $this->container->get( 'aimeos_context' )->get();
 		$langid = $context->getLocale()->getLanguageId();
 
-		$view = $this->container->get( 'aimeos_view' )->create( $context->getConfig(), $tmplPaths, $langid );
+		$view = $this->container->get( 'aimeos_view' )->create( $request, $response, $attr, $tmplPaths, $langid );
 		$context->setView( $view );
 
 		$pagesConfig = $this->container->get( 'aimeos_config' )->get( 'page', array() );

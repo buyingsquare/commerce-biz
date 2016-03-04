@@ -17,8 +17,9 @@ class PageTest extends \PHPUnit_Framework_TestCase
 		$c['aimeos_config'] = new \Aimeos\MW\Config\PHPArray( $config, array() );
 
 
+		$response = new \Slim\Http\Response();
 		$object = new \Aimeos\Slim\Base\Page( $app->getContainer() );
-		$result = $object->getSections( 'test' );
+		$result = $object->getSections( 'test', $c['request'], $response, array() );
 
 		$this->assertArrayHasKey( 'aiheader', $result );
 		$this->assertArrayHasKey( 'aibody', $result );

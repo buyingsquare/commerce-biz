@@ -32,7 +32,7 @@ $app->group( '/', function() {
 		return \Aimeos\Slim\Controller\Jqadm::getAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_get' );
 
-	$this->map(['POST'], 'jqadm/delete/{resource:[^0-9]+}/{id:[0-9]*}', function( $request, $response, $args ) {
+	$this->map(['POST'], 'jqadm/save/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::saveAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_save' );
 
@@ -41,27 +41,27 @@ $app->group( '/', function() {
 	})->setName( 'aimeos_shop_jqadm_search' );
 
 
-	$this->map(['DELETE'], 'jsonadm/{resource:[^0-9]+}/{id:[0-9]*}', function( $request, $response, $args ) {
+	$this->map(['DELETE'], 'jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::deleteAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_delete' );
 
-	$this->map(['GET'], 'jsonadm/{resource:[^0-9]+}/{id:[0-9]*}', function( $request, $response, $args ) {
+	$this->map(['GET'], 'jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::getAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_get' );
 
-	$this->map(['PATCH'], 'jsonadm/{resource:[^0-9]+}/{id:[0-9]*}', function( $request, $response, $args ) {
+	$this->map(['PATCH'], 'jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::patchAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_patch' );
 
-	$this->map(['POST'], 'jsonadm/{resource:[^0-9]+}/{id:[0-9]*}', function( $request, $response, $args ) {
+	$this->map(['POST'], 'jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::postAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_post' );
 
-	$this->map(['PUT'], 'jsonadm/{resource:[^0-9]+}/{id:[0-9]*}', function( $request, $response, $args ) {
+	$this->map(['PUT'], 'jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::putAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_put' );
 
-	$this->map(['OPTIONS'], 'jsonadm/{resource:[^0-9]*}', function( $request, $response, $args ) {
+	$this->map(['OPTIONS'], 'jsonadm[/{resource}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::optionsAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_options' );
 
@@ -95,7 +95,7 @@ $app->group( $config( 'routes/default', '/' ), function() {
 		return \Aimeos\Slim\Controller\Catalog::countAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_count' );
 
-	$this->map(['GET', 'POST'], 'detail/{d_prodid}/{d_name:[^/]*}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], 'detail/{d_prodid}[/{d_name}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_detail' );
 
@@ -119,7 +119,7 @@ $app->group( $config( 'routes/default', '/' ), function() {
 		return \Aimeos\Slim\Controller\Basket::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_basket' );
 
-	$this->map(['GET', 'POST'], 'checkout/{c_step:[^/]*}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], 'checkout[/{c_step}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Checkout::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_checkout' );
 

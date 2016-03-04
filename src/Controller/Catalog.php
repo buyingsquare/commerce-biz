@@ -32,7 +32,7 @@ class Catalog
 	 */
 	public static function countAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-count' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-count', $request, $response, $args );
 
 		$response = $response->withStatus( 200 );
 		$response = $response->withHeader( 'Content-Type', 'application/javascript' );
@@ -51,7 +51,7 @@ class Catalog
 	 */
 	public static function detailAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-detail' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-detail', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Catalog/detail.html.twig', $contents );
 	}
 
@@ -66,7 +66,7 @@ class Catalog
 	 */
 	public static function listAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-list' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-list', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Catalog/list.html.twig', $contents );
 	}
 
@@ -81,7 +81,7 @@ class Catalog
 	 */
 	public static function stockAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-stock' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-stock', $request, $response, $args );
 
 		$response = $response->withStatus( 200 );
 		$response = $response->withHeader( 'Content-Type', 'application/javascript' );
@@ -100,7 +100,7 @@ class Catalog
 	 */
 	public static function suggestAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-suggest' );
+		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-suggest', $request, $response, $args );
 
 		$response = $response->withStatus( 200 );
 		$response = $response->withHeader( 'Content-Type', 'application/json' );
