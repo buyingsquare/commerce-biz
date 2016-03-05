@@ -6,7 +6,7 @@ class I18nTest extends \PHPUnit_Framework_TestCase
 	{
 		$conf = array(
 			'apc_enabled' => true,
-			'i18n' => array( 'en' => array() ),
+			'i18n' => array( 'en' => array( 0 => array() ) ),
 		);
 
 		$container = new \Slim\Container();

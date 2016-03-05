@@ -7,7 +7,7 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
 		$app = new \Slim\App();
 		$c = $app->getContainer();
 
-		$boot = new \Aimeos\Slim\Bootstrap( $app, array() );
+		$boot = new \Aimeos\Slim\Bootstrap( $app, array( 'apc_enabled' => true ) );
 		$boot->setup( '.' );
 
 		$this->assertInstanceOf( '\Aimeos\Bootstrap', $c['aimeos'] );

@@ -95,7 +95,7 @@ $app->group( $config( 'routes/default', '/' ), function() {
 		return \Aimeos\Slim\Controller\Catalog::countAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_count' );
 
-	$this->map(['GET', 'POST'], 'detail/{d_prodid}[/{d_name}]', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], 'detail/{d_prodid:[0-9]+}[/{d_name}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_detail' );
 
