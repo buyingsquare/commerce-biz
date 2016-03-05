@@ -14,7 +14,16 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testDetailAction()
 	{
-		$response = $this->call( 'GET', '/unittest/detail/1/test' );
+		$response = $this->call( 'GET', '/unittest/detail/0/test' );
+
+		$this->assertEquals( 200, $response->getStatusCode() );
+		$this->assertContains( 'catalog-detail', (string) $response->getBody() );
+	}
+
+
+	public function testDetailActionPin()
+	{
+		$response = $this->call( 'GET', '/unittest/detail/pin' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'catalog-detail', (string) $response->getBody() );

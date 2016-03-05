@@ -8,7 +8,7 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
 		$c = $app->getContainer();
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, array() );
-		$boot->routes( dirname( __DIR__ ) . '/src/routes.php' )->setup( '.' );
+		$boot->setup( '.' );
 
 		$this->assertInstanceOf( '\Aimeos\Bootstrap', $c['aimeos'] );
 		$this->assertInstanceOf( '\Aimeos\Slim\Base\Context', $c['aimeos_context'] );
@@ -17,5 +17,24 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf( '\Aimeos\Slim\Base\View', $c['aimeos_view'] );
 		$this->assertInstanceOf( '\Aimeos\MW\Config\Iface', $c['aimeos_config'] );
 		$this->assertInstanceOf( '\Swift_Mailer', $c['mailer'] );
+	}
+
+
+	public function testRoutes()
+	{
+		$app = new \Slim\App();
+
+		$boot = new \Aimeos\Slim\Bootstrap( $app, array() );
+		$result = $boot->routes( dirname( __DIR__ ) . '/src/routes.php' );
+
+		$this->assertInstanceOf( '\Aimeos\Slim\Bootstrap', $result );
+	}
+
+
+	public function testGetVersion()
+	{
+		$result = \Aimeos\Slim\Bootstrap::getVersion();
+
+		$this->assertInternalType( 'string', $result );
 	}
 }
