@@ -46,7 +46,7 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 		);
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );
-		$boot->routes( dirname( __DIR__ ) . '/src/routes.php' );
+		$boot->setup( dirname( __DIR__ ) . '/ext' )->routes( dirname( __DIR__ ) . '/src/routes.php' );
 
 		$c = $app->getContainer();
 		$env = \Slim\Http\Environment::mock( array(
@@ -59,8 +59,6 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 		$twigconf = array( 'cache' => sys_get_temp_dir() . '/aimeos-slim-twig-cache' );
 		$c['view'] = new \Slim\Views\Twig( dirname( __DIR__ ) . '/templates', $twigconf );
 		$c['view']->addExtension( new \Slim\Views\TwigExtension( $c['router'], $c['request']->getUri() ) );
-
-		$boot->setup( dirname( __DIR__ ) . '/ext' );
 
 		return $app->run( true );
 	}
