@@ -48,7 +48,7 @@ class Page
 	public function getSections( $pageName, ServerRequestInterface $request, ResponseInterface $response, array $attr )
 	{
 		$tmplPaths = $this->container->get( 'aimeos' )->getCustomPaths( 'client/html/templates' );
-		$context = $this->container->get( 'aimeos_context' )->get();
+		$context = $this->container->get( 'aimeos_context' )->get( true, $attr );
 		$langid = $context->getLocale()->getLanguageId();
 
 		$view = $this->container->get( 'aimeos_view' )->create( $request, $response, $attr, $tmplPaths, $langid );

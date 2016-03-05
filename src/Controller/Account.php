@@ -47,7 +47,7 @@ class Account
 	 */
 	public static function downloadAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$context = $container->get( 'aimeos_context' )->get();
+		$context = $container->get( 'aimeos_context' )->get( true, $args );
 		$langid = $context->getLocale()->getLanguageId();
 
 		$view = $container->get( 'aimeos_view' )->create( $request, $response, $args, array(), $langid );

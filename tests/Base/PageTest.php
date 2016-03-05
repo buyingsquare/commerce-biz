@@ -13,13 +13,14 @@ class PageTest extends \PHPUnit_Framework_TestCase
 		$boot->setup( $basedir . '/ext' )->routes( $basedir . '/src/routes.php' );
 
 		$c = $app->getContainer();
-		$c['request'] = \Slim\Http\Request::createFromEnvironment( \Slim\Http\Environment::mock() );
 		$c['aimeos_config'] = new \Aimeos\MW\Config\PHPArray( $config, array() );
 
 
 		$response = new \Slim\Http\Response();
+		$request = \Slim\Http\Request::createFromEnvironment( \Slim\Http\Environment::mock() );
+
 		$object = new \Aimeos\Slim\Base\Page( $app->getContainer() );
-		$result = $object->getSections( 'test', $c['request'], $response, array() );
+		$result = $object->getSections( 'test', $request, $response, array( 'site' => 'unittest' ) );
 
 		$this->assertArrayHasKey( 'aiheader', $result );
 		$this->assertArrayHasKey( 'aibody', $result );

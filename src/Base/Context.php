@@ -40,9 +40,10 @@ class Context
 	 * Returns the current context
 	 *
 	 * @param boolean $locale True to add locale object to context, false if not
+	 * @param array Associative list of URL parameter
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public function get( $locale = true )
+	public function get( $locale = true, array $attributes = array() )
 	{
 		if( self::$context === null )
 		{
@@ -76,7 +77,7 @@ class Context
 
 		if( $locale === true )
 		{
-			$localeItem = $this->getLocale( $context );
+			$localeItem = $this->getLocale( $context, $attributes );
 			$langid = $localeItem->getLanguageId();
 
 			$context->setLocale( $localeItem );
@@ -91,14 +92,14 @@ class Context
 	 * Returns the locale item for the current request
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @param array Associative list of URL parameter
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context, array $attr )
 	{
 		if( $this->locale === null )
 		{
 			$disableSites = $this->container->get( 'aimeos_config' )->get( 'disableSites', false );
-			$attr = $this->container->get( 'request' )->getAttributes();
 
 			$site = ( isset( $attr['site'] ) ? $attr['site'] : 'default' );
 			$lang = ( isset( $attr['locale'] ) ? $attr['locale'] : '' );
