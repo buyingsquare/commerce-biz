@@ -25,7 +25,7 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
 		$app = new \Slim\App();
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, array() );
-		$result = $boot->routes( dirname( __DIR__ ) . '/src/routes.php' );
+		$result = $boot->routes( dirname( __DIR__ ) . '/src/aimeos-routes.php' );
 
 		$this->assertInstanceOf( '\Aimeos\Slim\Bootstrap', $result );
 	}

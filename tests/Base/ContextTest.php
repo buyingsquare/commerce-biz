@@ -4,7 +4,7 @@ class ContextTest extends \PHPUnit_Framework_TestCase
 {
 	public function testGet()
 	{
-		$settings = require dirname( dirname( __DIR__ ) ) . '/src/settings.php';
+		$settings = require dirname( dirname( __DIR__ ) ) . '/src/aimeos-settings.php';
 
 		$router = new \Slim\Router();
 		$container = new \Slim\Container();

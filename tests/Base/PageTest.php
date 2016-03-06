@@ -6,11 +6,11 @@ class PageTest extends \PHPUnit_Framework_TestCase
 	{
 		$app = new \Slim\App( array() );
 		$basedir = dirname( dirname( __DIR__ ) );
-		$settings = require $basedir . '/src/settings.php';
+		$settings = require $basedir . '/src/aimeos-settings.php';
 		$settings['page']['test'] = array( 'catalog/filter', 'basket/mini' );
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );
-		$boot->setup( $basedir . '/ext' )->routes( $basedir . '/src/routes.php' );
+		$boot->setup( $basedir . '/ext' )->routes( $basedir . '/src/aimeos-routes.php' );
 
 		$response = new \Slim\Http\Response();
 		$request = \Slim\Http\Request::createFromEnvironment( \Slim\Http\Environment::mock() );

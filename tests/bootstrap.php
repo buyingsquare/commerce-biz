@@ -36,7 +36,7 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 			'settings' => array( 'determineRouteBeforeAppMiddleware' => true )
 		) );
 
-		$settings = require dirname( __DIR__ ) . '/src/settings.php';
+		$settings = require dirname( __DIR__ ) . '/src/aimeos-settings.php';
 		$settings['routes'] = array(
 			'admin' => '/{site}/',
 			'account' => '/{site}/',
@@ -46,7 +46,7 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 		);
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );
-		$boot->setup( dirname( __DIR__ ) . '/ext' )->routes( dirname( __DIR__ ) . '/src/routes.php' );
+		$boot->setup( dirname( __DIR__ ) . '/ext' )->routes( dirname( __DIR__ ) . '/src/aimeos-routes.php' );
 
 		$c = $app->getContainer();
 		$env = \Slim\Http\Environment::mock( array(
