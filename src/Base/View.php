@@ -39,7 +39,6 @@ class View
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MW\Config\Iface $config Configuration object
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $attr Associative list of URI parameters
