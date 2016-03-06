@@ -14,7 +14,7 @@ env:
 before_script:
   - travis_retry composer require "slim/slim:${SLIM_VERSION}"
   - mysql -e 'create database slim;'
-  - php vendor/aimeos/aimeos-core/setup.php --config=src/settings.php unittest unittest
+  - php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-settings.php unittest unittest
 
 script:
   - vendor/bin/phpunit
