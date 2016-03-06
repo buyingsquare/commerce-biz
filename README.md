@@ -14,11 +14,6 @@ controllers for e.g. faceted filter, product lists and detail views, for
 searching products as well as baskets and the checkout process. A full set of
 pages including routing is also available for a quick start.
 
-**Note:** This tutorial assumes a directory layout as used in the Slim skeleton
-application created by:
-
-```composer create-project slim/slim-skeleton [my-app-name]```
-
 ## Table of content
 
 - [Installation/Update](#installation-or-update)
@@ -28,6 +23,11 @@ application created by:
 - [Links](#links)
 
 ## Installation or update
+
+This tutorial assumes a directory layout as used in the Slim skeleton application
+created by:
+
+```composer create-project slim/slim-skeleton [my-app-name]```
 
 The Aimeos Slim e-commerce package is a composer based library that can be
 installed easiest by using [Composer](https://getcomposer.org). Add these lines
