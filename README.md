@@ -61,7 +61,7 @@ modify the settings in the resource section. Setting up or upgrading existing ta
 in the database is done via:
 
 ```
-php vendor/aimeos/aimeos-slim/setup.php --config=src/aimeos-settings.php --option=setup/default/demo:1
+php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-settings.php --option=setup/default/demo:1
 ```
 
 In a production environment or if you don't want that the demo data is
@@ -72,7 +72,7 @@ application. Thus, you can modify them according to your needs and they won't be
 overwritten by the next composer update:
 
 ```
-cp -r vendor/aimeos/aimeos-slim/templates/ templates/
+cp -r vendor/aimeos/aimeos-slim/templates/* templates/
 ```
 
 The last step is to **publish the Aimeos theme files** to the `public/` directory, so they
