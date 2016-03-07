@@ -30,7 +30,7 @@ if( !$autoload )
 
 class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 {
-	public function call( $method, $path, $params = array() )
+	public function call( $method, $path, $params = array(), $body = '' )
 	{
 		$app = new \Slim\App( array(
 			'settings' => array( 'determineRouteBeforeAppMiddleware' => true )
@@ -50,10 +50,12 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 
 		$c = $app->getContainer();
 		$env = \Slim\Http\Environment::mock( array(
+			'REQUEST_METHOD' => $method,
 			'REQUEST_URI' => $path,
 			'QUERY_STRING' => http_build_query( $params )
 		));
 		$c['request'] = \Slim\Http\Request::createFromEnvironment( $env );
+		$c['request']->getBody()->write( $body );
 		$c['response'] = new \Slim\Http\Response();
 
 		$twigconf = array( 'cache' => sys_get_temp_dir() . '/aimeos-slim-twig-cache' );

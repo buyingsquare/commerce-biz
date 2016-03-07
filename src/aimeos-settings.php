@@ -19,7 +19,7 @@ return array(
 	),
 
 	'routes' => array(
-		// 'admin' => '/',
+		// 'admin' => '/admin/',
 		// 'account' => '/',
 		// 'default' => '/',
 		// 'confirm' => '/',

@@ -1,11 +1,7 @@
 <?php
 
 
-$app->group( '/', function() {
-
-	$this->map(['GET'], 'extadm', function( $request, $response, $args ) {
-		return \Aimeos\Slim\Controller\Extadm::indexAction( $this, $request, $response, $args );
-	})->setName( 'aimeos_shop_extadm' );
+$app->group( $config( 'routes/admin', '/admin/' ), function() {
 
 	$this->map(['GET'], 'extadm/file', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Extadm::fileAction( $this, $request, $response, $args );
@@ -14,6 +10,10 @@ $app->group( '/', function() {
 	$this->map(['POST'], 'extadm/do', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Extadm::doAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_extadm_json' );
+
+	$this->map(['GET'], 'extadm[/{tab:[0-9]+}[/{lang}]]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Extadm::indexAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_extadm' );
 
 
 	$this->map(['GET', 'POST'], 'jqadm/copy/{resource:[^0-9]+}/{id:[0-9]+}', function( $request, $response, $args ) {
@@ -37,7 +37,7 @@ $app->group( '/', function() {
 	})->setName( 'aimeos_shop_jqadm_save' );
 
 	$this->map(['GET', 'POST'], 'jqadm/search/{resource:[^0-9]+}', function( $request, $response, $args ) {
-		return \Aimeos\Slim\Controller\Jqadm::createAction( $this, $request, $response, $args );
+		return \Aimeos\Slim\Controller\Jqadm::searchAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_search' );
 
 
