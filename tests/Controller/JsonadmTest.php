@@ -25,7 +25,7 @@ class JsonadmTest extends \LocalWebTestCase
 		$this->assertGreaterThan( 1, count( $json['meta']['resources'] ) );
 
 
-		$response = $this->call( 'OPTIONS', '/unittest/jsonadm' );
+		$response = $this->call( 'OPTIONS', '/unittest/jsonadm/' );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
