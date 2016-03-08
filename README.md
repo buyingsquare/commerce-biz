@@ -79,8 +79,13 @@ The last step is to **publish the Aimeos theme files** to the `public/` director
 are available via HTTP:
 
 ```
-mkdir public/aimeos
-cp -r vendor/aimeos/aimeos-core/client/html/themes/ public/aimeos/
+mkdir -p public/aimeos/themes/
+mkdir -p public/aimeos/extjs/lib/
+mkdir -p public/aimeos/admin/extjs/lib/
+cp -r vendor/aimeos/aimeos-core/client/html/themes/* public/aimeos/themes/
+cp -r vendor/aimeos/aimeos-core/admin/jqadm/themes/* public/aimeos/themes/
+cp -r vendor/aimeos/aimeos-core/admin/extjs/lib/* public/aimeos/extjs/lib/
+cp -r vendor/aimeos/aimeos-core/admin/extjs/lib/* public/aimeos/admin/extjs/lib/
 ```
 
 ## Setup
