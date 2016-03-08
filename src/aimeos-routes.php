@@ -61,7 +61,7 @@ $app->group( $config( 'routes/admin', '/admin/' ), function() {
 		return \Aimeos\Slim\Controller\Jsonadm::putAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_put' );
 
-	$this->map(['OPTIONS'], 'jsonadm[/{resource}]', function( $request, $response, $args ) {
+	$this->map(['OPTIONS'], 'jsonadm/[{resource}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::optionsAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_options' );
 
