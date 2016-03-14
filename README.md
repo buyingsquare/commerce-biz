@@ -142,6 +142,13 @@ these lines at the bottom:
     ),
 ```
 
+If caching is enabled, you have to execute the following command to clear the
+cache if you change e.g. configuration settings:
+
+```
+php vendor/aimeos/aimeos-slim/cache.php --config=src/aimeos-settings.php
+```
+
 ## License
 
 The Aimeos Slim package is licensed under the terms of the LGPLv3 license and
