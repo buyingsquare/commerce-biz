@@ -38,11 +38,11 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 
 		$settings = require dirname( __DIR__ ) . '/src/aimeos-settings.php';
 		$settings['routes'] = array(
-			'admin' => '/{site}/',
-			'account' => '/{site}/',
-			'default' => '/{site}/',
-			'confirm' => '/{site}/',
-			'update' => '/{site}/',
+			'admin' => '/{site}/admin',
+			'account' => '/{site}',
+			'default' => '/{site}',
+			'confirm' => '/{site}',
+			'update' => '/{site}',
 		);
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );

@@ -19,11 +19,11 @@ return array(
 	),
 
 	'routes' => array(
-		// 'admin' => '/admin/',
-		// 'account' => '/',
-		// 'default' => '/',
-		// 'confirm' => '/',
-		// 'update' => '/',
+		// 'admin' => '/admin',
+		// 'account' => '',
+		// 'default' => '',
+		// 'confirm' => '',
+		// 'update' => '',
 	),
 
 	'resource' => array(

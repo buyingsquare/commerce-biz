@@ -18,6 +18,7 @@ pages including routing is also available for a quick start.
 
 - [Installation/Update](#installation-or-update)
 - [Setup](#setup)
+- [Admin](#admin)
 - [Hints](#hints)
 - [License](#license)
 - [Links](#links)
@@ -125,11 +126,44 @@ Then, you should be able to call the catalog list page in your browser. For a
 quick start, you can use the integrated web server that is available since PHP 5.4.
 Simply execute this command in the base directory of your application:
 
-```php -S 127.0.0.1:8000 -t public```
+`php -S 127.0.0.1:8000 -t public`
 
 Point your browser to the list page of the shop using:
 
 http://127.0.0.1:8000/list
+
+## Admin
+
+The Aimeos package for the Slim PHP framework also contains an administration
+interface for managing products and other content. If the internal PHP web server
+(`php -S 127.0.0.1:8000 -t public`) is still running, you can find it at:
+
+http://127.0.0.1:8000/admin
+
+**Caution:** It's important to protect the administration interface with a
+password or some other kind of authentication!
+
+The easiest way is to add HTTP basic authentication (the browser is asking for
+user name and password) to all `/admin` URLs. In Slim, there's a middleware
+which you can add to your application. To install it, execute
+
+`composer require tuupola/slim-basic-auth`
+
+on the command line in your application directory. Afterwards, adapt your
+`public/index.php` file and add these lines before `$app->run()`:
+
+```
+$app->add(new \Slim\Middleware\HttpBasicAuthentication([
+	"realm" => "Aimeos administration",
+	"path" => "/admin",
+	"users" => [
+		"admin" => "secret",
+	],
+]));
+```
+
+**Note:** The "users" array can contain a list of user name / password
+combinations and you need to use a **really secret password**!
 
 ## Hints
 
