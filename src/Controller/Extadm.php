@@ -105,6 +105,7 @@ class Extadm
 		$cntlPaths = $container->get( 'aimeos' )->getCustomPaths( 'controller/extjs' );
 
 		$context = $container->get( 'aimeos_context' )->get( false, $args );
+		$context->setView( $container->get( 'aimeos_view' )->create( $request, $response, $args, array() ) );
 		$context = self::setLocale( $context );
 
 		$params = $request->getQueryParams();
