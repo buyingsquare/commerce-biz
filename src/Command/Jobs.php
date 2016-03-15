@@ -19,9 +19,9 @@ namespace Aimeos\Slim\Command;
 class Jobs extends Base implements Iface
 {
 	/**
-	 * Executes the command
+	 * Returns the command usage and options
 	 *
-	 * @param array $argv Associative array from $_SERVER['argv']
+	 * @return string Command usage and options
 	 */
 	public static function usage()
 	{
@@ -30,9 +30,9 @@ class Jobs extends Base implements Iface
 
 
 	/**
-	 * Returns the command usage and options
+	 * Executes the command
 	 *
-	 * @return string Command usage and options
+	 * @param array $argv Associative array from $_SERVER['argv']
 	 */
 	public static function run( array $argv )
 	{
