@@ -17,6 +17,9 @@
 		<testsuite name="base">
 			<directory>./tests/Base</directory>
 		</testsuite>
+		<testsuite name="base">
+			<directory>./tests/Command</directory>
+		</testsuite>
 		<testsuite name="controller">
 			<directory>./tests/Controller</directory>
 		</testsuite>
