@@ -77,7 +77,7 @@ class Extadm
 			'config' => self::getJsonClientConfig( $context ),
 			'site' => self::getJsonSiteItem( $context, $site ),
 			'i18nContent' => self::getJsonClientI18n( $aimeos->getI18nPaths(), $lang ),
-			'uploaddir' => $context->getConfig()->get( 'uploaddir', '/' ),
+			'uploaddir' => $context->getConfig()->get( 'uploaddir', '/.' ),
 			'searchSchemas' => $controller->getJsonSearchSchemas(),
 			'itemSchemas' => $controller->getJsonItemSchemas(),
 			'smd' => $controller->getJsonSmd( $jsonUrl ),
