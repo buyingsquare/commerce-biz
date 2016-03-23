@@ -99,6 +99,9 @@ class Bootstrap
 
 		$container['aimeos_config'] = function( $c ) use ( $settings ) {
 
+			$default = include __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-default.php';
+			$settings = array_replace_recursive( $default, $settings );
+
 			$config = new \Aimeos\MW\Config\PHPArray( $settings, $c['aimeos']->getConfigPaths() );
 
 			if( function_exists( 'apc_store' ) === true && $config->get( 'apc_enabled', false ) == true ) {
