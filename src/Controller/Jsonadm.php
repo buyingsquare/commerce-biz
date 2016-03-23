@@ -37,8 +37,8 @@ class Jsonadm
 		$status = 500;
 		$header = $request->getHeaders();
 
-		$cntl = self::createController( $container, $request, $response, $args );
-		$result = $cntl->delete( (string) $request->getBody(), $header, $status );
+		$client = self::createClient( $container, $request, $response, $args );
+		$result = $client->delete( (string) $request->getBody(), $header, $status );
 
 		return self::withResponse( $response, $result, $status, $header );
 	}
@@ -58,8 +58,8 @@ class Jsonadm
 		$status = 500;
 		$header = $request->getHeaders();
 
-		$cntl = self::createController( $container, $request, $response, $args );
-		$result = $cntl->get( (string) $request->getBody(), $header, $status );
+		$client = self::createClient( $container, $request, $response, $args );
+		$result = $client->get( (string) $request->getBody(), $header, $status );
 
 		return self::withResponse( $response, $result, $status, $header );
 	}
@@ -79,8 +79,8 @@ class Jsonadm
 		$status = 500;
 		$header = $request->getHeaders();
 
-		$cntl = self::createController( $container, $request, $response, $args );
-		$result = $cntl->patch( (string) $request->getBody(), $header, $status );
+		$client = self::createClient( $container, $request, $response, $args );
+		$result = $client->patch( (string) $request->getBody(), $header, $status );
 
 		return self::withResponse( $response, $result, $status, $header );
 	}
@@ -100,8 +100,8 @@ class Jsonadm
 		$status = 500;
 		$header = $request->getHeaders();
 
-		$cntl = self::createController( $container, $request, $response, $args );
-		$result = $cntl->post( (string) $request->getBody(), $header, $status );
+		$client = self::createClient( $container, $request, $response, $args );
+		$result = $client->post( (string) $request->getBody(), $header, $status );
 
 		return self::withResponse( $response, $result, $status, $header );
 	}
@@ -121,8 +121,8 @@ class Jsonadm
 		$status = 500;
 		$header = $request->getHeaders();
 
-		$cntl = self::createController( $container, $request, $response, $args );
-		$result = $cntl->put( (string) $request->getBody(), $header, $status );
+		$client = self::createClient( $container, $request, $response, $args );
+		$result = $client->put( (string) $request->getBody(), $header, $status );
 
 		return self::withResponse( $response, $result, $status, $header );
 	}
@@ -142,8 +142,8 @@ class Jsonadm
 		$status = 500;
 		$header = $request->getHeaders();
 
-		$cntl = self::createController( $container, $request, $response, $args );
-		$result = $cntl->options( (string) $request->getBody(), $header, $status );
+		$client = self::createClient( $container, $request, $response, $args );
+		$result = $client->options( (string) $request->getBody(), $header, $status );
 
 		return self::withResponse( $response, $result, $status, $header );
 	}
@@ -158,13 +158,13 @@ class Jsonadm
 	 * @param array $args Associative list of route parameters
 	 * @return \Aimeos\Controller\JsonAdm\Iface JSON admin controller
 	 */
-	protected static function createController( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$resource = ( isset( $args['resource'] ) ? $args['resource'] : null );
 		$site = ( isset( $args['site'] ) ? $args['site'] : 'default' );
 		$lang = ( isset( $args['lang'] ) ? $args['lang'] : 'en' );
 
-		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'controller/jsonadm/templates' );
+		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jsonadm/templates' );
 
 		$context = $container->get( 'aimeos_context' )->get( false, $args );
 		$context = self::setLocale( $container->get( 'aimeos_i18n' ), $context, $site, $lang );
@@ -172,7 +172,7 @@ class Jsonadm
 		$view = $container->get( 'aimeos_view' )->create( $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
-		return \Aimeos\Controller\JsonAdm\Factory::createController( $context, $templatePaths, $resource );
+		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
 	}
 
 
