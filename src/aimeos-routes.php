@@ -21,6 +21,10 @@ $app->group( $config( 'routes/admin', '/admin' ), function() use ( $config ) {
 	})->setName( 'aimeos_shop_extadm' );
 
 
+	$this->map(['GET'], '/jqadm/file/{type}', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jqadm::fileAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jqadm_file' );
+
 	$this->map(['GET', 'POST'], '/jqadm/copy/{resource:[^0-9]+}/{id:[0-9]+}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::copyAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_copy' );

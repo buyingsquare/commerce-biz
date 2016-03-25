@@ -24,6 +24,51 @@ use Psr\Http\Message\ResponseInterface;
 class Jqadm
 {
 	/**
+	 * Returns the JS file content
+	 *
+	 * @param ContainerInterface $container Dependency injection container
+	 * @param ServerRequestInterface $request Request object
+	 * @param ResponseInterface $response Response object
+	 * @param array $args Associative list of route parameters
+	 * @return ResponseInterface $response Modified response object with generated output
+	 */
+	public static function fileAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	{
+		$contents = '';
+		$files = array();
+		$aimeos = $container->get( 'aimeos' );
+		$type = ( isset( $args['type'] ) ? $args['type'] : 'js' );
+
+		foreach( $aimeos->getCustomPaths( 'admin/jqadm' ) as $base => $paths )
+		{
+			foreach( $paths as $path )
+			{
+				$jsbAbsPath = $base . '/' . $path;
+				$jsb2 = new \Aimeos\MW\Jsb2\Standard( $jsbAbsPath, dirname( $jsbAbsPath ) );
+				$files = array_merge( $files, $jsb2->getFiles( $type ) );
+			}
+		}
+
+		foreach( $files as $file )
+		{
+			if( ( $content = file_get_contents( $file ) ) !== false ) {
+				$contents .= $content;
+			}
+		}
+
+		$response->getBody()->write( $contents );
+
+		if( $type === 'js' ) {
+			$response = $response->withHeader( 'Content-Type', 'application/javascript' );
+		} elseif( $type === 'css' ) {
+			$response = $response->withHeader( 'Content-Type', 'text/css' );
+		}
+
+		return $response;
+	}
+
+
+	/**
 	 * Returns the HTML code for a copy of a resource object
 	 *
 	 * @param ContainerInterface $container Dependency injection container
