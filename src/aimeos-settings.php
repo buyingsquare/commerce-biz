@@ -50,6 +50,10 @@ return array(
 			'adapter' => 'Standard',
 			'basedir' => '../secure',
 		),
+		'mq' => array(
+			'adapter' => 'Standard',
+			'db' => 'db',
+		),
 	),
 
 	'client' => array(
