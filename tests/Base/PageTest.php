@@ -6,7 +6,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
 	{
 		$app = new \Slim\App( array() );
 		$basedir = dirname( dirname( __DIR__ ) );
-		$settings = require $basedir . '/src/aimeos-settings.php';
+		$settings = require $basedir . '/src/aimeos-default.php';
 		$settings['page']['test'] = array( 'catalog/filter', 'basket/mini' );
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );

@@ -4,7 +4,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase
 {
 	public function testRun()
 	{
-		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-settings.php';
+		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-default.php';
 		$argv = array( "cache.php", "--config=$cfgfile", "unittest" );
 
 		ob_start();
@@ -18,7 +18,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase
 
 	public function testRunHelp()
 	{
-		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-settings.php';
+		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-default.php';
 		$argv = array( "cache.php", "--help" );
 
 		$this->setExpectedException( 'Aimeos\Slim\Command\Exception' );
