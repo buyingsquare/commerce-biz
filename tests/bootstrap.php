@@ -36,13 +36,16 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 			'settings' => array( 'determineRouteBeforeAppMiddleware' => true )
 		) );
 
-		$settings = array( 'routes' => array(
-			'admin' => '/{site}/admin',
-			'account' => '/{site}',
-			'default' => '/{site}',
-			'confirm' => '/{site}',
-			'update' => '/{site}',
-		) );
+		$settings = array(
+			'disableSites' => false,
+			'routes' => array(
+				'admin' => '/{site}/admin',
+				'account' => '/{site}',
+				'default' => '/{site}',
+				'confirm' => '/{site}',
+				'update' => '/{site}',
+			),
+		);
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );
 		$boot->setup( dirname( __DIR__ ) . '/ext' )->routes( dirname( __DIR__ ) . '/src/aimeos-routes.php' );

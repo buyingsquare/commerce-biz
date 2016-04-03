@@ -5,6 +5,7 @@ class ContextTest extends \PHPUnit_Framework_TestCase
 	public function testGet()
 	{
 		$settings = require dirname( dirname( __DIR__ ) ) . '/src/aimeos-default.php';
+		$settings['disableSites'] = false;
 
 		$router = new \Slim\Router();
 		$container = new \Slim\Container();

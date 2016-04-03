@@ -102,7 +102,7 @@ class Context
 	{
 		if( $this->locale === null )
 		{
-			$disableSites = $this->container->get( 'aimeos_config' )->get( 'disableSites', false );
+			$disableSites = $this->container->get( 'aimeos_config' )->get( 'disableSites', true );
 
 			$site = ( isset( $attr['site'] ) ? $attr['site'] : 'default' );
 			$lang = ( isset( $attr['locale'] ) ? $attr['locale'] : '' );

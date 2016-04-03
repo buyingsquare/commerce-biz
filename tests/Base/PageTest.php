@@ -8,6 +8,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
 		$basedir = dirname( dirname( __DIR__ ) );
 		$settings = require $basedir . '/src/aimeos-default.php';
 		$settings['page']['test'] = array( 'catalog/filter', 'basket/mini' );
+		$settings['disableSites'] = false;
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );
 		$boot->setup( $basedir . '/ext' )->routes( $basedir . '/src/aimeos-routes.php' );
