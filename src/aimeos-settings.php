@@ -25,12 +25,15 @@ return array(
 
 	'resource' => array(
 		'db' => array(
-			// 'adapter' => 'mysql',
-			// 'host' => 'localhost',
-			// 'port' => '',
-			// 'database' => 'slim',
-			// 'username' => 'root',
-			// 'password' => '',
+			'adapter' => 'mysql',
+			'host' => 'localhost',
+			'port' => '',
+			'database' => 'slim',
+			'username' => 'root',
+			'password' => '',
+			'stmt' => array( "SET NAMES 'utf8'", "SET SESSION sql_mode='ANSI'" ),
+			'opt-persistent' => 0,
+			'limit' => 2,
 		),
 	),
 
