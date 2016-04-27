@@ -122,6 +122,9 @@ templates in PHP, but Twig has one major advantage: Templates can inherit from
 a common base template, so you don't have to copy the whole HTML page into each
 template.
 
+**Caution:** The Slim skeleton application contain a route for `/[{name}]` in `src/routes.php`
+which you have to remove first. It's so generic that it shadows routes from Aimeos!
+
 Then, you should be able to call the catalog list page in your browser. For a
 quick start, you can use the integrated web server that is available since PHP 5.4.
 Simply execute this command in the base directory of your application:
