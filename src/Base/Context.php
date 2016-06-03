@@ -52,7 +52,7 @@ class Context
 			$config = $this->container->get( 'aimeos_config' );
 			$context->setConfig( $config );
 
-			$dbm = new \Aimeos\MW\DB\Manager\DBAL( $config );
+			$dbm = new \Aimeos\MW\DB\Manager\PDO( $config );
 			$context->setDatabaseManager( $dbm );
 
 			$fs = new \Aimeos\MW\Filesystem\Manager\Standard( $config );
