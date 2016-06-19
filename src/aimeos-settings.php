@@ -28,6 +28,7 @@ return array(
 			'adapter' => 'mysql',
 			'host' => 'localhost',
 			'port' => '',
+			'socket' => '',
 			'database' => 'slim',
 			'username' => 'root',
 			'password' => '',
