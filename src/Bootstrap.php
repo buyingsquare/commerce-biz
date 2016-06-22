@@ -75,6 +75,10 @@ class Bootstrap
 	{
 		$container = $this->app->getContainer();
 
+		$container['router'] = function( $c ) {
+			return new \Aimeos\Slim\Router();
+		};
+
 		$container['aimeos'] = function( $c ) use ( $extdir ) {
 			return new \Aimeos\Bootstrap( (array) $extdir, false );
 		};
