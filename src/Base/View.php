@@ -95,6 +95,9 @@ class View
 		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view, $csrf, $request->getAttribute( 'csrf_value ') );
 		$view->addHelper( 'csrf', $helper );
 
+		$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $this->getGroups( $context ) );
+		$view->addHelper( 'access', $helper );
+
 		return $view;
 	}
 
@@ -122,5 +125,30 @@ class View
 		}
 
 		return $fixed;
+	}
+
+
+	/**
+	 * Returns the closure for retrieving the user groups
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Closure Function which returns the user group codes
+	 */
+	protected function getGroups( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		return function() use ( $context )
+		{
+			$list = array();
+			$manager = \Aimeos\MShop\Factory::createManager( $context, 'customer/group' );
+
+			$search = $manager->createSearch();
+			$search->setConditions( $search->compare( '==', 'customer.group.id', $context->getGroupIds() ) );
+
+			foreach( $manager->searchItems( $search ) as $item ) {
+				$list[] = $item->getCode();
+			}
+
+			return $list;
+		};
 	}
 }
