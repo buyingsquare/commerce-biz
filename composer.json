@@ -21,11 +21,11 @@
 	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.3.3",
-		"aimeos/aimeos-core": "~2016.04",
-		"aimeos/ai-gettext": "~2016.04",
-		"aimeos/ai-monolog": "~2016.04",
-		"aimeos/ai-swiftmailer": "~2016.04",
-		"aimeos/ai-slim": "dev-master",
+		"aimeos/aimeos-core": "2016.07.*",
+		"aimeos/ai-gettext": "2016.07.*",
+		"aimeos/ai-monolog": "2016.07.*",
+		"aimeos/ai-swiftmailer": "2016.07.*",
+		"aimeos/ai-slim": "2016.07.*",
 		"slim/twig-view": "~2.0",
 		"slim/slim": "~3.3"
 	},
