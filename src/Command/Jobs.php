@@ -98,7 +98,7 @@ class Jobs extends Base implements Iface
 		$response = new \Slim\Http\Response();
 
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
-		$view = $container->get( 'aimeos_view' )->create( $request, $response, array(), $tmplPaths );
+		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, array(), $tmplPaths );
 
 		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
 		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );

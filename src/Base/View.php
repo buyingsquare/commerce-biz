@@ -39,6 +39,7 @@ class View
 	/**
 	 * Creates the view object for the HTML client.
 	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $attr Associative list of URI parameters
@@ -46,7 +47,8 @@ class View
 	 * @param string|null $locale Code of the current language or null for no translation
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public function create( ServerRequestInterface $request, ResponseInterface $response, array $attr, array $templatePaths, $locale = null )
+	public function create( \Aimeos\MShop\Context\Item\Iface $context, ServerRequestInterface $request,
+		ResponseInterface $response, array $attr, array $templatePaths, $locale = null )
 	{
 		$params = $fixed = array();
 		$config = $this->container->get( 'aimeos_config' );

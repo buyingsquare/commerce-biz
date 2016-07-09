@@ -169,7 +169,7 @@ class Jsonadm
 		$context = $container->get( 'aimeos_context' )->get( false, $args );
 		$context = self::setLocale( $container->get( 'aimeos_i18n' ), $context, $site, $lang );
 
-		$view = $container->get( 'aimeos_view' )->create( $request, $response, $args, $templatePaths, $lang );
+		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
