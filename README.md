@@ -84,10 +84,9 @@ mkdir -p public/aimeos/themes/
 mkdir -p public/aimeos/extjs/lib/
 mkdir -p public/aimeos/admin/extjs/lib/
 cp -r vendor/aimeos/aimeos-slim/resources/mimeicons/ public/aimeos/
-cp -r vendor/aimeos/aimeos-core/client/html/themes/* public/aimeos/themes/
-cp -r vendor/aimeos/aimeos-core/admin/jqadm/themes/* public/aimeos/themes/
-cp -r vendor/aimeos/aimeos-core/admin/extjs/lib/* public/aimeos/extjs/lib/
-cp -r vendor/aimeos/aimeos-core/admin/extjs/lib/* public/aimeos/admin/extjs/lib/
+cp -r ext/ai-client-html/client/html/themes/* public/aimeos/themes/
+cp -r ext/ai-admin-jqadm/admin/jqadm/themes/* public/aimeos/themes/
+cp -r ext/ai-admin-extadm/admin/extjs/lib/* public/aimeos/extjs/lib/
 ```
 
 ## Setup
