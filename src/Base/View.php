@@ -97,7 +97,7 @@ class View
 		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view, $csrf, $request->getAttribute( 'csrf_value ') );
 		$view->addHelper( 'csrf', $helper );
 
-		$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $this->getGroups( $context ) );
+		$helper = new \Aimeos\MW\View\Helper\Access\All( $view );
 		$view->addHelper( 'access', $helper );
 
 		return $view;
