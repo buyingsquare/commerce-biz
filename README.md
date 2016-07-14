@@ -38,7 +38,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "dev-master",
+        "aimeos/aimeos-slim": "~2016.07",
         ...
     },
 ```
@@ -80,13 +80,12 @@ The last step is to **publish the Aimeos theme files** to the `public/` director
 are available via HTTP:
 
 ```
-mkdir -p public/aimeos/themes/
-mkdir -p public/aimeos/extjs/lib/
-mkdir -p public/aimeos/admin/extjs/lib/
+mkdir -p public/aimeos/themes/ public/aimeos/admin/extjs/
 cp -r vendor/aimeos/aimeos-slim/resources/mimeicons/ public/aimeos/
 cp -r ext/ai-client-html/client/html/themes/* public/aimeos/themes/
 cp -r ext/ai-admin-jqadm/admin/jqadm/themes/* public/aimeos/themes/
-cp -r ext/ai-admin-extadm/admin/extjs/lib/* public/aimeos/extjs/lib/
+cp -r ext/ai-admin-extadm/admin/extjs/lib/ public/aimeos/admin/extjs/
+cp -r ext/ai-admin-extadm/admin/extjs/resources/ public/aimeos/admin/extjs/
 ```
 
 ## Setup
