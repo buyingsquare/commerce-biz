@@ -199,7 +199,7 @@ is available for free.
 
 * [Web site](https://aimeos.org/)
 * [Documentation](https://aimeos.org/docs/)
-* [Help](https://aimeos.org/help/)
+* [Forum](https://aimeos.org/help/)
 * [Issue tracker](https://github.com/aimeos/aimeos-slim/issues)
 * [Composer packages](https://packagist.org/packages/aimeos/aimeos-slim)
 * [Source code](https://github.com/aimeos/aimeos-slim)
