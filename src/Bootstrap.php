@@ -104,14 +104,7 @@ class Bootstrap
 		$settings = array_replace_recursive( $default, $this->settings );
 
 		$container['aimeos_config'] = function( $c ) use ( $settings ) {
-
-			$config = new \Aimeos\MW\Config\PHPArray( array(), $c['aimeos']->getConfigPaths() );
-
-			if( function_exists( 'apc_store' ) === true && $config->get( 'apc_enabled', false ) == true ) {
-				$config = new \Aimeos\MW\Config\Decorator\APC( $config, $config->get( 'apc_prefix', 'slim:' ) );
-			}
-
-			return new \Aimeos\MW\Config\Decorator\Memory( $config, $settings );
+			return new \Aimeos\Slim\Base\Config( $c, $settings );
 		};
 
 

@@ -41,7 +41,7 @@ class Extadm
 		$aimeos = $container->get( 'aimeos' );
 		$cntlPaths = $aimeos->getCustomPaths( 'controller/extjs' );
 
-		$context = $container->get( 'aimeos_context' )->get( false, $args );
+		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
 		$context = self::setLocale( $context, $site, $lang );
 
 		$controller = new \Aimeos\Controller\ExtJS\JsonRpc( $context, $cntlPaths );
@@ -104,7 +104,7 @@ class Extadm
 	{
 		$cntlPaths = $container->get( 'aimeos' )->getCustomPaths( 'controller/extjs' );
 
-		$context = $container->get( 'aimeos_context' )->get( false, $args );
+		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
 		$context->setView( $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, array() ) );
 		$context = self::setLocale( $context );
 

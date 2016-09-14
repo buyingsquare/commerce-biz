@@ -43,7 +43,7 @@ class I18n
 	 */
 	public function get( array $languageIds )
 	{
-		$config = $this->container->get( 'aimeos_config' );
+		$config = $this->container->get( 'aimeos_config' )->get();
 		$i18nPaths = $this->container->get( 'aimeos' )->getI18nPaths();
 
 		foreach( $languageIds as $langid )

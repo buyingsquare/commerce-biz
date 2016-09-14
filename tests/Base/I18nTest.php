@@ -11,7 +11,7 @@ class I18nTest extends \PHPUnit_Framework_TestCase
 
 		$container = new \Slim\Container();
 		$container['aimeos'] = new \Aimeos\Bootstrap();
-		$container['aimeos_config'] = new \Aimeos\MW\Config\PHPArray( $conf );
+		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, $conf );
 
 
 		$object = new \Aimeos\Slim\Base\I18n( $container );

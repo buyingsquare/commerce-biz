@@ -7,7 +7,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 		$router = new \Slim\Router();
 		$container = new \Slim\Container();
 		$container['aimeos'] = new \Aimeos\Bootstrap();
-		$container['aimeos_config'] = new \Aimeos\MW\Config\PHPArray();
+		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, array() );
 		$container['aimeos_context'] = new \Aimeos\MShop\Context\Item\Standard();
 		$container['aimeos_i18n'] = new \Aimeos\Slim\Base\I18n( $container );
 		$container['request'] = \Slim\Http\Request::createFromEnvironment( \Slim\Http\Environment::mock() );
@@ -27,7 +27,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 		$router = new \Slim\Router();
 		$container = new \Slim\Container();
 		$container['aimeos'] = new \Aimeos\Bootstrap();
-		$container['aimeos_config'] = new \Aimeos\MW\Config\PHPArray();
+		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, array() );
 		$container['aimeos_context'] = new \Aimeos\MShop\Context\Item\Standard();
 		$container['aimeos_i18n'] = new \Aimeos\Slim\Base\I18n( $container );
 		$container['request'] = \Slim\Http\Request::createFromEnvironment( \Slim\Http\Environment::mock() );

@@ -166,7 +166,7 @@ class Jsonadm
 
 		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jsonadm/templates' );
 
-		$context = $container->get( 'aimeos_context' )->get( false, $args );
+		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
 		$context = self::setLocale( $container->get( 'aimeos_i18n' ), $context, $site, $lang );
 
 		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );

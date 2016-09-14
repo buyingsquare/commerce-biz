@@ -54,7 +54,7 @@ class Page
 		$view = $this->container->get( 'aimeos_view' )->create( $context, $request, $response, $attr, $tmplPaths, $langid );
 		$context->setView( $view );
 
-		$pagesConfig = $this->container->get( 'aimeos_config' )->get( 'page', array() );
+		$pagesConfig = $this->container->get( 'aimeos_config' )->get()->get( 'page', array() );
 		$result = array( 'aibody' => array(), 'aiheader' => array() );
 
 		if( isset( $pagesConfig[$pageName] ) )

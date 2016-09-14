@@ -41,15 +41,17 @@ class Context
 	 *
 	 * @param boolean $locale True to add locale object to context, false if not
 	 * @param array Associative list of URL parameter
+	 * @param string $type Configuration type ("frontend" or "backend")
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public function get( $locale = true, array $attributes = array() )
+	public function get( $locale = true, array $attributes = array(), $type = 'frontend' )
 	{
+		$config = $this->container->get( 'aimeos_config' )->get( $type );
+
 		if( self::$context === null )
 		{
 			$context = new \Aimeos\MShop\Context\Item\Standard();
 
-			$config = $this->container->get( 'aimeos_config' );
 			$context->setConfig( $config );
 
 			$dbm = new \Aimeos\MW\DB\Manager\DBAL( $config );
@@ -77,6 +79,7 @@ class Context
 		}
 
 		$context = self::$context;
+		$context->setConfig( $config );
 
 		if( $locale === true )
 		{

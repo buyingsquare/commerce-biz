@@ -11,7 +11,7 @@ class ContextTest extends \PHPUnit_Framework_TestCase
 		$container = new \Slim\Container();
 		$container['aimeos'] = new \Aimeos\Bootstrap();
 		$container['aimeos_i18n'] = new \Aimeos\Slim\Base\I18n( $container );
-		$container['aimeos_config'] = new \Aimeos\MW\Config\PHPArray( $settings, $container['aimeos']->getConfigPaths() );
+		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, $settings );
 		$container['mailer'] = \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
 
 

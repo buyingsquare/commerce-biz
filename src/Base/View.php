@@ -51,7 +51,7 @@ class View
 		ResponseInterface $response, array $attr, array $templatePaths, $locale = null )
 	{
 		$params = $fixed = array();
-		$config = $this->container->get( 'aimeos_config' );
+		$config = $this->container->get( 'aimeos_config' )->get();
 
 		if( $locale !== null )
 		{
