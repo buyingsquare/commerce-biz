@@ -182,9 +182,10 @@ class Jqadm
 		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jqadm/templates' );
 
 		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
-		$context = self::setLocale( $container->get( 'aimeos_i18n' ), $context, $site, $lang );
+		$context->setI18n( $container->get( 'aimeos_i18n' )->get( array( $lang, 'en' ) ) );
+		$context->setLocale( $container->get( 'aimeos_locale' )->getBackend( $context, $site ) );
 
-		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
+		$view = $container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource );
@@ -205,36 +206,5 @@ class Jqadm
 		$content = str_replace( array( '{type}', '{version}' ), array( 'Slim', $version ), $content );
 
 		return $container->get( 'view' )->render( $response, 'Jqadm/index.html.twig', array( 'content' => $content ) );
-	}
-
-
-	/**
-	 * Sets the locale item in the given context
-	 *
-	 * @param \Aimeos\Slim\Base\I18n $i18n Aimeos translation object builder
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param string $site Unique site code
-	 * @param string $lang ISO language code, e.g. "en" or "en_GB"
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
-	 */
-	protected static function setLocale( \Aimeos\Slim\Base\I18n $i18n, \Aimeos\MShop\Context\Item\Iface $context, $site, $lang )
-	{
-		$localeManager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
-
-		try
-		{
-			$localeItem = $localeManager->bootstrap( $site, '', '', false );
-			$localeItem->setLanguageId( null );
-			$localeItem->setCurrencyId( null );
-		}
-		catch( \Aimeos\MShop\Locale\Exception $e )
-		{
-			$localeItem = $localeManager->createItem();
-		}
-
-		$context->setLocale( $localeItem );
-		$context->setI18n( $i18n->get( array( $lang, 'en' ) ) );
-
-		return $context;
 	}
 }

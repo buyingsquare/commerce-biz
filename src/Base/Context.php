@@ -20,9 +20,8 @@ use Interop\Container\ContainerInterface;
  */
 class Context
 {
-	private static $context;
 	private $container;
-	private $locale;
+	private $context;
 
 
 	/**
@@ -40,7 +39,7 @@ class Context
 	 * Returns the current context
 	 *
 	 * @param boolean $locale True to add locale object to context, false if not
-	 * @param array Associative list of URL parameter
+	 * @param array $attributes Associative list of URL parameter
 	 * @param string $type Configuration type ("frontend" or "backend")
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
@@ -48,73 +47,137 @@ class Context
 	{
 		$config = $this->container->get( 'aimeos_config' )->get( $type );
 
-		if( self::$context === null )
+		if( $this->context === null )
 		{
 			$context = new \Aimeos\MShop\Context\Item\Standard();
-
 			$context->setConfig( $config );
 
-			$dbm = new \Aimeos\MW\DB\Manager\DBAL( $config );
-			$context->setDatabaseManager( $dbm );
+			$this->addDataBaseManager( $context );
+			$this->addFilesystemManager( $context );
+			$this->addMessageQueueManager( $context );
+			$this->addLogger( $context );
+			$this->addCache( $context );
+			$this->addMailer( $context);
+			$this->addSession( $context );
 
-			$fs = new \Aimeos\MW\Filesystem\Manager\Standard( $config );
-			$context->setFilesystemManager( $fs );
-
-			$mq = new \Aimeos\MW\MQueue\Manager\Standard( $config );
-			$context->setMessageQueueManager( $mq );
-
-			$mail = new \Aimeos\MW\Mail\Swift( $this->container->get( 'mailer' ) );
-			$context->setMail( $mail );
-
-			$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
-			$context->setLogger( $logger );
-
-			$cache = new \Aimeos\MAdmin\Cache\Proxy\Standard( $context );
-			$context->setCache( $cache );
-
-			$session = new \Aimeos\MW\Session\PHP();
-			$context->setSession( $session );
-
-			self::$context = $context;
+			$this->context = $context;
 		}
 
-		$context = self::$context;
-		$context->setConfig( $config );
+		$this->context->setConfig( $config );
 
 		if( $locale === true )
 		{
-			$localeItem = $this->getLocale( $context, $attributes );
-			$langid = $localeItem->getLanguageId();
-
-			$context->setLocale( $localeItem );
-			$context->setI18n( $this->container->get( 'aimeos_i18n' )->get( array( $langid ) ) );
+			$localeItem = $this->container->get( 'aimeos_locale' )->get( $this->context, $attributes );
+			$this->context->setLocale( $localeItem );
+			$this->context->setI18n( $this->container->get( 'aimeos_i18n' )->get( array( $localeItem->getLanguageId() ) ) );
 		}
+
+		return $this->context;
+	}
+
+
+	/**
+	 * Adds the cache object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addCache( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$cache = new \Aimeos\MAdmin\Cache\Proxy\Standard( $context );
+		$context->setCache( $cache );
 
 		return $context;
 	}
 
 
 	/**
-	 * Returns the locale item for the current request
+	 * Adds the database manager object to the context
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param array Associative list of URL parameter
-	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function getLocale( \Aimeos\MShop\Context\Item\Iface $context, array $attr )
+	protected function addDatabaseManager( \Aimeos\MShop\Context\Item\Iface $context )
 	{
-		if( $this->locale === null )
-		{
-			$disableSites = $this->container->get( 'aimeos_config' )->get( 'disableSites', true );
+		$dbm = new \Aimeos\MW\DB\Manager\DBAL( $context->getConfig() );
+		$context->setDatabaseManager( $dbm );
 
-			$site = ( isset( $attr['site'] ) ? $attr['site'] : 'default' );
-			$lang = ( isset( $attr['locale'] ) ? $attr['locale'] : '' );
-			$currency = ( isset( $attr['currency'] ) ? $attr['currency'] : '' );
+		return $context;
+	}
 
-			$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context );
-			$this->locale = $localeManager->bootstrap( $site, $lang, $currency, $disableSites );
-		}
 
-		return $this->locale;
+	/**
+	 * Adds the filesystem manager object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addFilesystemManager( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$fs = new \Aimeos\MW\Filesystem\Manager\Standard( $context->getConfig() );
+		$context->setFilesystemManager( $fs );
+
+		return $context;
+	}
+
+
+	/**
+	 * Adds the logger object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addLogger( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
+		$context->setLogger( $logger );
+
+		return $context;
+	}
+
+
+
+	/**
+	 * Adds the mailer object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addMailer( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$mail = new \Aimeos\MW\Mail\Swift( $this->container->get( 'mailer' ) );
+		$context->setMail( $mail );
+
+		return $context;
+	}
+
+
+	/**
+	 * Adds the message queue manager object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addMessageQueueManager( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$mq = new \Aimeos\MW\MQueue\Manager\Standard( $context->getConfig() );
+		$context->setMessageQueueManager( $mq );
+
+		return $context;
+	}
+
+
+	/**
+	 * Adds the session object to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addSession( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$session = new \Aimeos\MW\Session\PHP();
+		$context->setSession( $session );
+
+		return $context;
 	}
 }

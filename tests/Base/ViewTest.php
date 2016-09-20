@@ -16,7 +16,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
 		$object = new \Aimeos\Slim\Base\View( $container );
 		$attr = array( 'site' => 'unittest', 'locale' => 'en', 'currency' => 'EUR' );
-		$view = $object->create( $container['aimeos_context'], $container['request'], $container['response'], $attr, array(), 'en' );
+		$view = $object->create( $container['aimeos_config']->get(), $container['request'], $container['response'], $attr, array(), 'en' );
 
 		$this->assertInstanceOf( '\Aimeos\MW\View\Iface', $view );
 	}
@@ -36,7 +36,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
 		$object = new \Aimeos\Slim\Base\View( $container );
 		$attr = array( 'site' => 'unittest', 'locale' => 'en', 'currency' => 'EUR' );
-		$view = $object->create( $container['aimeos_context'], $container['request'], $container['response'], $attr, array() );
+		$view = $object->create( $container['aimeos_config']->get(), $container['request'], $container['response'], $attr, array() );
 
 		$this->assertInstanceOf( '\Aimeos\MW\View\Iface', $view );
 	}

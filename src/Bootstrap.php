@@ -79,8 +79,20 @@ class Bootstrap
 			return new \Aimeos\Slim\Router();
 		};
 
+		$container['mailer'] = function( $c ) {
+			return \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
+		};
+
+
+		$default = require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-default.php';
+		$settings = array_replace_recursive( $default, $this->settings );
+
 		$container['aimeos'] = function( $c ) use ( $extdir ) {
 			return new \Aimeos\Bootstrap( (array) $extdir, false );
+		};
+
+		$container['aimeos_config'] = function( $c ) use ( $settings ) {
+			return new \Aimeos\Slim\Base\Config( $c, $settings );
 		};
 
 		$container['aimeos_context'] = function( $c ) {
@@ -91,25 +103,16 @@ class Bootstrap
 			return new \Aimeos\Slim\Base\I18n( $c );
 		};
 
+		$container['aimeos_locale'] = function( $c ) {
+			return new \Aimeos\Slim\Base\Locale( $c );
+		};
+
 		$container['aimeos_page'] = function( $c ) {
 			return new \Aimeos\Slim\Base\Page( $c );
 		};
 
 		$container['aimeos_view'] = function( $c ) {
 			return new \Aimeos\Slim\Base\View( $c );
-		};
-
-
-		$default = require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-default.php';
-		$settings = array_replace_recursive( $default, $this->settings );
-
-		$container['aimeos_config'] = function( $c ) use ( $settings ) {
-			return new \Aimeos\Slim\Base\Config( $c, $settings );
-		};
-
-
-		$container['mailer'] = function( $c ) {
-			return \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
 		};
 
 		return $this;
