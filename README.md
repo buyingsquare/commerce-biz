@@ -38,7 +38,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2016.07",
+        "aimeos/aimeos-slim": "~2016.10",
         ...
     },
 ```
