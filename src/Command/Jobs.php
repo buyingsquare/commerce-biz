@@ -25,7 +25,7 @@ class Jobs extends Base implements Iface
 	 */
 	public static function usage()
 	{
-		return "Usage: php job.php [--extdir=<path>]* [--config=<path>|<file>]* \"job1 [job2]*\" [\"sitecode1 [sitecode2]*\"]\n";
+		return "Usage: php job.php [--extdir=<path>]* [--config=<path>|<file>]* [--routes=<file>] \"job1 [job2]*\" [\"sitecode1 [sitecode2]*\"]\n";
 	}
 
 
@@ -48,7 +48,8 @@ class Jobs extends Base implements Iface
 
 		$app = new \Slim\App( $config );
 		$aimeos = new \Aimeos\Slim\Bootstrap( $app, $config );
-		$aimeos->setup( ( isset( $options['extdir'] ) ? $options['extdir'] : './ext' ) );
+		$aimeos->setup( ( isset( $options['extdir'] ) ? $options['extdir'] : './ext' ) )
+			->routes( ( isset( $options['routes'] ) ? $options['routes'] : './src/aimeos-routes.php' ) );
 
 		$container = $app->getContainer();
 		$context = self::getContext( $container );
