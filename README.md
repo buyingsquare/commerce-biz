@@ -111,7 +111,7 @@ Copy the lines below at the end of your `src/dependencies.php` file:
 // Twig view + Aimeos templates
 $container['view'] = function ($c) {
 	$conf = ['cache' => '../cache'];
-	$view = new \Slim\Views\Twig('../templates', $conf);
+	$view = new \Slim\Views\Twig(__DIR__ . '/../templates', $conf);
 	$view->addExtension(new \Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
 	return $view;
 };
