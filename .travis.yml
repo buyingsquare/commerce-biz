@@ -9,6 +9,8 @@ php:
 
 env:
   - SLIM_VERSION=3.3.*
+  - SLIM_VERSION=3.4.*
+  - SLIM_VERSION=3.5.*
 
 before_script:
   - composer self-update
