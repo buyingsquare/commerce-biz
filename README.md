@@ -91,23 +91,24 @@ cp -r ext/ai-admin-extadm/admin/extjs/resources/ public/aimeos/admin/extjs/
 ## Setup
 
 Aimeos requires some objects to be available (like the Aimeos context) and the
-routes for generating the URLs. Both are added automatically if you **add these
-two lines** right before the `$app-run()` statement if your `public/index.php`
-file:
+routes for generating the URLs. Both are added automatically if you **add the lines
+starting with $aimeos** right after the `$app = new \Slim\App($settings);` statement
+in your `public/index.php` file:
 
-```
+```php
+$app = new \Slim\App($settings);
+
 $aimeos = new \Aimeos\Slim\Bootstrap( $app, require '../src/aimeos-settings.php' );
 $aimeos->setup( '../ext' )->routes( '../src/aimeos-routes.php' );
 
-// Run app
-$app->run();
+// Set up dependencies
 ```
 
 The Aimeos Slim package uses the Twig template engine to render the templates.
 Therefore, you have to **setup the view object** with a configured Twig instance.
 Copy the lines below at the end of your `src/dependencies.php` file:
 
-```
+```php
 // Twig view + Aimeos templates
 $container['view'] = function ($c) {
 	$conf = ['cache' => '../cache'];
@@ -154,7 +155,7 @@ which you can add to your application. To install it, execute
 on the command line in your application directory. Afterwards, adapt your
 `public/index.php` file and add these lines before `$app->run()`:
 
-```
+```php
 $app->add(new \Slim\Middleware\HttpBasicAuthentication([
 	"realm" => "Aimeos administration",
 	"path" => "/admin",
@@ -173,7 +174,7 @@ To simplify development, you should configure to use no content cache. You can
 do this in the `src/aimeos-settings.php` file of your Slim application by adding
 these lines at the bottom:
 
-```
+```php
     'madmin' => array(
         'cache' => array(
             'manager' => array(
