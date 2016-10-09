@@ -2,6 +2,10 @@
 
 return array(
 
+	// 'apc_enabled' => false,
+	// 'apc_prefix' => 'slim:',
+	// 'uploaddir' => '/.',
+
 	'page' => array(
 		// 'account-index' => array( 'account/history','account/favorite','account/watch','basket/mini','catalog/session' ),
 		// 'basket-index' => array( 'basket/standard','basket/related' ),
@@ -15,6 +19,7 @@ return array(
 		// 'checkout-update' => array( 'checkout/update'),
 	),
 
+	// route prefixes, e.g. {site}, {locale} and {currency}
 	'routes' => array(
 		// 'admin' => '/admin',
 		// 'account' => '',
