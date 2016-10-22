@@ -127,6 +127,9 @@ class Jobs extends Base implements Iface
 		foreach( $siteItems as $siteItem )
 		{
 			$localeItem = $localeManager->bootstrap( $siteItem->getCode(), 'en', '', false );
+			$localeItem->setLanguageId( null );
+			$localeItem->setCurrencyId( null );
+
 			$ctx->setLocale( $localeItem );
 
 			printf( "Executing the Aimeos jobs for \"%s\"\n", $siteItem->getCode() );
