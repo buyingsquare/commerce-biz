@@ -76,7 +76,13 @@ class Cache extends Base implements Iface
 
 		$conf = new \Aimeos\MW\Config\PHPArray( $config, $confPaths );
 		$conf = new \Aimeos\MW\Config\Decorator\Memory( $conf );
+
+		if( ( $cfg = $conf->get( 'command' ) ) !== null ) {
+			$conf = new \Aimeos\MW\Config\Decorator\Memory( $conf, $cfg );
+		}
+
 		$ctx->setConfig( $conf );
+
 
 		$dbm = new \Aimeos\MW\DB\Manager\PDO( $conf );
 		$ctx->setDatabaseManager( $dbm );

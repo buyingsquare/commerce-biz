@@ -92,7 +92,7 @@ class Jobs extends Base implements Iface
 	protected static function getContext( \Interop\Container\ContainerInterface $container )
 	{
 		$aimeos = $container->get( 'aimeos' );
-		$context = $container->get( 'aimeos_context' )->get( false, array(), 'backend' );
+		$context = $container->get( 'aimeos_context' )->get( false, array(), 'command' );
 
 		$env = \Slim\Http\Environment::mock();
 		$request = \Slim\Http\Request::createFromEnvironment( $env );

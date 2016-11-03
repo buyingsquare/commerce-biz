@@ -68,4 +68,14 @@ return array(
 	'mshop' => array(
 	),
 
+
+	'command' => array(
+	),
+
+	'backend' => array(
+	),
+
+	'frontend' => array(
+	),
+
 );
