@@ -38,49 +38,49 @@ class JsonadmTest extends \LocalWebTestCase
 
 	public function testActionsSingle()
 	{
-		$content = '{"data":{"type":"product/stock/warehouse","attributes":{"product.stock.warehouse.code":"slim","product.stock.warehouse.label":"slim"}}}';
-		$response = $this->call( 'POST', '/unittest/admin/jsonadm/product/stock/warehouse', [], $content );
+		$content = '{"data":{"type":"stock/type","attributes":{"stock.type.code":"slim","stock.type.label":"slim"}}}';
+		$response = $this->call( 'POST', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );
 		$this->assertEquals( 201, $response->getStatusCode() );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data']['attributes'] );
-		$this->assertEquals( 'slim', $json['data']['attributes']['product.stock.warehouse.code'] );
-		$this->assertEquals( 'slim', $json['data']['attributes']['product.stock.warehouse.label'] );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data']['attributes'] );
+		$this->assertEquals( 'slim', $json['data']['attributes']['stock.type.code'] );
+		$this->assertEquals( 'slim', $json['data']['attributes']['stock.type.label'] );
 		$this->assertEquals( 1, $json['meta']['total'] );
 
-		$id = $json['data']['attributes']['product.stock.warehouse.id'];
+		$id = $json['data']['attributes']['stock.type.id'];
 
 
-		$content = '{"data":{"type":"product/stock/warehouse","attributes":{"product.stock.warehouse.code":"slim2","product.stock.warehouse.label":"slim2"}}}';
-		$response = $this->call( 'PATCH', '/unittest/admin/jsonadm/product/stock/warehouse/' . $id, [], $content );
+		$content = '{"data":{"type":"stock/type","attributes":{"stock.type.code":"slim2","stock.type.label":"slim2"}}}';
+		$response = $this->call( 'PATCH', '/unittest/admin/jsonadm/stock/type/' . $id, [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data']['attributes'] );
-		$this->assertEquals( 'slim2', $json['data']['attributes']['product.stock.warehouse.code'] );
-		$this->assertEquals( 'slim2', $json['data']['attributes']['product.stock.warehouse.label'] );
-		$this->assertEquals( $id, $json['data']['attributes']['product.stock.warehouse.id'] );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data']['attributes'] );
+		$this->assertEquals( 'slim2', $json['data']['attributes']['stock.type.code'] );
+		$this->assertEquals( 'slim2', $json['data']['attributes']['stock.type.label'] );
+		$this->assertEquals( $id, $json['data']['attributes']['stock.type.id'] );
 		$this->assertEquals( 1, $json['meta']['total'] );
 
 
-		$response = $this->call( 'GET', '/unittest/admin/jsonadm/product/stock/warehouse/' . $id );
+		$response = $this->call( 'GET', '/unittest/admin/jsonadm/stock/type/' . $id );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data']['attributes'] );
-		$this->assertEquals( 'slim2', $json['data']['attributes']['product.stock.warehouse.code'] );
-		$this->assertEquals( 'slim2', $json['data']['attributes']['product.stock.warehouse.label'] );
-		$this->assertEquals( $id, $json['data']['attributes']['product.stock.warehouse.id'] );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data']['attributes'] );
+		$this->assertEquals( 'slim2', $json['data']['attributes']['stock.type.code'] );
+		$this->assertEquals( 'slim2', $json['data']['attributes']['stock.type.label'] );
+		$this->assertEquals( $id, $json['data']['attributes']['stock.type.id'] );
 		$this->assertEquals( 1, $json['meta']['total'] );
 
 
-		$response = $this->call( 'DELETE', '/unittest/admin/jsonadm/product/stock/warehouse/' . $id );
+		$response = $this->call( 'DELETE', '/unittest/admin/jsonadm/stock/type/' . $id );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -93,72 +93,72 @@ class JsonadmTest extends \LocalWebTestCase
 	public function testActionsBulk()
 	{
 		$content = '{"data":[
-			{"type":"product/stock/warehouse","attributes":{"product.stock.warehouse.code":"slim","product.stock.warehouse.label":"slim"}},
-			{"type":"product/stock/warehouse","attributes":{"product.stock.warehouse.code":"slim2","product.stock.warehouse.label":"slim"}}
+			{"type":"stock/type","attributes":{"stock.type.code":"slim","stock.type.label":"slim"}},
+			{"type":"stock/type","attributes":{"stock.type.code":"slim2","stock.type.label":"slim"}}
 		]}';
-		$response = $this->call( 'POST', '/unittest/admin/jsonadm/product/stock/warehouse', [], $content );
+		$response = $this->call( 'POST', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );
 		$this->assertEquals( 201, $response->getStatusCode() );
 		$this->assertEquals( 2, count( $json['data'] ) );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data'][0]['attributes'] );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data'][1]['attributes'] );
-		$this->assertEquals( 'slim', $json['data'][0]['attributes']['product.stock.warehouse.label'] );
-		$this->assertEquals( 'slim', $json['data'][1]['attributes']['product.stock.warehouse.label'] );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data'][0]['attributes'] );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data'][1]['attributes'] );
+		$this->assertEquals( 'slim', $json['data'][0]['attributes']['stock.type.label'] );
+		$this->assertEquals( 'slim', $json['data'][1]['attributes']['stock.type.label'] );
 		$this->assertEquals( 2, $json['meta']['total'] );
 
-		$ids = array( $json['data'][0]['attributes']['product.stock.warehouse.id'], $json['data'][1]['attributes']['product.stock.warehouse.id'] );
+		$ids = array( $json['data'][0]['attributes']['stock.type.id'], $json['data'][1]['attributes']['stock.type.id'] );
 
 
 		$content = '{"data":[
-			{"type":"product/stock/warehouse","id":' . $ids[0] . ',"attributes":{"product.stock.warehouse.label":"slim2"}},
-			{"type":"product/stock/warehouse","id":' . $ids[1] . ',"attributes":{"product.stock.warehouse.label":"slim2"}}
+			{"type":"stock/type","id":' . $ids[0] . ',"attributes":{"stock.type.label":"slim2"}},
+			{"type":"stock/type","id":' . $ids[1] . ',"attributes":{"stock.type.label":"slim2"}}
 		]}';
-		$response = $this->call( 'PATCH', '/unittest/admin/jsonadm/product/stock/warehouse', [], $content );
+		$response = $this->call( 'PATCH', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertEquals( 2, count( $json['data'] ) );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data'][0]['attributes'] );
-		$this->assertArrayHasKey( 'product.stock.warehouse.id', $json['data'][1]['attributes'] );
-		$this->assertEquals( 'slim2', $json['data'][0]['attributes']['product.stock.warehouse.label'] );
-		$this->assertEquals( 'slim2', $json['data'][1]['attributes']['product.stock.warehouse.label'] );
-		$this->assertTrue( in_array( $json['data'][0]['attributes']['product.stock.warehouse.id'], $ids ) );
-		$this->assertTrue( in_array( $json['data'][1]['attributes']['product.stock.warehouse.id'], $ids ) );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data'][0]['attributes'] );
+		$this->assertArrayHasKey( 'stock.type.id', $json['data'][1]['attributes'] );
+		$this->assertEquals( 'slim2', $json['data'][0]['attributes']['stock.type.label'] );
+		$this->assertEquals( 'slim2', $json['data'][1]['attributes']['stock.type.label'] );
+		$this->assertTrue( in_array( $json['data'][0]['attributes']['stock.type.id'], $ids ) );
+		$this->assertTrue( in_array( $json['data'][1]['attributes']['stock.type.id'], $ids ) );
 		$this->assertEquals( 2, $json['meta']['total'] );
 
 
 		$getParams = ['filter' => ['&&' => [
-			['=~' => ['product.stock.warehouse.code' => 'slim']],
-			['==' => ['product.stock.warehouse.label' => 'slim2']]
+			['=~' => ['stock.type.code' => 'slim']],
+			['==' => ['stock.type.label' => 'slim2']]
 			]],
-			'sort' => 'product.stock.warehouse.code', 'page' => ['offset' => 0, 'limit' => 3]
+			'sort' => 'stock.type.code', 'page' => ['offset' => 0, 'limit' => 3]
 		];
-		$response = $this->call( 'GET', '/unittest/admin/jsonadm/product/stock/warehouse', $getParams );
+		$response = $this->call( 'GET', '/unittest/admin/jsonadm/stock/type', $getParams );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertEquals( 2, count( $json['data'] ) );
-		$this->assertEquals( 'slim', $json['data'][0]['attributes']['product.stock.warehouse.code'] );
-		$this->assertEquals( 'slim2', $json['data'][1]['attributes']['product.stock.warehouse.code'] );
-		$this->assertEquals( 'slim2', $json['data'][0]['attributes']['product.stock.warehouse.label'] );
-		$this->assertEquals( 'slim2', $json['data'][1]['attributes']['product.stock.warehouse.label'] );
-		$this->assertTrue( in_array( $json['data'][0]['attributes']['product.stock.warehouse.id'], $ids ) );
-		$this->assertTrue( in_array( $json['data'][1]['attributes']['product.stock.warehouse.id'], $ids ) );
+		$this->assertEquals( 'slim', $json['data'][0]['attributes']['stock.type.code'] );
+		$this->assertEquals( 'slim2', $json['data'][1]['attributes']['stock.type.code'] );
+		$this->assertEquals( 'slim2', $json['data'][0]['attributes']['stock.type.label'] );
+		$this->assertEquals( 'slim2', $json['data'][1]['attributes']['stock.type.label'] );
+		$this->assertTrue( in_array( $json['data'][0]['attributes']['stock.type.id'], $ids ) );
+		$this->assertTrue( in_array( $json['data'][1]['attributes']['stock.type.id'], $ids ) );
 		$this->assertEquals( 2, $json['meta']['total'] );
 
 
 		$content = '{"data":[
-			{"type":"product/stock/warehouse","id":' . $ids[0] . '},
-			{"type":"product/stock/warehouse","id":' . $ids[1] . '}
+			{"type":"stock/type","id":' . $ids[0] . '},
+			{"type":"stock/type","id":' . $ids[1] . '}
 		]}';
-		$response = $this->call( 'DELETE', '/unittest/admin/jsonadm/product/stock/warehouse', [], $content );
+		$response = $this->call( 'DELETE', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -171,10 +171,10 @@ class JsonadmTest extends \LocalWebTestCase
 	public function testPutAction()
 	{
 		$content = '{"data":[
-			{"type":"product/stock/warehouse","attributes":{"product.stock.warehouse.code":"slim","product.stock.warehouse.label":"slim"}},
-			{"type":"product/stock/warehouse","attributes":{"product.stock.warehouse.code":"slim2","product.stock.warehouse.label":"slim"}}
+			{"type":"stock/type","attributes":{"stock.type.code":"slim","stock.type.label":"slim"}},
+			{"type":"stock/type","attributes":{"stock.type.code":"slim2","stock.type.label":"slim"}}
 		]}';
-		$response = $this->call( 'PUT', '/unittest/admin/jsonadm/product/stock/warehouse', [], $content );
+		$response = $this->call( 'PUT', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
