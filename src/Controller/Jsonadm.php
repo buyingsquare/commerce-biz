@@ -34,13 +34,7 @@ class Jsonadm
 	 */
 	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$status = 500;
-		$header = $request->getHeaders();
-
-		$client = self::createClient( $container, $request, $response, $args );
-		$result = $client->delete( (string) $request->getBody(), $header, $status );
-
-		return self::withResponse( $response, $result, $status, $header );
+		return self::createClient( $container, $request, $response, $args )->delete( $request, $response );
 	}
 
 
@@ -55,13 +49,7 @@ class Jsonadm
 	 */
 	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$status = 500;
-		$header = $request->getHeaders();
-
-		$client = self::createClient( $container, $request, $response, $args );
-		$result = $client->get( (string) $request->getBody(), $header, $status );
-
-		return self::withResponse( $response, $result, $status, $header );
+		return self::createClient( $container, $request, $response, $args )->get( $request, $response );
 	}
 
 
@@ -76,13 +64,7 @@ class Jsonadm
 	 */
 	public static function patchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$status = 500;
-		$header = $request->getHeaders();
-
-		$client = self::createClient( $container, $request, $response, $args );
-		$result = $client->patch( (string) $request->getBody(), $header, $status );
-
-		return self::withResponse( $response, $result, $status, $header );
+		return self::createClient( $container, $request, $response, $args )->patch( $request, $response );
 	}
 
 
@@ -97,13 +79,7 @@ class Jsonadm
 	 */
 	public static function postAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$status = 500;
-		$header = $request->getHeaders();
-
-		$client = self::createClient( $container, $request, $response, $args );
-		$result = $client->post( (string) $request->getBody(), $header, $status );
-
-		return self::withResponse( $response, $result, $status, $header );
+		return self::createClient( $container, $request, $response, $args )->post( $request, $response );
 	}
 
 
@@ -118,13 +94,7 @@ class Jsonadm
 	 */
 	public static function putAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$status = 500;
-		$header = $request->getHeaders();
-
-		$client = self::createClient( $container, $request, $response, $args );
-		$result = $client->put( (string) $request->getBody(), $header, $status );
-
-		return self::withResponse( $response, $result, $status, $header );
+		return self::createClient( $container, $request, $response, $args )->put( $request, $response );
 	}
 
 
@@ -139,13 +109,7 @@ class Jsonadm
 	 */
 	public static function optionsAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$status = 500;
-		$header = $request->getHeaders();
-
-		$client = self::createClient( $container, $request, $response, $args );
-		$result = $client->options( (string) $request->getBody(), $header, $status );
-
-		return self::withResponse( $response, $result, $status, $header );
+		return self::createClient( $container, $request, $response, $args )->options( $request, $response );
 	}
 
 
@@ -174,27 +138,5 @@ class Jsonadm
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
-	}
-
-
-	/**
-	 * Populates the response object
-	 *
-	 * @param ResponseInterface $response Response object
-	 * @param string $content Body of the HTTP response
-	 * @param integer $status HTTP status
-	 * @param array $header List of HTTP headers
-	 * @return ResponseInterface $response Populated response object
-	 */
-	protected static function withResponse( ResponseInterface $response, $content, $status, array $header )
-	{
-		$response->getBody()->write( $content );
-		$response = $response->withStatus( $status );
-
-		foreach( $header as $key => $value ) {
-			$response->withHeader( $key, $value );
-		}
-
-		return $response;
 	}
 }
