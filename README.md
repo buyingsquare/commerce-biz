@@ -25,6 +25,11 @@ pages including routing is also available for a quick start.
 
 ## Installation or update
 
+This document is for the latest Aimeos SlimPHP **2016.10 release and later**.
+
+- Beta release: 2017.01
+- LTS release: 2016.10
+
 This tutorial assumes a directory layout as used in the Slim skeleton application
 created by:
 
