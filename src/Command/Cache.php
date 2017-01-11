@@ -116,7 +116,7 @@ class Cache extends Base implements Iface
 
 			printf( "Clearing the Aimeos cache for site \"%1\$s\"\n", $siteItem->getCode() );
 
-			\Aimeos\MAdmin\Cache\Manager\Factory::createManager( $lcontext )->getCache()->flush();
+			\Aimeos\MAdmin\Cache\Manager\Factory::createManager( $lcontext )->getCache()->clear();
 		}
 	}
 }
