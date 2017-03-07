@@ -77,6 +77,35 @@ $app->group( $config( 'routes/admin', '/admin' ), function() use ( $config ) {
 });
 
 
+$app->group( $config( 'routes/jsonapi', '/jsonapi' ), function() use ( $config ) {
+
+	$this->map(['DELETE'], '/jsonapi/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jsonapi::deleteAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jsonapi_delete' );
+
+	$this->map(['GET'], '/jsonapi/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jsonapi::getAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jsonapi_get' );
+
+	$this->map(['PATCH'], '/jsonapi/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jsonapi::patchAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jsonapi_patch' );
+
+	$this->map(['POST'], '/jsonapi/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jsonapi::postAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jsonapi_post' );
+
+	$this->map(['PUT'], '/jsonapi/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jsonapi::putAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jsonapi_put' );
+
+	$this->map(['OPTIONS'], '/jsonapi/[{resource}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jsonapi::optionsAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jsonapi_options' );
+
+});
+
+
 $app->group( $config( 'routes/account', '' ), function() {
 
 	$this->map(['GET', 'POST'], '/myaccount', function( $request, $response, $args ) {

@@ -2,7 +2,7 @@
 
 /**
  * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
- * @copyright Aimeos (aimeos.org), 2016
+ * @copyright Aimeos (aimeos.org), 2017
  * @package Slim
  * @subpackage Controller
  */
@@ -16,12 +16,12 @@ use Psr\Http\Message\ResponseInterface;
 
 
 /**
- * Aimeos controller for the JSON REST API
+ * Aimeos controller for the frontend JSON REST API
  *
  * @package Slim
  * @subpackage Controller
  */
-class Jsonadm
+class Jsonapi
 {
 	/**
 	 * Deletes the resource object or a list of resource objects
@@ -120,23 +120,20 @@ class Jsonadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return \Aimeos\Admin\JsonAdm\Iface JSON admin client
+	 * @return \Aimeos\Client\JsonApi\Iface JSON client controller
 	 */
 	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$resource = ( isset( $args['resource'] ) ? $args['resource'] : null );
-		$site = ( isset( $args['site'] ) ? $args['site'] : 'default' );
-		$lang = ( isset( $args['lang'] ) ? $args['lang'] : 'en' );
+		$tmplPaths = $container->get( 'aimeos' )->getCustomPaths( 'client/jsonapi/templates' );
 
-		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jsonadm/templates' );
+		$context = $container->get( 'aimeos_context' )->get( true, $args );
+		$langid = $context->getLocale()->getLanguageId();
+		$config = $context->getConfig();
 
-		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
-		$context->setI18n( $container->get( 'aimeos_i18n' )->get( array( $lang, 'en' ) ) );
-		$context->setLocale( $container->get( 'aimeos_locale' )->getBackend( $context, $site ) );
-
-		$view = $container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $args, $templatePaths, $lang );
+		$view = $container->get( 'aimeos_view' )->create( $config, $request, $response, $args, $tmplPaths, $langid );
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
+		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $tmplPaths, $resource );
 	}
 }
