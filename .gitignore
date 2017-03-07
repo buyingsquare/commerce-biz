@@ -1,3 +1,4 @@
 composer.lock
 ext/*
 vendor/
+tests/coverage.xml
