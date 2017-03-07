@@ -5,7 +5,7 @@ class JsonapiTest extends \LocalWebTestCase
 {
 	public function testOptionsAction()
 	{
-		$response = $this->call( 'OPTIONS', '/unittest/jsonapi' );
+		$response = $this->call( 'OPTIONS', '/unittest/jsonapi/' );
 		$json = json_decode( (string) $response->getBody(), true );
 
 		$this->assertNotNull( $json );

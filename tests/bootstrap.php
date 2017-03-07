@@ -40,7 +40,7 @@ class LocalWebTestCase extends \PHPUnit_Framework_TestCase
 			'disableSites' => false,
 			'routes' => array(
 				'admin' => '/{site}/admin',
-				'jsonapi' => '/{site}',
+				'jsonapi' => '/{site}/jsonapi',
 				'account' => '/{site}',
 				'default' => '/{site}',
 				'confirm' => '/{site}',
