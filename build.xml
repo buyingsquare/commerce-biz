@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Aimeos Slim package" default="setup">
+
+	<target name="setup" description="Sets up the database">
+		<exec command="php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-settings.php --option=setup/default/demo:1" checkreturn="true" logoutput="true" />
+	</target>
+
+	<target name="test" description="Populate database and execute tests">
+		<exec command="php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-settings.php --option=setup/default/demo:1 unittest unittest" checkreturn="true" logoutput="true" />
+		<exec command="phpunit" checkreturn="true" logoutput="true" />
+	</target>
+
+</project>
