@@ -85,6 +85,7 @@ class Extadm
 			'jqadmurl' => $jqadmUrl,
 			'activeTab' => $tab,
 			'version' => \Aimeos\Slim\Bootstrap::getVersion(),
+			'extensions' => implode( ',', $aimeos->getExtensions() ),
 		);
 
 		return $container->get( 'view' )->render( $response, 'Extadm/index.html.twig', $vars );

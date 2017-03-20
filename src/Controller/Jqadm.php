@@ -203,7 +203,8 @@ class Jqadm
 	protected static function getHtml( ContainerInterface $container, ResponseInterface $response, $content )
 	{
 		$version = \Aimeos\Slim\Bootstrap::getVersion();
-		$content = str_replace( array( '{type}', '{version}' ), array( 'Slim', $version ), $content );
+		$extnames = implode( ',', $container->get( 'aimeos' )->getExtensions() );
+		$content = str_replace( ['{type}', '{version}', '{extensions}'], ['Slim', $version, $extnames], $content );
 
 		return $container->get( 'view' )->render( $response, 'Jqadm/index.html.twig', array( 'content' => $content ) );
 	}
