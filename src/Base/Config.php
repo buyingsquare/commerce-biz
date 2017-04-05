@@ -47,7 +47,7 @@ class Config
 		$paths = $this->container->get( 'aimeos' )->getConfigPaths();
 		$config = new \Aimeos\MW\Config\PHPArray( array(), $paths );
 
-		if( function_exists( 'apc_store' ) === true && $config->get( 'apc_enabled', false ) == true ) {
+		if( function_exists( 'apcu_store' ) === true && $config->get( 'apc_enabled', false ) == true ) {
 			$config = new \Aimeos\MW\Config\Decorator\APC( $config, $config->get( 'apc_prefix', 'slim:' ) );
 		}
 
