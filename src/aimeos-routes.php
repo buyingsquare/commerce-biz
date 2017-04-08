@@ -49,28 +49,32 @@ $app->group( $config( 'routes/admin', '/admin' ), function() use ( $config ) {
 		return \Aimeos\Slim\Controller\Jqadm::searchAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_search' );
 
+});
 
-	$this->map(['DELETE'], '/jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+
+$app->group( $config( 'routes/jsonadm', '/jsonadm' ), function() use ( $config ) {
+
+	$this->map(['DELETE'], '/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::deleteAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_delete' );
 
-	$this->map(['GET'], '/jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+	$this->map(['GET'], '/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::getAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_get' );
 
-	$this->map(['PATCH'], '/jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+	$this->map(['PATCH'], '/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::patchAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_patch' );
 
-	$this->map(['POST'], '/jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+	$this->map(['POST'], '/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::postAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_post' );
 
-	$this->map(['PUT'], '/jsonadm/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
+	$this->map(['PUT'], '/{resource:[^0-9]+}[/{id:[0-9]+}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::putAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_put' );
 
-	$this->map(['OPTIONS'], '/jsonadm/[{resource}]', function( $request, $response, $args ) {
+	$this->map(['OPTIONS'], '/[{resource}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonadm::optionsAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonadm_options' );
 

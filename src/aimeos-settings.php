@@ -22,6 +22,8 @@ return array(
 	// route prefixes, e.g. {site}, {locale} and {currency}
 	'routes' => array(
 		// 'admin' => '/admin',
+		// 'jsonadm' => '/admin',
+		// 'jsonapi' => '',
 		// 'account' => '',
 		// 'default' => '',
 		// 'confirm' => '',

@@ -196,28 +196,12 @@ return array(
 					'baseurl' => './aimeos/elegance',
 				),
 			),
-			'locale' => array(
-				'select' => array(
-					'currency' => array(
-						'param-name' => 'currency',
-					),
-					'language' => array(
-						'param-name' => 'locale',
-					),
-				),
-			),
 		),
 		'jsonapi' => array(
 			'url' => array(
 				'target' => 'aimeos_shop_jsonapi_get',
-				'config' => array(
-					'absoluteUri' => true,
-				),
 				'options' => array(
 					'target' => 'aimeos_shop_jsonapi_options',
-					'config' => array(
-						'absoluteUri' => true,
-					),
 				),
 			),
 		),
