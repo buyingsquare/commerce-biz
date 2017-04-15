@@ -4,7 +4,7 @@ class JsonadmTest extends \LocalWebTestCase
 {
 	public function testOptionsActionSite()
 	{
-		$response = $this->call( 'OPTIONS', '/invalid/jsonadm/product' );
+		$response = $this->call( 'OPTIONS', '/invalid/admin/jsonadm/product' );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -15,7 +15,7 @@ class JsonadmTest extends \LocalWebTestCase
 
 	public function testOptionsAction()
 	{
-		$response = $this->call( 'OPTIONS', '/unittest/jsonadm/product' );
+		$response = $this->call( 'OPTIONS', '/unittest/admin/jsonadm/product' );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -25,7 +25,7 @@ class JsonadmTest extends \LocalWebTestCase
 		$this->assertGreaterThan( 1, count( $json['meta']['resources'] ) );
 
 
-		$response = $this->call( 'OPTIONS', '/unittest/jsonadm/' );
+		$response = $this->call( 'OPTIONS', '/unittest/admin/jsonadm/' );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -39,7 +39,7 @@ class JsonadmTest extends \LocalWebTestCase
 	public function testActionsSingle()
 	{
 		$content = '{"data":{"type":"stock/type","attributes":{"stock.type.code":"slim","stock.type.label":"slim"}}}';
-		$response = $this->call( 'POST', '/unittest/jsonadm/stock/type', [], $content );
+		$response = $this->call( 'POST', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -54,7 +54,7 @@ class JsonadmTest extends \LocalWebTestCase
 
 
 		$content = '{"data":{"type":"stock/type","attributes":{"stock.type.code":"slim2","stock.type.label":"slim2"}}}';
-		$response = $this->call( 'PATCH', '/unittest/jsonadm/stock/type/' . $id, [], $content );
+		$response = $this->call( 'PATCH', '/unittest/admin/jsonadm/stock/type/' . $id, [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -67,7 +67,7 @@ class JsonadmTest extends \LocalWebTestCase
 		$this->assertEquals( 1, $json['meta']['total'] );
 
 
-		$response = $this->call( 'GET', '/unittest/jsonadm/stock/type/' . $id );
+		$response = $this->call( 'GET', '/unittest/admin/jsonadm/stock/type/' . $id );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -80,7 +80,7 @@ class JsonadmTest extends \LocalWebTestCase
 		$this->assertEquals( 1, $json['meta']['total'] );
 
 
-		$response = $this->call( 'DELETE', '/unittest/jsonadm/stock/type/' . $id );
+		$response = $this->call( 'DELETE', '/unittest/admin/jsonadm/stock/type/' . $id );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -96,7 +96,7 @@ class JsonadmTest extends \LocalWebTestCase
 			{"type":"stock/type","attributes":{"stock.type.code":"slim","stock.type.label":"slim"}},
 			{"type":"stock/type","attributes":{"stock.type.code":"slim2","stock.type.label":"slim"}}
 		]}';
-		$response = $this->call( 'POST', '/unittest/jsonadm/stock/type', [], $content );
+		$response = $this->call( 'POST', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -116,7 +116,7 @@ class JsonadmTest extends \LocalWebTestCase
 			{"type":"stock/type","id":' . $ids[0] . ',"attributes":{"stock.type.label":"slim2"}},
 			{"type":"stock/type","id":' . $ids[1] . ',"attributes":{"stock.type.label":"slim2"}}
 		]}';
-		$response = $this->call( 'PATCH', '/unittest/jsonadm/stock/type', [], $content );
+		$response = $this->call( 'PATCH', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -138,7 +138,7 @@ class JsonadmTest extends \LocalWebTestCase
 			]],
 			'sort' => 'stock.type.code', 'page' => ['offset' => 0, 'limit' => 3]
 		];
-		$response = $this->call( 'GET', '/unittest/jsonadm/stock/type', $getParams );
+		$response = $this->call( 'GET', '/unittest/admin/jsonadm/stock/type', $getParams );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -158,7 +158,7 @@ class JsonadmTest extends \LocalWebTestCase
 			{"type":"stock/type","id":' . $ids[0] . '},
 			{"type":"stock/type","id":' . $ids[1] . '}
 		]}';
-		$response = $this->call( 'DELETE', '/unittest/jsonadm/stock/type', [], $content );
+		$response = $this->call( 'DELETE', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
@@ -174,7 +174,7 @@ class JsonadmTest extends \LocalWebTestCase
 			{"type":"stock/type","attributes":{"stock.type.code":"slim","stock.type.label":"slim"}},
 			{"type":"stock/type","attributes":{"stock.type.code":"slim2","stock.type.label":"slim"}}
 		]}';
-		$response = $this->call( 'PUT', '/unittest/jsonadm/stock/type', [], $content );
+		$response = $this->call( 'PUT', '/unittest/admin/jsonadm/stock/type', [], $content );
 
 		$json = json_decode( (string) $response->getBody(), true );
 
