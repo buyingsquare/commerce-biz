@@ -19,11 +19,13 @@ return array(
 		// 'checkout-update' => array( 'checkout/update'),
 	),
 
-	// route prefixes, e.g. {site}, {locale} and {currency}
+	// route prefixes, e.g. {site}, {locale} and {currency} resp. {site} and {lang} for /admin/*
 	'routes' => array(
 		// 'admin' => '/admin',
-		// 'jsonadm' => '/admin',
-		// 'jsonapi' => '',
+		// 'extadm' => '/admin/{site}/extadm',
+		// 'jqadm' => '/admin/{site}/jqadm',
+		// 'jsonadm' => '/admin/{site}/jsonadm',
+		// 'jsonapi' => '/jsonapi',
 		// 'account' => '',
 		// 'default' => '',
 		// 'confirm' => '',

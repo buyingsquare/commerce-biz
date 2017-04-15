@@ -4,7 +4,7 @@
 $app->group( $config( 'routes/admin', '/admin' ), function() use ( $config ) {
 
 	$this->map(['GET', 'POST'], '', function( $request, $response, $args ) use ( $config ) {
-		return $response->withHeader( 'Location', $config( 'routes/admin', '/admin' ) . '/jqadm/search/dashboard' );
+		return $response->withHeader( 'Location', $config( 'routes/jqadm', '/admin/default/jqadm' ) . '/search/dashboard' );
 	})->setName( 'aimeos_shop_admin' );
 
 });
