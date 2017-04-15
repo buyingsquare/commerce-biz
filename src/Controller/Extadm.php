@@ -66,8 +66,8 @@ class Extadm
 		$csrfvalue = $request->getAttribute( 'csrf_value' );
 
 		$router = $container->get( 'router' );
-		$jqadmUrl = $router->pathFor( 'aimeos_shop_jqadm_search', array( 'site' => $site, 'resource' => 'product' ) );
 		$jsonUrl = $router->pathFor( 'aimeos_shop_extadm_json', array( 'site' => $site, $csrfname => $csrfvalue ) );
+		$jqadmUrl = $router->pathFor( 'aimeos_shop_jqadm_search', array( 'site' => $site, 'lang' => $lang, 'resource' => 'dashboard' ) );
 		$adminUrl = $router->pathFor( 'aimeos_shop_extadm', array( 'site' => '<site>', 'lang' => '<lang>', 'tab' => '<tab>' ) );
 
 		$vars = array(
