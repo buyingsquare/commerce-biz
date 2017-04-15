@@ -175,11 +175,12 @@ class Jqadm
 	 */
 	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$resource = ( isset( $args['resource'] ) ? $args['resource'] : null );
-		$site = ( isset( $args['site'] ) ? $args['site'] : 'default' );
-		$lang = ( isset( $args['lang'] ) ? $args['lang'] : 'en' );
-
 		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jqadm/templates' );
+		$params = $args + (array) $request->getParsedBody() + (array) $request->getQueryParams();
+
+		$resource = ( isset( $params['resource'] ) ? $params['resource'] : null );
+		$site = ( isset( $params['site'] ) ? $params['site'] : 'default' );
+		$lang = ( isset( $params['lang'] ) ? $params['lang'] : 'en' );
 
 		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
 		$context->setI18n( $container->get( 'aimeos_i18n' )->get( array( $lang, 'en' ) ) );

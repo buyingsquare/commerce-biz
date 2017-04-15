@@ -4,7 +4,7 @@ return array(
 
 	'apc_enabled' => false,
 	'apc_prefix' => 'slim:',
-	'uploaddir' => '/.',
+	'uploaddir' => '/',
 
 	'page' => array(
 		'account-index' => array( 'account/profile','account/history','account/favorite','account/watch','basket/mini','catalog/session' ),
