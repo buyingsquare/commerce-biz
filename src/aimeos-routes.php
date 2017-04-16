@@ -49,7 +49,7 @@ $app->group( $config( 'routes/jqadm', '/admin/{site}/jqadm' ), function() use ( 
 		return \Aimeos\Slim\Controller\Jqadm::getAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_get' );
 
-	$this->map(['POST'], '/save/{resource}[/{id:[^/]*}]', function( $request, $response, $args ) {
+	$this->map(['POST'], '/save/{resource}[/{id}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::saveAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_save' );
 
