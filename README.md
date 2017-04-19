@@ -27,7 +27,7 @@ pages including routing is also available for a quick start.
 
 This document is for the latest Aimeos SlimPHP **2016.10 release and later**.
 
-- Beta release: 2017.01
+- Stable release: 2017.04
 - LTS release: 2016.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
@@ -43,7 +43,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2016.10",
+        "aimeos/aimeos-slim": "~2017.04",
         ...
     },
 ```
@@ -62,9 +62,13 @@ cp vendor/aimeos/aimeos-slim/src/aimeos-settings.php src/
 cp vendor/aimeos/aimeos-slim/src/aimeos-routes.php src/
 ```
 
-To configure your database, you have to **adapt the configuration** in `src/aimeos-settings.php` file and
-modify the settings in the resource section. Setting up or upgrading existing tables
-in the database is done via:
+To configure your database, you have to **adapt the configuration** in `src/aimeos-settings.php`
+file and modify the settings in the resource section. If you want to use a
+database server other than MySQL, please have a look into the article about
+[supported database servers](https://aimeos.org/docs/Developers/Library/Database_support)
+and their specific configuration.
+
+Setting up or upgrading existing tables in the database is done via:
 
 ```
 php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-settings.php --option=setup/default/demo:1
