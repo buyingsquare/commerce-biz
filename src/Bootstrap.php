@@ -115,6 +115,9 @@ class Bootstrap
 			return new \Aimeos\Slim\Base\View( $c );
 		};
 
+		// add client IP address to requests
+		$this->app->add( new \RKA\Middleware\IpAddress( true, [] ) );
+
 		return $this;
 	}
 

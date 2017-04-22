@@ -59,6 +59,7 @@ class Context
 			$this->addCache( $context );
 			$this->addMailer( $context);
 			$this->addSession( $context );
+			$this->addUser( $context );
 
 			$this->context = $context;
 		}
@@ -177,6 +178,21 @@ class Context
 	{
 		$session = new \Aimeos\MW\Session\PHP();
 		$context->setSession( $session );
+
+		return $context;
+	}
+
+
+	/**
+	 * Adds user information to the context
+	 *
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+	 */
+	protected function addUser( \Aimeos\MShop\Context\Item\Iface $context )
+	{
+		$ipaddr = $this->container->request->getAttribute('ip_address');
+		$context->setEditor( $ipaddr );
 
 		return $context;
 	}
