@@ -1,6 +1,6 @@
 <?php
 
-class I18nTest extends \PHPUnit_Framework_TestCase
+class I18nTest extends \PHPUnit\Framework\TestCase
 {
 	public function testGet()
 	{

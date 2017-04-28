@@ -1,6 +1,6 @@
 <?php
 
-class JobsTest extends \PHPUnit_Framework_TestCase
+class JobsTest extends \PHPUnit\Framework\TestCase
 {
 	public function testRun()
 	{
@@ -21,7 +21,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-settings.php';
 		$argv = array( "jobs.php", "--help" );
 
-		$this->setExpectedException( 'Aimeos\Slim\Command\Exception' );
+		$this->expectException( 'Aimeos\Slim\Command\Exception' );
 		\Aimeos\Slim\Command\Cache::run( $argv );
 	}
 }

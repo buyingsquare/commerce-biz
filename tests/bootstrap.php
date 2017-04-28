@@ -28,7 +28,7 @@ if( !$autoload )
 }
 
 
-class LocalWebTestCase extends \PHPUnit_Framework_TestCase
+class LocalWebTestCase extends \PHPUnit\Framework\TestCase
 {
 	public function call( $method, $path, $params = array(), $body = '' )
 	{

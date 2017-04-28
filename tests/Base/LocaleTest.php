@@ -1,6 +1,6 @@
 <?php
 
-class LocaleTest extends \PHPUnit_Framework_TestCase
+class LocaleTest extends \PHPUnit\Framework\TestCase
 {
 	public function testGet()
 	{

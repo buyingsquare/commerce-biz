@@ -1,6 +1,6 @@
 <?php
 
-class ViewTest extends \PHPUnit_Framework_TestCase
+class ViewTest extends \PHPUnit\Framework\TestCase
 {
 	public function testGet()
 	{
