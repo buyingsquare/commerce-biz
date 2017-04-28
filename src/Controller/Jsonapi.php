@@ -125,7 +125,7 @@ class Jsonapi
 	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$resource = ( isset( $args['resource'] ) ? $args['resource'] : null );
-		$resource .= '/' . ( isset( $args['related'] ) ? $args['related'] : null );
+		$related = ( isset( $args['related'] ) ? $args['related'] : null );
 		$tmplPaths = $container->get( 'aimeos' )->getCustomPaths( 'client/jsonapi/templates' );
 
 		$context = $container->get( 'aimeos_context' )->get( true, $args );
@@ -135,6 +135,6 @@ class Jsonapi
 		$view = $container->get( 'aimeos_view' )->create( $config, $request, $response, $args, $tmplPaths, $langid );
 		$context->setView( $view );
 
-		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $tmplPaths, $resource );
+		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $tmplPaths, $resource . '/' . $related );
 	}
 }
