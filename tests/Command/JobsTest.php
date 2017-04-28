@@ -16,12 +16,14 @@ class JobsTest extends \PHPUnit\Framework\TestCase
 	}
 
 
+	/**
+	 * @expectedException Aimeos\Slim\Command\Exception
+	 */
 	public function testRunHelp()
 	{
 		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-settings.php';
 		$argv = array( "jobs.php", "--help" );
 
-		$this->expectException( 'Aimeos\Slim\Command\Exception' );
 		\Aimeos\Slim\Command\Cache::run( $argv );
 	}
 }
