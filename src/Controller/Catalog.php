@@ -34,11 +34,10 @@ class Catalog
 	public static function countAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-count', $request, $response, $args );
+		$response = $container->get( 'view' )->render( $response, 'Catalog/count.html.twig', $contents );
 
-		$response = $response->withStatus( 200 );
-		$response = $response->withHeader( 'Content-Type', 'application/javascript' );
-
-		return $container->get( 'view' )->render( $response, 'Catalog/count.html.twig', $contents );
+		return $response->withHeader( 'Cache-Control', 'max-age=43200' )
+			->withHeader( 'Content-Type', 'application/javascript' );
 	}
 
 
@@ -54,7 +53,9 @@ class Catalog
 	public static function detailAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-detail', $request, $response, $args );
-		return $container->get( 'view' )->render( $response, 'Catalog/detail.html.twig', $contents );
+		$response = $container->get( 'view' )->render( $response, 'Catalog/detail.html.twig', $contents );
+
+		return $response->withHeader( 'Cache-Control', 'max-age=43200' );
 	}
 
 
@@ -70,7 +71,9 @@ class Catalog
 	public static function listAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-list', $request, $response, $args );
-		return $container->get( 'view' )->render( $response, 'Catalog/list.html.twig', $contents );
+		$response = $container->get( 'view' )->render( $response, 'Catalog/list.html.twig', $contents );
+
+		return $response->withHeader( 'Cache-Control', 'max-age=43200' );
 	}
 
 
@@ -86,11 +89,10 @@ class Catalog
 	public static function stockAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-stock', $request, $response, $args );
+		$response = $container->get( 'view' )->render( $response, 'Catalog/stock.html.twig', $contents );
 
-		$response = $response->withStatus( 200 );
-		$response = $response->withHeader( 'Content-Type', 'application/javascript' );
-
-		return $container->get( 'view' )->render( $response, 'Catalog/stock.html.twig', $contents );
+		return $response->withHeader( 'Cache-Control', 'max-age=30' )
+			->withHeader( 'Content-Type', 'application/javascript' );
 	}
 
 
@@ -106,10 +108,9 @@ class Catalog
 	public static function suggestAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-suggest', $request, $response, $args );
+		$response = $container->get( 'view' )->render( $response, 'Catalog/suggest.html.twig', $contents );
 
-		$response = $response->withStatus( 200 );
-		$response = $response->withHeader( 'Content-Type', 'application/json' );
-
-		return $container->get( 'view' )->render( $response, 'Catalog/suggest.html.twig', $contents );
+		return $response->withHeader( 'Cache-Control', 'max-age=43200' )
+			->withHeader( 'Content-Type', 'application/json' );
 	}
 }
