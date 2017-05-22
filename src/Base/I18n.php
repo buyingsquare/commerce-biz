@@ -52,7 +52,7 @@ class I18n
 			{
 				$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $langid );
 
-				if( function_exists( 'apc_store' ) === true && $config->get( 'apc_enabled', false ) == true ) {
+				if( function_exists( 'apcu_store' ) === true && $config->get( 'apc_enabled', false ) == true ) {
 					$i18n = new \Aimeos\MW\Translation\Decorator\APC( $i18n, $config->get( 'apc_prefix', 'slim:' ) );
 				}
 
