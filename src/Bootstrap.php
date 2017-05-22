@@ -80,7 +80,7 @@ class Bootstrap
 		};
 
 		$container['mailer'] = function( $c ) {
-			return \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
+			return new \Swift_Mailer( new \Swift_SendmailTransport() );
 		};
 
 
