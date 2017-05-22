@@ -25,7 +25,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/copy/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<div class="product-item', (string) $response->getBody() );
+		$this->assertContains( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -34,7 +34,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/create/product' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<div class="product-item', (string) $response->getBody() );
+		$this->assertContains( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -43,7 +43,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/delete/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<table class="list-items', (string) $response->getBody() );
+		$this->assertContains( 'list-items', (string) $response->getBody() );
 	}
 
 
@@ -52,7 +52,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/get/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<div class="product-item', (string) $response->getBody() );
+		$this->assertContains( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -61,7 +61,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'POST', '/unittest/admin/jqadm/save/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<div class="product-item', (string) $response->getBody() );
+		$this->assertContains( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -70,15 +70,6 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/search/product' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<table class="list-items', (string) $response->getBody() );
-	}
-
-
-	public function testSearchActionSite()
-	{
-		$response = $this->call( 'GET', '/invalid/admin/jqadm/search/product' );
-
-		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '<table class="list-items', (string) $response->getBody() );
+		$this->assertContains( 'list-items', (string) $response->getBody() );
 	}
 }
