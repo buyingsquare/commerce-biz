@@ -12,7 +12,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
 		$container['aimeos_i18n'] = new \Aimeos\Slim\Base\I18n( $container );
 		$container['aimeos_locale'] = new \Aimeos\Slim\Base\Locale( $container );
 		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, $settings );
-		$container['mailer'] = \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
+		$container['mailer'] = new \Swift_Mailer( new \Swift_SendmailTransport() );
 
 		$object = new \Aimeos\Slim\Base\Context( $container );
 
