@@ -11,7 +11,7 @@ class LocaleTest extends \PHPUnit_Framework_TestCase
 		$container['aimeos'] = new \Aimeos\Bootstrap();
 		$container['aimeos_context'] = new \Aimeos\Slim\Base\Context( $container );
 		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, $settings );
-		$container['mailer'] = \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
+		$container['mailer'] = new \Swift_Mailer( new \Swift_SendmailTransport() );
 
 		$context = $container['aimeos_context']->get( false, array(), 'backend' );
 		$object = new \Aimeos\Slim\Base\Locale( $container );
@@ -29,7 +29,7 @@ class LocaleTest extends \PHPUnit_Framework_TestCase
 		$container['aimeos'] = new \Aimeos\Bootstrap();
 		$container['aimeos_context'] = new \Aimeos\Slim\Base\Context( $container );
 		$container['aimeos_config'] = new \Aimeos\Slim\Base\Config( $container, $settings );
-		$container['mailer'] = \Swift_Mailer::newInstance( \Swift_SendmailTransport::newInstance() );
+		$container['mailer'] = new \Swift_Mailer( new \Swift_SendmailTransport() );
 
 		$context = $container['aimeos_context']->get( false, array(), 'backend' );
 		$object = new \Aimeos\Slim\Base\Locale( $container );
