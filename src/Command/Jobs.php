@@ -122,6 +122,7 @@ class Jobs extends Base implements Iface
 	 */
 	protected static function execute( \Aimeos\Bootstrap $aimeos, \Aimeos\MShop\Context\Item\Iface $ctx, array $siteItems, $jobs )
 	{
+		$process = $ctx->getProcess();
 		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $ctx );
 
 		foreach( $siteItems as $siteItem )
@@ -134,9 +135,16 @@ class Jobs extends Base implements Iface
 
 			printf( "Executing the Aimeos jobs for \"%s\"\n", $siteItem->getCode() );
 
-			foreach( (array) explode( ' ', $jobs ) as $jobname ) {
-				\Aimeos\Controller\Jobs\Factory::createController( $ctx, $aimeos, $jobname )->run();
+			foreach( (array) explode( ' ', $jobs ) as $jobname )
+			{
+				$fcn = function( $ctx, $aimeos, $jobname ) {
+					\Aimeos\Controller\Jobs\Factory::createController( $ctx, $aimeos, $jobname )->run();
+				};
+
+				$process->start( $fcn, [$ctx, $aimeos, $jobname], true );
 			}
 		}
+
+		$process->wait();
 	}
 }
