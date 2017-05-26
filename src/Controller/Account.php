@@ -34,9 +34,7 @@ class Account
 	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'account-index', $request, $response, $args );
-		$response = $container->get( 'view' )->render( $response, 'Account/index.html.twig', $contents );
-
-		return $response->withHeader( 'Cache-Control', 'private, max-age=300' );
+		return $container->get( 'view' )->render( $response, 'Account/index.html.twig', $contents );
 	}
 
 
@@ -54,7 +52,6 @@ class Account
 		$context = $container->get( 'aimeos_context' )->get( true, $args );
 		$langid = $context->getLocale()->getLanguageId();
 
-		$response->withHeader( 'Cache-Control', 'private, max-age=300' );
 		$view = $container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $args, array(), $langid );
 		$context->setView( $view );
 

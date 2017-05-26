@@ -36,8 +36,8 @@ class Catalog
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-count', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Catalog/count.html.twig', $contents );
 
-		return $response->withHeader( 'Cache-Control', 'max-age=43200' )
-			->withHeader( 'Content-Type', 'application/javascript' );
+		return $response->withHeader( 'Content-Type', 'application/javascript' )
+			->withHeader( 'Cache-Control', 'max-age=300' );
 	}
 
 
@@ -53,9 +53,7 @@ class Catalog
 	public static function detailAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-detail', $request, $response, $args );
-		$response = $container->get( 'view' )->render( $response, 'Catalog/detail.html.twig', $contents );
-
-		return $response->withHeader( 'Cache-Control', 'max-age=43200' );
+		return $container->get( 'view' )->render( $response, 'Catalog/detail.html.twig', $contents );
 	}
 
 
@@ -71,9 +69,7 @@ class Catalog
 	public static function listAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-list', $request, $response, $args );
-		$response = $container->get( 'view' )->render( $response, 'Catalog/list.html.twig', $contents );
-
-		return $response->withHeader( 'Cache-Control', 'max-age=43200' );
+		return $container->get( 'view' )->render( $response, 'Catalog/list.html.twig', $contents );
 	}
 
 
@@ -110,7 +106,6 @@ class Catalog
 		$contents = $container->get( 'aimeos_page' )->getSections( 'catalog-suggest', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Catalog/suggest.html.twig', $contents );
 
-		return $response->withHeader( 'Cache-Control', 'max-age=43200' )
-			->withHeader( 'Content-Type', 'application/json' );
+		return $response->withHeader( 'Content-Type', 'application/json' );
 	}
 }
