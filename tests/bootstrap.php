@@ -52,7 +52,8 @@ class LocalWebTestCase extends \PHPUnit\Framework\TestCase
 		);
 
 		$boot = new \Aimeos\Slim\Bootstrap( $app, $settings );
-		$boot->setup( dirname( __DIR__ ) . '/ext' )->routes( dirname( __DIR__ ) . '/src/aimeos-routes.php' );
+		$boot->setup( dirname( __DIR__ ) . '/ext' );
+		$boot->routes( dirname( __DIR__ ) . '/src/aimeos-routes.php' );
 
 		$c = $app->getContainer();
 		$env = \Slim\Http\Environment::mock( array(
