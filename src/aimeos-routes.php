@@ -91,23 +91,23 @@ $app->group( $config( 'routes/jsonadm', '/admin/{site}/jsonadm' ), function() us
 
 $app->group( $config( 'routes/jsonapi', '/jsonapi' ), function() use ( $config ) {
 
-	$this->map(['DELETE'], '/{resource}[/{id}[/{related}[/{relatedid}]]]', function( $request, $response, $args ) {
+	$this->map(['DELETE'], '/{resource}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonapi::deleteAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonapi_delete' );
 
-	$this->map(['GET'], '/{resource}[/{id}[/{related}[/{relatedid}]]]', function( $request, $response, $args ) {
+	$this->map(['GET'], '/{resource}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonapi::getAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonapi_get' );
 
-	$this->map(['PATCH'], '/{resource}[/{id}[/{related}[/{relatedid}]]]', function( $request, $response, $args ) {
+	$this->map(['PATCH'], '/{resource}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonapi::patchAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonapi_patch' );
 
-	$this->map(['POST'], '/{resource}[/{id}[/{related}[/{relatedid}]]]', function( $request, $response, $args ) {
+	$this->map(['POST'], '/{resource}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonapi::postAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonapi_post' );
 
-	$this->map(['PUT'], '/{resource}[/{id}[/{related}[/{relatedid}]]]', function( $request, $response, $args ) {
+	$this->map(['PUT'], '/{resource}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jsonapi::putAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jsonapi_put' );
 
