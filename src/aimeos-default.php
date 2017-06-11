@@ -199,10 +199,7 @@ return array(
 		),
 		'jsonapi' => array(
 			'url' => array(
-				'target' => 'aimeos_shop_jsonapi_get',
-				'options' => array(
-					'target' => 'aimeos_shop_jsonapi_options',
-				),
+				'target' => 'aimeos_shop_jsonapi_options',
 			),
 		),
 	),
