@@ -28,10 +28,8 @@ class JsonapiTest extends \LocalWebTestCase
 		$this->assertArrayHasKey( 'id', $json['data'][0] );
 		$this->assertEquals( 'CNC', $json['data'][0]['attributes']['product.code'] );
 
-		$id = $json['data'][0]['id'];
 
-
-		$response = $this->call( 'GET', '/unittest/jsonapi/product?id=' . $id );
+		$response = $this->call( 'GET', '/unittest/jsonapi/product', ['id' => $json['data'][0]['id']] );
 		$json = json_decode( $response->getBody(), true );
 
 		$this->assertNotNull( $json );
@@ -51,19 +49,20 @@ class JsonapiTest extends \LocalWebTestCase
 		$this->assertEquals( 'CNC', $json['data'][0]['attributes']['product.code'] );
 
 		// add CNC product to basket
+		$params = ['id' => 'default', 'related' => 'product'];
 		$content = json_encode( ['data' => ['attributes' => ['product.id' => $json['data'][0]['id']]]] );
-		$response = $this->call( 'POST', '/unittest/jsonapi/basket?id=default&related=product', [], $content );
+		$response = $this->call( 'POST', '/unittest/jsonapi/basket', $params, $content );
 		$json = json_decode( $response->getBody(), true );
 		$this->assertEquals( 'CNC', $json['included'][0]['attributes']['order.base.product.prodcode'] );
 
 		// change product quantity in basket
 		$content = json_encode( ['data' => ['attributes' => ['quantity' => 2]]] );
-		$response = $this->call( 'PATCH', '/unittest/jsonapi/basket?id=default&related=product&relatedid=0', [], $content );
+		$response = $this->call( 'PATCH', '/unittest/jsonapi/basket', $params + ['relatedid' => 0], $content );
 		$json = json_decode( $response->getBody(), true );
 		$this->assertEquals( 2, $json['included'][0]['attributes']['order.base.product.quantity'] );
 
 		// delete product from basket
-		$response = $this->call( 'DELETE', '/unittest/jsonapi/basket?id=default&related=product&relatedid=0' );
+		$response = $this->call( 'DELETE', '/unittest/jsonapi/basket', $params + ['relatedid' => 0] );
 		$json = json_decode( $response->getBody(), true );
 		$this->assertEquals( 0, count( $json['included'] ) );
 	}
