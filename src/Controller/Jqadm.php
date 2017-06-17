@@ -175,7 +175,8 @@ class Jqadm
 	 */
 	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jqadm/templates' );
+		$aimeos = $container->get( 'aimeos' );
+		$templatePaths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
 		$params = $args + (array) $request->getParsedBody() + (array) $request->getQueryParams();
 
 		$resource = ( isset( $params['resource'] ) ? $params['resource'] : null );
@@ -189,7 +190,7 @@ class Jqadm
 		$view = $container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource );
+		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource )->setAimeos( $aimeos );
 	}
 
 
