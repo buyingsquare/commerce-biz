@@ -8,7 +8,6 @@ php:
   - 5.5
 
 env:
-  - SLIM_VERSION=3.3.*
   - SLIM_VERSION=3.4.*
   - SLIM_VERSION=3.5.*
   - SLIM_VERSION=3.6.*
