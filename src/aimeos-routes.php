@@ -173,12 +173,7 @@ $app->group( $config( 'routes/default', '' ), function() {
 		return \Aimeos\Slim\Controller\Checkout::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_checkout' );
 
-});
-
-
-$app->group( $config( 'routes/confirm', '' ), function() {
-
-	$this->map(['GET', 'POST'], '/confirm[/{code}[/{orderid:[0-9]+}]]', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/confirm[/{code}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Checkout::confirmAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_confirm' );
 

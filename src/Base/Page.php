@@ -51,7 +51,7 @@ class Page
 		$context = $this->container->get( 'aimeos_context' )->get( true, $attr );
 		$langid = $context->getLocale()->getLanguageId();
 
-		$view = $this->container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $attr, $tmplPaths, $langid );
+		$view = $this->container->get( 'aimeos_view' )->create( $context, $request, $response, $attr, $tmplPaths, $langid );
 		$context->setView( $view );
 
 		$pagesConfig = $this->container->get( 'aimeos_config' )->get()->get( 'page', array() );

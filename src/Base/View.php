@@ -39,7 +39,7 @@ class View
 	/**
 	 * Creates the view object for the HTML client.
 	 *
-	 * @param \Aimeos\MW\Config\Iface $config Config object
+	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $attributes Associative list of URI parameters
@@ -47,7 +47,7 @@ class View
 	 * @param string|null $locale Code of the current language or null for no translation
 	 * @return \Aimeos\MW\View\Iface View object
 	 */
-	public function create( \Aimeos\MW\Config\Iface $config, ServerRequestInterface $request,
+	public function create( \Aimeos\MShop\Context\Item\Iface $context, ServerRequestInterface $request,
 		ResponseInterface $response, array $attributes, array $templatePaths, $locale = null )
 	{
 		$iface = 'Slim\Views\Twig';
@@ -66,6 +66,9 @@ class View
 			$view = new \Aimeos\MW\View\Standard( $templatePaths );
 		}
 
+		$config = $context->getConfig();
+		$session = $context->getSession();
+
 		$this->addAccess( $view );
 		$this->addConfig( $view, $config );
 		$this->addCsrf( $view, $request );
@@ -73,6 +76,7 @@ class View
 		$this->addParam( $view, $params );
 		$this->addRequest( $view, $request );
 		$this->addResponse( $view, $response );
+		$this->addSession( $view, $session );
 		$this->addTranslate( $view, $locale );
 		$this->addUrl( $view, $attributes );
 
@@ -194,6 +198,22 @@ class View
 	{
 		$helper = new \Aimeos\MW\View\Helper\Response\Slim( $view, $response );
 		$view->addHelper( 'response', $helper );
+
+		return $view;
+	}
+
+
+	/**
+	 * Adds the "session" helper to the view object
+	 *
+	 * @param \Aimeos\MW\View\Iface $view View object
+	 * @param \Aimeos\MW\Session\Iface $session Session object
+	 * @return \Aimeos\MW\View\Iface Modified view object
+	 */
+	protected function addSession( \Aimeos\MW\View\Iface $view, \Aimeos\MW\Session\Iface $session )
+	{
+		$helper = new \Aimeos\MW\View\Helper\Session\Standard( $view, $session );
+		$view->addHelper( 'session', $helper );
 
 		return $view;
 	}

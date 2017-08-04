@@ -187,7 +187,7 @@ class Jqadm
 		$context->setI18n( $container->get( 'aimeos_i18n' )->get( array( $lang, 'en' ) ) );
 		$context->setLocale( $container->get( 'aimeos_locale' )->getBackend( $context, $site ) );
 
-		$view = $container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $args, $templatePaths, $lang );
+		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource )->setAimeos( $aimeos );

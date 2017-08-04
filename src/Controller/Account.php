@@ -52,7 +52,7 @@ class Account
 		$context = $container->get( 'aimeos_context' )->get( true, $args );
 		$langid = $context->getLocale()->getLanguageId();
 
-		$view = $container->get( 'aimeos_view' )->create( $context->getConfig(), $request, $response, $args, array(), $langid );
+		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, array(), $langid );
 		$context->setView( $view );
 
 		$client = \Aimeos\Client\Html\Factory::createClient( $context, array(), 'account/download' );
