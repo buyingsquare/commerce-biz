@@ -39,6 +39,10 @@ return array(
 			'adapter' => 'Standard',
 			'basedir' => './uploads',
 		),
+		'fs-import' => array(
+			'adapter' => 'Standard',
+			'basedir' => '../secure/import',
+		),
 		'fs-secure' => array(
 			'adapter' => 'Standard',
 			'basedir' => '../secure',
