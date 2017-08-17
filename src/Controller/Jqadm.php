@@ -30,7 +30,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function fileAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -75,7 +75,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function copyAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -96,7 +96,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function createAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -117,7 +117,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -138,7 +138,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function exportAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -159,7 +159,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -180,7 +180,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function saveAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -201,7 +201,7 @@ class Jqadm
 	 * @param ServerRequestInterface $request Request object
 	 * @param ResponseInterface $response Response object
 	 * @param array $args Associative list of route parameters
-	 * @return ResponseInterface $response Modified response object with generated output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	public static function searchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
@@ -251,7 +251,7 @@ class Jqadm
 	 * @param ContainerInterface $container Dependency injection container
 	 * @param ResponseInterface $response Response object
 	 * @param string $content Content from admin client
-	 * @return \Illuminate\Contracts\View\View View for rendering the output
+	 * @return ResponseInterface Modified response object with generated output
 	 */
 	protected static function getHtml( ContainerInterface $container, ResponseInterface $response, $content )
 	{
