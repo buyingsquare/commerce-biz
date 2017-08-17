@@ -47,6 +47,15 @@ class JqadmControllerTest extends \LocalWebTestCase
 	}
 
 
+	public function testExportAction()
+	{
+		$response = $this->call( 'GET', '/unittest/admin/jqadm/export/order' );
+
+		$this->assertEquals( 200, $response->getStatusCode() );
+		$this->assertContains( 'list-items', (string) $response->getBody() );
+	}
+
+
 	public function testGetAction()
 	{
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/get/product/0' );

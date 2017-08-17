@@ -70,6 +70,9 @@ return array(
 				'delete' => array(
 					'target' => 'aimeos_shop_jqadm_delete'
 				),
+				'export' => array(
+					'target' => 'aimeos_shop_jqadm_export'
+				),
 				'get' => array(
 					'target' => 'aimeos_shop_jqadm_get'
 				),

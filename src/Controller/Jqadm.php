@@ -80,7 +80,12 @@ class Jqadm
 	public static function copyAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$cntl = self::createClient( $container, $request, $response, $args );
-		return self::getHtml( $container, $response, $cntl->copy() );
+
+		if( ( $html = $cntl->copy() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
 	}
 
 
@@ -96,7 +101,12 @@ class Jqadm
 	public static function createAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$cntl = self::createClient( $container, $request, $response, $args );
-		return self::getHtml( $container, $response, $cntl->create() );
+
+		if( ( $html = $cntl->create() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
 	}
 
 
@@ -112,7 +122,33 @@ class Jqadm
 	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$cntl = self::createClient( $container, $request, $response, $args );
-		return self::getHtml( $container, $response, $cntl->delete() . $cntl->search() );
+
+		if( ( $html = $cntl->delete() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
+	}
+
+
+	/**
+	 * Exports the requested resource object
+	 *
+	 * @param ContainerInterface $container Dependency injection container
+	 * @param ServerRequestInterface $request Request object
+	 * @param ResponseInterface $response Response object
+	 * @param array $args Associative list of route parameters
+	 * @return ResponseInterface $response Modified response object with generated output
+	 */
+	public static function exportAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	{
+		$cntl = self::createClient( $container, $request, $response, $args );
+
+		if( ( $html = $cntl->export() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
 	}
 
 
@@ -128,7 +164,12 @@ class Jqadm
 	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$cntl = self::createClient( $container, $request, $response, $args );
-		return self::getHtml( $container, $response, $cntl->get() );
+
+		if( ( $html = $cntl->get() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
 	}
 
 
@@ -144,7 +185,12 @@ class Jqadm
 	public static function saveAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$cntl = self::createClient( $container, $request, $response, $args );
-		return self::getHtml( $container, $response, ( $cntl->save() ? : $cntl->search() ) );
+
+		if( ( $html = $cntl->save() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
 	}
 
 
@@ -160,7 +206,12 @@ class Jqadm
 	public static function searchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$cntl = self::createClient( $container, $request, $response, $args );
-		return self::getHtml( $container, $response, $cntl->search() );
+
+		if( ( $html = $cntl->search() ) == '' ) {
+			return $cntl->getView()->response();
+		}
+
+		return self::getHtml( $container, $response, $html );
 	}
 
 

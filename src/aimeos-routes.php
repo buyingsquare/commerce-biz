@@ -33,27 +33,31 @@ $app->group( $config( 'routes/jqadm', '/admin/{site}/jqadm' ), function() use ( 
 		return \Aimeos\Slim\Controller\Jqadm::fileAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_file' );
 
-	$this->map(['GET', 'POST'], '/copy/{resource}/{id}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/copy/{resource:[^0-9A-Z\-\_]+}[/{id:[0-9A-Z\-\_]*}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::copyAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_copy' );
 
-	$this->map(['GET', 'POST'], '/create/{resource}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/create/{resource:[^0-9A-Z\-\_]+}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::createAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_create' );
 
-	$this->map(['GET', 'POST'], '/delete/{resource}/{id}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/delete/{resource:[^0-9A-Z\-\_]+}[/{id:[0-9A-Z\-\_]*}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::deleteAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_delete' );
 
-	$this->map(['GET'], '/get/{resource}/{id}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/export/{resource:[^0-9A-Z\-\_]+}', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Jqadm::exportAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_jqadm_export' );
+
+	$this->map(['GET'], '/get/{resource:[^0-9A-Z\-\_]+}[/{id:[0-9A-Z\-\_]*}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::getAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_get' );
 
-	$this->map(['POST'], '/save/{resource}[/{id}]', function( $request, $response, $args ) {
+	$this->map(['POST'], '/save/{resource:[^0-9A-Z\-\_]+}[/{id:[0-9A-Z\-\_]*}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::saveAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_save' );
 
-	$this->map(['GET', 'POST'], '/search/{resource}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/search/{resource:[^0-9A-Z\-\_]+}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Jqadm::searchAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_jqadm_search' );
 
