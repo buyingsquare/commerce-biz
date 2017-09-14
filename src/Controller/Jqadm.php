@@ -241,7 +241,7 @@ class Jqadm
 		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $templatePaths, $resource )->setAimeos( $aimeos );
+		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $aimeos, $resource );
 	}
 
 
