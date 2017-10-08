@@ -6,7 +6,6 @@
 [![Build Status](https://travis-ci.org/aimeos/aimeos-slim.svg)](https://travis-ci.org/aimeos/aimeos-slim)
 [![Coverage Status](https://coveralls.io/repos/aimeos/aimeos-slim/badge.svg?branch=master&service=github)](https://coveralls.io/github/aimeos/aimeos-slim?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aimeos/aimeos-slim/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aimeos/aimeos-slim/?branch=master)
-[![HHVM Status](http://hhvm.h4cc.de/badge/aimeos/aimeos-slim.svg)](http://hhvm.h4cc.de/package/aimeos/aimeos-slim)
 
 The repository contains the shop package for Slim 3,
 integrating the Aimeos e-commerce library into Slim. The package provides
