@@ -20,9 +20,8 @@
 	"prefer-stable": true,
 	"minimum-stability": "dev",
 	"require": {
-		"php": ">=5.3.3",
+		"php": ">=5.4.0",
 		"aimeos/aimeos-core": "dev-master",
-		"aimeos/ai-admin-extadm": "dev-master",
 		"aimeos/ai-admin-jqadm": "dev-master",
 		"aimeos/ai-admin-jsonadm": "dev-master",
 		"aimeos/ai-client-html": "dev-master",
