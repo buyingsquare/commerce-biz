@@ -54,11 +54,6 @@ return array(
 	),
 
 	'admin' => array(
-		'extjs' => array(
-			'url' => array(
-				'target' => 'aimeos_shop_extadm',
-			),
-		),
 		'jqadm' => array(
 			'url' => array(
 				'copy' => array(
@@ -260,35 +255,6 @@ return array(
 						# doesn't restrict the size of the image if it's scaled due to a value
 						# in the "maxwidth" parameter
 						# maxheight: 280
-					),
-				),
-			),
-		),
-		'extjs' => array(
-			'attribute' => array(
-				'export' => array(
-					'text' => array(
-						'default' => array(
-							'downloaddir' => 'uploads',
-						),
-					),
-				),
-			),
-			'catalog' => array(
-				'export' => array(
-					'text' => array(
-						'default' => array(
-							'downloaddir' => 'uploads',
-						),
-					),
-				),
-			),
-			'product' => array(
-				'export' => array(
-					'text' => array(
-						'default' => array(
-							'downloaddir' => 'uploads',
-						),
 					),
 				),
 			),
