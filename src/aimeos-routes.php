@@ -10,6 +10,23 @@ $app->group( $config( 'routes/admin', '/admin' ), function() use ( $config ) {
 });
 
 
+$app->group( $config( 'routes/extadm', '/admin/{site}/extadm' ), function() use ( $config ) {
+
+	$this->map(['GET'], '/file', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Extadm::fileAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_extadm_file' );
+
+	$this->map(['POST'], '/do', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Extadm::doAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_extadm_json' );
+
+	$this->map(['GET'], '[/{lang}[/{tab:[0-9]+}]]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Extadm::indexAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_extadm' );
+
+});
+
+
 $app->group( $config( 'routes/jqadm', '/admin/{site}/jqadm' ), function() use ( $config ) {
 
 	$this->map(['GET'], '/file/{type}', function( $request, $response, $args ) {
