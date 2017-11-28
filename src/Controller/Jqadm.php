@@ -239,6 +239,11 @@ class Jqadm
 		$context->setLocale( $container->get( 'aimeos_locale' )->getBackend( $context, $site ) );
 
 		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
+
+		$view->aimeosType = 'Slim';
+		$view->aimeosVersion = \Aimeos\Slim\Bootstrap::getVersion();
+		$view->aimeosExtensions = implode( ',', $container->get( 'aimeos' )->getExtensions() );
+
 		$context->setView( $view );
 
 		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $aimeos, $resource );
@@ -255,10 +260,6 @@ class Jqadm
 	 */
 	protected static function getHtml( ContainerInterface $container, ResponseInterface $response, $content )
 	{
-		$version = \Aimeos\Slim\Bootstrap::getVersion();
-		$extnames = implode( ',', $container->get( 'aimeos' )->getExtensions() );
-		$content = str_replace( ['{type}', '{version}', '{extensions}'], ['Slim', $version, $extnames], $content );
-
 		return $container->get( 'view' )->render( $response, 'Jqadm/index.html.twig', array( 'content' => $content ) );
 	}
 }
