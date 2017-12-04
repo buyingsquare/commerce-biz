@@ -242,7 +242,7 @@ class Jqadm
 
 		$view->aimeosType = 'Slim';
 		$view->aimeosVersion = \Aimeos\Slim\Bootstrap::getVersion();
-		$view->aimeosExtensions = implode( ',', $container->get( 'aimeos' )->getExtensions() );
+		$view->aimeosExtensions = implode( ',', $aimeos->getExtensions() );
 
 		$context->setView( $view );
 
