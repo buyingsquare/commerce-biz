@@ -128,7 +128,8 @@ class Jsonadm
 		$site = ( isset( $args['site'] ) ? $args['site'] : 'default' );
 		$lang = ( isset( $args['lang'] ) ? $args['lang'] : 'en' );
 
-		$templatePaths = $container->get( 'aimeos' )->getCustomPaths( 'admin/jsonadm/templates' );
+		$aimeos = $container->get( 'aimeos' );
+		$templatePaths = $aimeos->getCustomPaths( 'admin/jsonadm/templates' );
 
 		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
 		$context->setI18n( $container->get( 'aimeos_i18n' )->get( array( $lang, 'en' ) ) );
@@ -137,6 +138,6 @@ class Jsonadm
 		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $templatePaths, $resource );
+		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $aimeos, $resource );
 	}
 }
