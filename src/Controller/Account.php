@@ -55,7 +55,7 @@ class Account
 		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, array(), $langid );
 		$context->setView( $view );
 
-		$client = \Aimeos\Client\Html\Factory::createClient( $context, array(), 'account/download' );
+		$client = \Aimeos\Client\Html\Factory::createClient( $context, 'account/download' );
 		$client->setView( $view );
 		$client->process();
 
