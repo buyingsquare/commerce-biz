@@ -88,10 +88,15 @@ The last step is to **publish the Aimeos theme files** to the `public/` director
 are available via HTTP:
 
 ```
-mkdir -p public/aimeos/themes/ public/aimeos/admin/extjs/
+mkdir -p public/aimeos/themes/
 cp -r vendor/aimeos/aimeos-slim/resources/mimeicons/ public/aimeos/
 cp -r ext/ai-client-html/client/html/themes/* public/aimeos/themes/
 cp -r ext/ai-admin-jqadm/admin/jqadm/themes/* public/aimeos/themes/
+```
+
+For 2017.10 and before you need additionally:
+```
+mkdir -p public/aimeos/admin/extjs/
 cp -r ext/ai-admin-extadm/admin/extjs/lib/ public/aimeos/admin/extjs/
 cp -r ext/ai-admin-extadm/admin/extjs/resources/ public/aimeos/admin/extjs/
 ```
