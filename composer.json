@@ -3,7 +3,7 @@
 	"description": "Slim online shop package and e-commerce solution for high performance shops",
 	"homepage": "https://aimeos.org/SlimPHP",
 	"type": "library",
-	"license": "LGPLv3",
+	"license": "LGPL-3.0-or-later",
 	"keywords": ["aimeos", "slim", "e-commerce", "ecommerce", "shop", "portal", "market place"],
 	"support": {
 		"source": "https://github.com/Aimeos/aimeos-slim",
