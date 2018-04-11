@@ -26,7 +26,7 @@ pages including routing is also available for a quick start.
 
 This document is for the latest Aimeos SlimPHP **2017.10 release and later**.
 
-- Beta release: 2018.01
+- Stable release: 2018.04
 - LTS release: 2017.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
@@ -42,7 +42,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2017.10",
+        "aimeos/aimeos-slim": "~2018.04",
         ...
     },
 ```
