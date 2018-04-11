@@ -43,7 +43,7 @@ return array(
 			'password' => '',
 			'stmt' => array("SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'"),
 			'opt-persistent' => 0,
-			'limit' => 2,
+			'limit' => 3,
 		),
 	),
 
