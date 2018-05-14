@@ -2,17 +2,6 @@
 
 class JsonadmTest extends \LocalWebTestCase
 {
-	public function testOptionsActionSite()
-	{
-		$response = $this->call( 'OPTIONS', '/invalid/admin/jsonadm/product' );
-
-		$json = json_decode( (string) $response->getBody(), true );
-
-		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertNotNull( $json );
-	}
-
-
 	public function testOptionsAction()
 	{
 		$response = $this->call( 'OPTIONS', '/unittest/admin/jsonadm/product' );
