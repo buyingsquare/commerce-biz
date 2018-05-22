@@ -64,24 +64,17 @@ class Locale
 	 * Returns the locale item for the current request
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @param string $sitecode Unique site code
+	 * @param string $site Unique site code
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public function getBackend( \Aimeos\MShop\Context\Item\Iface $context, $sitecode )
+	public function getBackend( \Aimeos\MShop\Context\Item\Iface $context, $site )
 	{
 		$localeManager = \Aimeos\MShop\Factory::createManager( $context, 'locale' );
 
-		try
-		{
-			$localeItem = $localeManager->bootstrap( $sitecode, '', '', false );
-			$localeItem->setLanguageId( null );
-			$localeItem->setCurrencyId( null );
-		}
-		catch( \Aimeos\MShop\Locale\Exception $e )
-		{
-			$item = \Aimeos\MShop\Factory::createManager( $context, 'locale/site' )->findItem( $sitecode );
+		try {
+			$localeItem = $localeManager->bootstrap( $site, '', '', false, null, true );
+		} catch( \Aimeos\MShop\Exception $e ) {
 			$localeItem = $localeManager->createItem();
-			$localeItem->setSiteId( $item->getId() );
 		}
 
 		return $localeItem;
