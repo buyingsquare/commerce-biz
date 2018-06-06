@@ -291,6 +291,9 @@ return array(
 				'price' => array(
 					'name' => 'MySQL',
 				),
+				'supplier' => array(
+					'name' => 'MySQL',
+				),
 				'text' => array(
 					'name' => 'MySQL',
 				),
