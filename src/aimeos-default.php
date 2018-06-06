@@ -180,6 +180,11 @@ return array(
 								'url' => array(
 									'target' => 'aimeos_shop_terms',
 								),
+								'cancel' => array(
+									'url' => array(
+										'target' => 'aimeos_shop_terms',
+									),
+								),
 								'privacy' => array(
 									'url' => array(
 										'target' => 'aimeos_shop_privacy',
