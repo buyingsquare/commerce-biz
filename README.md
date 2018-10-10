@@ -24,10 +24,9 @@ pages including routing is also available for a quick start.
 
 ## Installation or update
 
-This document is for the latest Aimeos SlimPHP **2017.10 release and later**.
+This document is for the latest Aimeos SlimPHP **2018.10 release and later**.
 
-- Stable release: 2018.07
-- LTS release: 2017.10
+- LTS release: 2018.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
 created by:
@@ -42,7 +41,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2018.07",
+        "aimeos/aimeos-slim": "~2018.10",
         ...
     },
 ```
@@ -62,8 +61,28 @@ cp vendor/aimeos/aimeos-slim/src/aimeos-routes.php src/
 ```
 
 To configure your database, you have to **adapt the configuration** in `src/aimeos-settings.php`
-file and modify the settings in the resource section. If you want to use a
-database server other than MySQL, please have a look into the article about
+file and modify the settings in the resource section. If you don't have at least MySQL 5.7 installed,
+you will probably get an error like
+
+```Specified key was too long; max key length is 767 bytes```
+
+To circumvent this problem, drop the new tables if there have been any created and
+change the charset/collate setting in your `src/aimeos-settings.php` to these values
+before installing Aimeos again:
+
+```php
+'resource' => [
+    'db' => [
+        // ...
+        'defaultTableOptions' => [
+            'charset' => 'utf8',
+            'collation' => 'utf8_bin'
+        ]
+    ]
+]
+```
+
+If you want to use a database server other than MySQL, please have a look into the article about
 [supported database servers](https://aimeos.org/docs/Developers/Library/Database_support)
 and their specific configuration.
 
@@ -75,6 +94,8 @@ php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-settings.php --optio
 
 In a production environment or if you don't want that the demo data is
 added, leave out the `--option=setup/default/demo:1` option.
+
+
 
 You must also **copy the Aimeos templates** to the `templates/` directory of your Slim
 application. Thus, you can modify them according to your needs and they won't be
