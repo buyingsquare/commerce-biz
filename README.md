@@ -61,14 +61,35 @@ cp vendor/aimeos/aimeos-slim/src/aimeos-routes.php src/
 ```
 
 To configure your database, you have to **adapt the configuration** in `src/aimeos-settings.php`
-file and modify the settings in the resource section. If you don't have at least MySQL 5.7 installed,
-you will probably get an error like
+file and modify the settings in the resource section:
+
+```php
+'resource' => [
+    'db' => [
+        'adapter' => 'mysql',
+        'host' => 'localhost',
+        'port' => '',
+        'socket' => '',
+        'database' => 'slim',
+        'username' => 'root',
+        'password' => '',
+        'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"],
+        'opt-persistent' => 0,
+        'limit' => 3,
+        'defaultTableOptions' => [
+            'charset' => 'utf8mb4',
+            'collate' => 'utf8mb4_bin',
+        ],
+    ],
+],
+```
+
+If you don't have at least MySQL 5.7 installed, you will probably get an error like
 
 ```Specified key was too long; max key length is 767 bytes```
 
-To circumvent this problem, drop the new tables if there have been any created and
-change the charset/collate setting in your `src/aimeos-settings.php` to these values
-before installing Aimeos again:
+To circumvent this problem, change the charset/collate setting in your
+`src/aimeos-settings.php` to these values **before installing Aimeos**:
 
 ```php
 'resource' => [
@@ -77,9 +98,9 @@ before installing Aimeos again:
         'defaultTableOptions' => [
             'charset' => 'utf8',
             'collation' => 'utf8_bin'
-        ]
-    ]
-]
+        ],
+    ],
+],
 ```
 
 If you want to use a database server other than MySQL, please have a look into the article about
