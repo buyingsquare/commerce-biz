@@ -14,6 +14,8 @@ high performance e-commerce package for Laravel!  You can install it in your
 existing SlimPHP application within 5 minutes and can adapt, extend, overwrite
 and customize anything to your needs. 
 
+[![Aimeos SlimPHP demo](https://aimeos.org/fileadmin/aimeos.org/images/aimeos-github.png)](http://slim.demo.aimeos.org/)
+
 ## Table of content
 
 - [Installation/Update](#installation-or-update)
