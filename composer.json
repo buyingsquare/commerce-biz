@@ -1,10 +1,10 @@
 {
 	"name": "aimeos/aimeos-slim",
-	"description": "Slim online shop package and e-commerce solution for high performance shops",
+	"description": "Professional, full-featured and high performance SlimPHP e-commerce package for online shops and TV-approved shop pages",
 	"homepage": "https://aimeos.org/SlimPHP",
 	"type": "library",
 	"license": "LGPL-3.0-or-later",
-	"keywords": ["aimeos", "slim", "e-commerce", "ecommerce", "shop", "portal", "market place"],
+	"keywords": ["aimeos", "slim", "slimphp", "e-commerce", "ecommerce", "TV", "shop"],
 	"support": {
 		"source": "https://github.com/Aimeos/aimeos-slim",
 		"issues": "https://github.com/Aimeos/aimeos-slim/issues",
