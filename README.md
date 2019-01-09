@@ -29,6 +29,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos SlimPHP **2018.10 release and later**.
 
+- Beta release: 2019.01
 - LTS release: 2018.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
@@ -207,7 +208,7 @@ on the command line in your application directory. Afterwards, adapt your
 `public/index.php` file and add these lines before `$app->run()`:
 
 ```php
-$app->add(new \Slim\Middleware\HttpBasicAuthentication([
+$app->add(new \Tuupola\Middleware\HttpBasicAuthentication([
 	"realm" => "Aimeos administration",
 	"path" => "/admin",
 	"users" => [
