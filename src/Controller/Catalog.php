@@ -108,4 +108,20 @@ class Catalog
 
 		return $response->withHeader( 'Content-Type', 'application/json' );
 	}
+
+
+	/**
+	 * Returns the html for the catalog list page.
+	 *
+	 * @param ContainerInterface $container Dependency injection container
+	 * @param ServerRequestInterface $request Request object
+	 * @param ResponseInterface $response Response object
+	 * @param array $args Associative list of route parameters
+	 * @return ResponseInterface $response Modified response object with generated output
+	 */
+	public static function treeAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	{
+		$contents = $container->get( 'shop' )->get( 'catalog-tree', $request, $response, $args );
+		return $container->get( 'view' )->render( $response, 'Catalog/tree.html.twig', $contents );
+	}
 }

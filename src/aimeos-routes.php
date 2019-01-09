@@ -152,6 +152,10 @@ $app->group( $config( 'routes/default', '' ), function() {
 		return \Aimeos\Slim\Controller\Catalog::stockAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_stock' );
 
+	$this->map(['GET', 'POST'], '/c/{f_name}/{f_catid}', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Catalog::treeAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_tree' );
+
 	$this->map(['GET', 'POST'], '/basket', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Basket::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_basket' );

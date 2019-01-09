@@ -57,4 +57,13 @@ class CatalogTest extends \LocalWebTestCase
 		$this->assertContains( 'application/json', $response->getHeader( 'Content-Type' ) );
 		$this->assertStringStartsWith( '[', (string) $response->getBody() );
 	}
+
+
+	public function testTreeAction()
+	{
+		$response = $this->call( 'GET', '/unittest/c/name/0' );
+
+		$this->assertEquals( 200, $response->getStatusCode() );
+		$this->assertContains( 'catalog-list', (string) $response->getBody() );
+	}
 }
