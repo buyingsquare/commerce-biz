@@ -38,6 +38,7 @@ return array(
 		'fs' => array(
 			'adapter' => 'Standard',
 			'basedir' => './',
+			'baseurl' => '/',
 		),
 		'fs-admin' => array(
 			'adapter' => 'Standard',

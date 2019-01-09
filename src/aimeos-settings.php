@@ -49,14 +49,16 @@ return array(
 				'collate' => 'utf8mb4_bin',
 			],
 		),
+		'fs' => array(
+			'adapter' => 'Standard',
+			'basedir' => './',
+			'baseurl' => '/', // change to https://<yourdomain>/
+		),
 	),
 
 	'client' => array(
 		'html' => array(
 			'common' => array(
-				'content' => array(
-					// 'baseurl' => '/',
-				),
 				'template' => array(
 					// 'baseurl' => './aimeos/elegance',
 				),
