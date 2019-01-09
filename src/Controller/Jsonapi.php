@@ -129,10 +129,10 @@ class Jsonapi
 		$related = ( isset( $args['related'] ) ? $args['related'] : ( isset( $params['related'] ) ? $params['related'] : null ) );
 		$tmplPaths = $container->get( 'aimeos' )->getCustomPaths( 'client/jsonapi/templates' );
 
-		$context = $container->get( 'aimeos_context' )->get( true, $args );
+		$context = $container->get( 'aimeos.context' )->get( true, $args );
 		$langid = $context->getLocale()->getLanguageId();
 
-		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $tmplPaths, $langid );
+		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, $args, $tmplPaths, $langid );
 		$context->setView( $view );
 
 		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $resource . '/' . $related );

@@ -11,12 +11,12 @@ class BootstrapTest extends \PHPUnit\Framework\TestCase
 		$boot->setup( '.' );
 
 		$this->assertInstanceOf( '\Aimeos\Bootstrap', $c['aimeos'] );
-		$this->assertInstanceOf( '\Aimeos\Slim\Base\Config', $c['aimeos_config'] );
-		$this->assertInstanceOf( '\Aimeos\Slim\Base\Context', $c['aimeos_context'] );
-		$this->assertInstanceOf( '\Aimeos\Slim\Base\Locale', $c['aimeos_locale'] );
-		$this->assertInstanceOf( '\Aimeos\Slim\Base\I18n', $c['aimeos_i18n'] );
-		$this->assertInstanceOf( '\Aimeos\Slim\Base\Page', $c['aimeos_page'] );
-		$this->assertInstanceOf( '\Aimeos\Slim\Base\View', $c['aimeos_view'] );
+		$this->assertInstanceOf( '\Aimeos\Slim\Base\Config', $c['aimeos.config'] );
+		$this->assertInstanceOf( '\Aimeos\Slim\Base\Context', $c['aimeos.context'] );
+		$this->assertInstanceOf( '\Aimeos\Slim\Base\Locale', $c['aimeos.locale'] );
+		$this->assertInstanceOf( '\Aimeos\Slim\Base\I18n', $c['aimeos.i18n'] );
+		$this->assertInstanceOf( '\Aimeos\Slim\Base\View', $c['aimeos.view'] );
+		$this->assertInstanceOf( '\Aimeos\Slim\Base\Shop', $c['shop'] );
 		$this->assertInstanceOf( '\Swift_Mailer', $c['mailer'] );
 	}
 

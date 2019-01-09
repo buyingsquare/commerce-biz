@@ -33,7 +33,7 @@ class Account
 	 */
 	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'account-index', $request, $response, $args );
+		$contents = $container->get( 'shop' )->get( 'account-index', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Account/index.html.twig', $contents );
 	}
 
@@ -49,10 +49,10 @@ class Account
 	 */
 	public static function downloadAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$context = $container->get( 'aimeos_context' )->get( true, $args );
+		$context = $container->get( 'aimeos.context' )->get( true, $args );
 		$langid = $context->getLocale()->getLanguageId();
 
-		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, array(), $langid );
+		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, $args, array(), $langid );
 		$context->setView( $view );
 
 		$client = \Aimeos\Client\Html\Factory::createClient( $context, 'account/download' );

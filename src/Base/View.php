@@ -230,7 +230,7 @@ class View
 	{
 		if( $locale !== null )
 		{
-			$i18n = $this->container->get( 'aimeos_i18n' )->get( array( $locale ) );
+			$i18n = $this->container->get( 'aimeos.i18n' )->get( array( $locale ) );
 			$translation = $i18n[$locale];
 		}
 		else

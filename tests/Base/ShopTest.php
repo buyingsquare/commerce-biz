@@ -1,8 +1,8 @@
 <?php
 
-class PageTest extends \PHPUnit\Framework\TestCase
+class ShopTest extends \PHPUnit\Framework\TestCase
 {
-	public function testGetSections()
+	public function testGet()
 	{
 		$app = new \Slim\App( array() );
 		$basedir = dirname( dirname( __DIR__ ) );
@@ -16,8 +16,8 @@ class PageTest extends \PHPUnit\Framework\TestCase
 		$response = new \Slim\Http\Response();
 		$request = \Slim\Http\Request::createFromEnvironment( \Slim\Http\Environment::mock() );
 
-		$object = new \Aimeos\Slim\Base\Page( $app->getContainer() );
-		$result = $object->getSections( 'test', $request, $response, array( 'site' => 'unittest' ) );
+		$object = new \Aimeos\Slim\Base\Shop( $app->getContainer() );
+		$result = $object->get( 'test', $request, $response, array( 'site' => 'unittest' ) );
 
 		$this->assertArrayHasKey( 'aiheader', $result );
 		$this->assertArrayHasKey( 'aibody', $result );

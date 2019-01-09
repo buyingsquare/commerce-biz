@@ -46,7 +46,7 @@ class Locale
 	{
 		if( $this->locale === null )
 		{
-			$disableSites = $this->container->get( 'aimeos_config' )->get( 'disableSites', true );
+			$disableSites = $this->container->get( 'aimeos.config' )->get( 'disableSites', true );
 
 			$site = ( isset( $attributes['site'] ) ? $attributes['site'] : 'default' );
 			$lang = ( isset( $attributes['locale'] ) ? $attributes['locale'] : '' );

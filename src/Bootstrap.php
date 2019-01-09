@@ -91,28 +91,28 @@ class Bootstrap
 			return new \Aimeos\Bootstrap( (array) $extdir, false );
 		};
 
-		$container['aimeos_config'] = function( $c ) use ( $settings ) {
+		$container['aimeos.config'] = function( $c ) use ( $settings ) {
 			return new \Aimeos\Slim\Base\Config( $c, $settings );
 		};
 
-		$container['aimeos_context'] = function( $c ) {
+		$container['aimeos.context'] = function( $c ) {
 			return new \Aimeos\Slim\Base\Context( $c );
 		};
 
-		$container['aimeos_i18n'] = function( $c ) {
+		$container['aimeos.i18n'] = function( $c ) {
 			return new \Aimeos\Slim\Base\I18n( $c );
 		};
 
-		$container['aimeos_locale'] = function( $c ) {
+		$container['aimeos.locale'] = function( $c ) {
 			return new \Aimeos\Slim\Base\Locale( $c );
 		};
 
-		$container['aimeos_page'] = function( $c ) {
-			return new \Aimeos\Slim\Base\Page( $c );
+		$container['aimeos.view'] = function( $c ) {
+			return new \Aimeos\Slim\Base\View( $c );
 		};
 
-		$container['aimeos_view'] = function( $c ) {
-			return new \Aimeos\Slim\Base\View( $c );
+		$container['shop'] = function( $c ) {
+			return new \Aimeos\Slim\Base\Shop( $c );
 		};
 
 		// add client IP address to requests

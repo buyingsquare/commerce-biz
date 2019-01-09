@@ -45,7 +45,7 @@ class Context
 	 */
 	public function get( $locale = true, array $attributes = array(), $type = 'frontend' )
 	{
-		$config = $this->container->get( 'aimeos_config' )->get( $type );
+		$config = $this->container->get( 'aimeos.config' )->get( $type );
 
 		if( $this->context === null )
 		{
@@ -69,9 +69,9 @@ class Context
 
 		if( $locale === true )
 		{
-			$localeItem = $this->container->get( 'aimeos_locale' )->get( $this->context, $attributes );
+			$localeItem = $this->container->get( 'aimeos.locale' )->get( $this->context, $attributes );
 			$this->context->setLocale( $localeItem );
-			$this->context->setI18n( $this->container->get( 'aimeos_i18n' )->get( array( $localeItem->getLanguageId() ) ) );
+			$this->context->setI18n( $this->container->get( 'aimeos.i18n' )->get( array( $localeItem->getLanguageId() ) ) );
 		}
 
 		return $this->context;

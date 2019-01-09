@@ -234,11 +234,11 @@ class Jqadm
 		$site = ( isset( $params['site'] ) ? $params['site'] : 'default' );
 		$lang = ( isset( $params['lang'] ) ? $params['lang'] : 'en' );
 
-		$context = $container->get( 'aimeos_context' )->get( false, $args, 'backend' );
-		$context->setI18n( $container->get( 'aimeos_i18n' )->get( array( $lang, 'en' ) ) );
-		$context->setLocale( $container->get( 'aimeos_locale' )->getBackend( $context, $site ) );
+		$context = $container->get( 'aimeos.context' )->get( false, $args, 'backend' );
+		$context->setI18n( $container->get( 'aimeos.i18n' )->get( array( $lang, 'en' ) ) );
+		$context->setLocale( $container->get( 'aimeos.locale' )->getBackend( $context, $site ) );
 
-		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
+		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
 
 		$view->aimeosType = 'Slim';
 		$view->aimeosVersion = \Aimeos\Slim\Bootstrap::getVersion();

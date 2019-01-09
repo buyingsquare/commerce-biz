@@ -15,12 +15,12 @@ use Psr\Http\Message\ResponseInterface;
 
 
 /**
- * Service providing the page object
+ * Service providing the shop object
  *
  * @package Slim
  * @subpackage Base
  */
-class Page
+class Shop
 {
 	private $container;
 
@@ -45,23 +45,23 @@ class Page
 	 * @param array Associative list of URI attributes
 	 * @return array Associative list with body and header output separated by client name
 	 */
-	public function getSections( $pageName, ServerRequestInterface $request, ResponseInterface $response, array $attr )
+	public function get( $pageName, ServerRequestInterface $request, ResponseInterface $response, array $attr )
 	{
 		$tmplPaths = $this->container->get( 'aimeos' )->getCustomPaths( 'client/html/templates' );
-		$context = $this->container->get( 'aimeos_context' )->get( true, $attr );
+		$context = $this->container->get( 'aimeos.context' )->get( true, $attr );
 		$langid = $context->getLocale()->getLanguageId();
 
-		$view = $this->container->get( 'aimeos_view' )->create( $context, $request, $response, $attr, $tmplPaths, $langid );
+		$view = $this->container->get( 'aimeos.view' )->create( $context, $request, $response, $attr, $tmplPaths, $langid );
 		$context->setView( $view );
 
-		$pagesConfig = $this->container->get( 'aimeos_config' )->get()->get( 'page', array() );
+		$pagesConfig = $this->container->get( 'aimeos.config' )->get()->get( 'page', array() );
 		$result = array( 'aibody' => array(), 'aiheader' => array() );
 
 		if( isset( $pagesConfig[$pageName] ) )
 		{
 			foreach( (array) $pagesConfig[$pageName] as $clientName )
 			{
-				$client = \Aimeos\Client\Html\Factory::createClient( $context, $clientName );
+				$client = \Aimeos\Client\Html::create( $context, $clientName );
 				$client->setView( clone $view );
 				$client->process();
 

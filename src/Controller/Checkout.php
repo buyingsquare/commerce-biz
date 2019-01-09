@@ -33,7 +33,7 @@ class Checkout
 	 */
 	public static function confirmAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-confirm', $request, $response, $args );
+		$contents = $container->get( 'shop' )->get( 'checkout-confirm', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Checkout/confirm.html.twig', $contents );
 
 		return $response->withHeader( 'Cache-Control', 'no-store' );
@@ -51,7 +51,7 @@ class Checkout
 	 */
 	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-index', $request, $response, $args );
+		$contents = $container->get( 'shop' )->get( 'checkout-index', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Checkout/index.html.twig', $contents );
 
 		return $response->withHeader( 'Cache-Control', 'no-store' );
@@ -69,7 +69,7 @@ class Checkout
 	 */
 	public static function updateAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$contents = $container->get( 'aimeos_page' )->getSections( 'checkout-update', $request, $response, $args );
+		$contents = $container->get( 'shop' )->get( 'checkout-update', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Checkout/update.html.twig', $contents );
 
 		return $response->withHeader( 'Cache-Control', 'no-store' );

@@ -92,18 +92,18 @@ class Jobs extends Base implements Iface
 	protected static function getContext( \Interop\Container\ContainerInterface $container )
 	{
 		$aimeos = $container->get( 'aimeos' );
-		$context = $container->get( 'aimeos_context' )->get( false, array(), 'command' );
+		$context = $container->get( 'aimeos.context' )->get( false, array(), 'command' );
 
 		$env = \Slim\Http\Environment::mock();
 		$request = \Slim\Http\Request::createFromEnvironment( $env );
 		$response = new \Slim\Http\Response();
 
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
-		$view = $container->get( 'aimeos_view' )->create( $context, $request, $response, array(), $tmplPaths );
+		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, array(), $tmplPaths );
 
 		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
 		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
-		$i18n = $container->get( 'aimeos_i18n' )->get( $langids );
+		$i18n = $container->get( 'aimeos.i18n' )->get( $langids );
 
 		$context->setEditor( 'aimeos:jobs' );
 		$context->setView( $view );
