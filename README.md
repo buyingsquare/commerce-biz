@@ -12,7 +12,7 @@
 [Aimeos](https://aimeos.org/SlimPHP) is THE professional, full-featured and
 high performance e-commerce package for Laravel!  You can install it in your
 existing SlimPHP application within 5 minutes and can adapt, extend, overwrite
-and customize anything to your needs. 
+and customize anything to your needs.
 
 [![Aimeos SlimPHP demo](https://aimeos.org/fileadmin/aimeos.org/images/aimeos-github.png)](http://slim.demo.aimeos.org/)
 
@@ -137,13 +137,6 @@ mkdir -p public/aimeos/themes/
 cp -r vendor/aimeos/aimeos-slim/resources/mimeicons/ public/aimeos/
 cp -r ext/ai-client-html/client/html/themes/* public/aimeos/themes/
 cp -r ext/ai-admin-jqadm/admin/jqadm/themes/* public/aimeos/themes/
-```
-
-For 2017.10 and before you need additionally:
-```
-mkdir -p public/aimeos/admin/extjs/
-cp -r ext/ai-admin-extadm/admin/extjs/lib/ public/aimeos/admin/extjs/
-cp -r ext/ai-admin-extadm/admin/extjs/resources/ public/aimeos/admin/extjs/
 ```
 
 ## Setup
