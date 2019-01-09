@@ -102,7 +102,7 @@ class Cache extends Base implements Iface
 	 */
 	protected static function clear( \Aimeos\MShop\Context\Item\Iface $ctx, array $siteItems )
 	{
-		$localeManager = \Aimeos\MShop\Factory::createManager( $ctx, 'locale' );
+		$localeManager = \Aimeos\MShop::create( $ctx, 'locale' );
 
 		foreach( $siteItems as $siteItem )
 		{
@@ -116,7 +116,7 @@ class Cache extends Base implements Iface
 
 			printf( "Clearing the Aimeos cache for site \"%1\$s\"\n", $siteItem->getCode() );
 
-			\Aimeos\MAdmin\Cache\Manager\Factory::createManager( $lcontext )->getCache()->clear();
+			\Aimeos\MAdmin::create( $lcontext, 'cache' )->getCache()->clear();
 		}
 	}
 }

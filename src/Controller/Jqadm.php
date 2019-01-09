@@ -79,7 +79,7 @@ class Jqadm
 	 */
 	public static function copyAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->copy() ) == '' ) {
 			return $cntl->getView()->response();
@@ -100,7 +100,7 @@ class Jqadm
 	 */
 	public static function createAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->create() ) == '' ) {
 			return $cntl->getView()->response();
@@ -121,7 +121,7 @@ class Jqadm
 	 */
 	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->delete() ) == '' ) {
 			return $cntl->getView()->response();
@@ -142,7 +142,7 @@ class Jqadm
 	 */
 	public static function exportAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->export() ) == '' ) {
 			return $cntl->getView()->response();
@@ -163,7 +163,7 @@ class Jqadm
 	 */
 	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->get() ) == '' ) {
 			return $cntl->getView()->response();
@@ -184,7 +184,7 @@ class Jqadm
 	 */
 	public static function saveAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->save() ) == '' ) {
 			return $cntl->getView()->response();
@@ -205,7 +205,7 @@ class Jqadm
 	 */
 	public static function searchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		$cntl = self::createClient( $container, $request, $response, $args );
+		$cntl = self::createAdmin( $container, $request, $response, $args );
 
 		if( ( $html = $cntl->search() ) == '' ) {
 			return $cntl->getView()->response();
@@ -224,7 +224,7 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return \Aimeos\Admin\JQAdm\Iface JQAdm client
 	 */
-	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	protected static function createAdmin( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$aimeos = $container->get( 'aimeos' );
 		$templatePaths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
@@ -246,7 +246,7 @@ class Jqadm
 
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JQAdm\Factory::createClient( $context, $aimeos, $resource );
+		return \Aimeos\Admin\JQAdm::create( $context, $aimeos, $resource );
 	}
 
 

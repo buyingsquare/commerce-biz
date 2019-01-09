@@ -64,7 +64,7 @@ class Base
 	 */
 	protected static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $ctx, $sites )
 	{
-		$manager = \Aimeos\MShop\Factory::createManager( $ctx, 'locale/site' );
+		$manager = \Aimeos\MShop::create( $ctx, 'locale/site' );
 		$search = $manager->createSearch();
 
 		if( is_scalar( $sites ) && $sites != '' ) {

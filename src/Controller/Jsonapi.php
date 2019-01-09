@@ -135,6 +135,6 @@ class Jsonapi
 		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, $args, $tmplPaths, $langid );
 		$context->setView( $view );
 
-		return \Aimeos\Client\JsonApi\Factory::createClient( $context, $resource . '/' . $related );
+		return \Aimeos\Client\JsonApi::create( $context, $resource . '/' . $related );
 	}
 }

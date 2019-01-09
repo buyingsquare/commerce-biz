@@ -34,7 +34,7 @@ class Jsonadm
 	 */
 	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		return self::createClient( $container, $request, $response, $args )->delete( $request, $response );
+		return self::createAdmin( $container, $request, $response, $args )->delete( $request, $response );
 	}
 
 
@@ -49,7 +49,7 @@ class Jsonadm
 	 */
 	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		return self::createClient( $container, $request, $response, $args )->get( $request, $response );
+		return self::createAdmin( $container, $request, $response, $args )->get( $request, $response );
 	}
 
 
@@ -64,7 +64,7 @@ class Jsonadm
 	 */
 	public static function patchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		return self::createClient( $container, $request, $response, $args )->patch( $request, $response );
+		return self::createAdmin( $container, $request, $response, $args )->patch( $request, $response );
 	}
 
 
@@ -79,7 +79,7 @@ class Jsonadm
 	 */
 	public static function postAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		return self::createClient( $container, $request, $response, $args )->post( $request, $response );
+		return self::createAdmin( $container, $request, $response, $args )->post( $request, $response );
 	}
 
 
@@ -94,7 +94,7 @@ class Jsonadm
 	 */
 	public static function putAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		return self::createClient( $container, $request, $response, $args )->put( $request, $response );
+		return self::createAdmin( $container, $request, $response, $args )->put( $request, $response );
 	}
 
 
@@ -109,7 +109,7 @@ class Jsonadm
 	 */
 	public static function optionsAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
-		return self::createClient( $container, $request, $response, $args )->options( $request, $response );
+		return self::createAdmin( $container, $request, $response, $args )->options( $request, $response );
 	}
 
 
@@ -122,7 +122,7 @@ class Jsonadm
 	 * @param array $args Associative list of route parameters
 	 * @return \Aimeos\Admin\JsonAdm\Iface JSON admin client
 	 */
-	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	protected static function createAdmin( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
 	{
 		$resource = ( isset( $args['resource'] ) ? $args['resource'] : null );
 		$site = ( isset( $args['site'] ) ? $args['site'] : 'default' );
@@ -138,6 +138,6 @@ class Jsonadm
 		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, $args, $templatePaths, $lang );
 		$context->setView( $view );
 
-		return \Aimeos\Admin\JsonAdm\Factory::createClient( $context, $aimeos, $resource );
+		return \Aimeos\Admin\JsonAdm::create( $context, $aimeos, $resource );
 	}
 }

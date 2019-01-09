@@ -128,7 +128,7 @@ class Context
 	 */
 	protected function addLogger( \Aimeos\MShop\Context\Item\Iface $context )
 	{
-		$logger = \Aimeos\MAdmin\Log\Manager\Factory::createManager( $context );
+		$logger = \Aimeos\MAdmin::create( $context, 'log' );
 
 		return $context->setLogger( $logger );
 	}

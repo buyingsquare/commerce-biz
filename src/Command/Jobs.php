@@ -101,7 +101,7 @@ class Jobs extends Base implements Iface
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
 		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, array(), $tmplPaths );
 
-		$langManager = \Aimeos\MShop\Factory::createManager( $context, 'locale/language' );
+		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
 		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
 		$i18n = $container->get( 'aimeos.i18n' )->get( $langids );
 
@@ -123,7 +123,7 @@ class Jobs extends Base implements Iface
 	protected static function execute( \Aimeos\Bootstrap $aimeos, \Aimeos\MShop\Context\Item\Iface $ctx, array $siteItems, $jobs )
 	{
 		$process = $ctx->getProcess();
-		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $ctx );
+		$localeManager = \Aimeos\MShop::create( $ctx, 'locale' );
 
 		foreach( $siteItems as $siteItem )
 		{
@@ -138,7 +138,7 @@ class Jobs extends Base implements Iface
 			foreach( (array) explode( ' ', $jobs ) as $jobname )
 			{
 				$fcn = function( $ctx, $aimeos, $jobname ) {
-					\Aimeos\Controller\Jobs\Factory::createController( $ctx, $aimeos, $jobname )->run();
+					\Aimeos\Controller\Jobs::create( $ctx, $aimeos, $jobname )->run();
 				};
 
 				$process->start( $fcn, [$ctx, $aimeos, $jobname], true );
