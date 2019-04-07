@@ -3,6 +3,7 @@
 </a>
 
 # Aimeos Slim package
+[![Total Downloads](https://poser.pugx.org/aimeos/aimeos-slim/d/total.svg)](https://packagist.org/packages/aimeos/aimeos-slim)
 [![Build Status](https://travis-ci.org/aimeos/aimeos-slim.svg)](https://travis-ci.org/aimeos/aimeos-slim)
 [![Coverage Status](https://coveralls.io/repos/aimeos/aimeos-slim/badge.svg?branch=master&service=github)](https://coveralls.io/github/aimeos/aimeos-slim?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aimeos/aimeos-slim/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aimeos/aimeos-slim/?branch=master)
