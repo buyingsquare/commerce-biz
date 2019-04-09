@@ -1,6 +1,6 @@
 {
 	"name": "aimeos/aimeos-slim",
-	"description": "Professional, full-featured and high performance SlimPHP e-commerce package for online shops and TV-approved shop pages",
+	"description": "Professional, full-featured and ultra fast SlimPHP e-commerce package for (TV-approved) online shops",
 	"homepage": "https://aimeos.org/SlimPHP",
 	"type": "library",
 	"license": "LGPL-3.0-or-later",
@@ -11,27 +11,21 @@
 		"forum": "https://aimeos.org/help",
 		"wiki": "https://aimeos.org/docs"
 	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/aimeos/php-coveralls"
-		}
-	],
 	"prefer-stable": true,
 	"minimum-stability": "dev",
 	"require": {
-		"php": ">=5.4.0",
-		"aimeos/aimeos-core": "dev-master",
-		"aimeos/ai-admin-jqadm": "dev-master",
-		"aimeos/ai-admin-jsonadm": "dev-master",
-		"aimeos/ai-client-html": "dev-master",
-		"aimeos/ai-client-jsonapi": "dev-master",
-		"aimeos/ai-controller-jobs": "dev-master",
-		"aimeos/ai-gettext": "dev-master",
-		"aimeos/ai-monolog": "dev-master",
-		"aimeos/ai-swiftmailer": "dev-master",
-		"aimeos/ai-slim": "dev-master",
-		"aimeos/ai-twig": "dev-master",
+		"php": ">=5.5.0",
+		"aimeos/aimeos-core": "2019.04.*",
+		"aimeos/ai-admin-jqadm": "2019.04.*",
+		"aimeos/ai-admin-jsonadm": "2019.04.*",
+		"aimeos/ai-client-html": "2019.04.*",
+		"aimeos/ai-client-jsonapi": "2019.04.*",
+		"aimeos/ai-controller-jobs": "2019.04.*",
+		"aimeos/ai-gettext": "2019.04.*",
+		"aimeos/ai-monolog": "2019.04.*",
+		"aimeos/ai-swiftmailer": "2019.04.*",
+		"aimeos/ai-slim": "2019.04.*",
+		"aimeos/ai-twig": "2019.04.*",
 		"slim/twig-view": "~2.0",
 		"slim/slim": "~3.3",
 		"akrabat/ip-address-middleware": "^0.5"
