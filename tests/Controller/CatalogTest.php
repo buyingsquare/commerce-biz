@@ -4,7 +4,7 @@ class CatalogTest extends \LocalWebTestCase
 {
 	public function testCountAction()
 	{
-		$response = $this->call( 'GET', '/unittest/count' );
+		$response = $this->call( 'GET', '/unittest/shop/count' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'application/javascript', $response->getHeader( 'Content-Type' ) );
@@ -14,7 +14,7 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testDetailAction()
 	{
-		$response = $this->call( 'GET', '/unittest/d/test/0' );
+		$response = $this->call( 'GET', '/unittest/shop/test/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'catalog-detail', (string) $response->getBody() );
@@ -23,7 +23,7 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testDetailActionPin()
 	{
-		$response = $this->call( 'GET', '/unittest/d/pin' );
+		$response = $this->call( 'GET', '/unittest/shop/pin' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'catalog-detail', (string) $response->getBody() );
@@ -32,7 +32,7 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testListAction()
 	{
-		$response = $this->call( 'GET', '/unittest/list' );
+		$response = $this->call( 'GET', '/unittest/shop' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'catalog-list', (string) $response->getBody() );
@@ -41,7 +41,7 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testStockAction()
 	{
-		$response = $this->call( 'GET', '/unittest/stock' );
+		$response = $this->call( 'GET', '/unittest/shop/stock' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'application/javascript', $response->getHeader( 'Content-Type' ) );
@@ -51,7 +51,7 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testSuggestAction()
 	{
-		$response = $this->call( 'GET', '/unittest/suggest' );
+		$response = $this->call( 'GET', '/unittest/shop/suggest' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'application/json', $response->getHeader( 'Content-Type' ) );
@@ -61,7 +61,7 @@ class CatalogTest extends \LocalWebTestCase
 
 	public function testTreeAction()
 	{
-		$response = $this->call( 'GET', '/unittest/c/name/0' );
+		$response = $this->call( 'GET', '/unittest/shop/name~0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertContains( 'catalog-list', (string) $response->getBody() );

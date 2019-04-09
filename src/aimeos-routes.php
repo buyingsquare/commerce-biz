@@ -105,44 +105,32 @@ $app->group( $config( 'routes/jsonapi', '/jsonapi' ), function() use ( $config )
 });
 
 
-$app->group( $config( 'routes/account', '' ), function() {
+$app->group( $config( 'routes/account', '/myaccount' ), function() {
 
-	$this->map(['GET', 'POST'], '/myaccount', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Account::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_account' );
 
-	$this->map(['GET', 'POST'], '/myaccount/favorite[/{fav_action}/{fav_id:[0-9]+}[/{d_name}]]', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/favorite[/{fav_action}/{fav_id:[0-9]+}[/{d_name}]]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Account::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_account_favorite' );
 
-	$this->map(['GET', 'POST'], '/myaccount/watch[/{wat_action}/{wat_id:[0-9]+}[/{d_name}]]', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/watch[/{wat_action}/{wat_id:[0-9]+}[/{d_name}]]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Account::indexAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_account_watch' );
 
-	$this->map(['GET', 'POST'], '/myaccount/download/{dl_id}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/download/{dl_id}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Account::downloadAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_account_download' );
 
 });
 
 
-$app->group( $config( 'routes/default', '' ), function() {
+$app->group( $config( 'routes/default', '/shop' ), function() {
 
 	$this->map(['GET', 'POST'], '/count', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Catalog::countAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_count' );
-
-	$this->map(['GET', 'POST'], '/d/{d_name}/{d_prodid}[/{d_pos:[0-9]+}]', function( $request, $response, $args ) {
-		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
-	})->setName( 'aimeos_shop_detail' );
-
-	$this->map(['GET', 'POST'], '/d/pin[/{pin_action}/{pin_id}[/{d_name}]]', function( $request, $response, $args ) {
-		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
-	})->setName( 'aimeos_shop_session_pinned' );
-
-	$this->map(['GET', 'POST'], '/list', function( $request, $response, $args ) {
-		return \Aimeos\Slim\Controller\Catalog::listAction( $this, $request, $response, $args );
-	})->setName( 'aimeos_shop_list' );
 
 	$this->map(['GET', 'POST'], '/suggest', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Catalog::suggestAction( $this, $request, $response, $args );
@@ -151,10 +139,6 @@ $app->group( $config( 'routes/default', '' ), function() {
 	$this->map(['GET', 'POST'], '/stock', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Catalog::stockAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_stock' );
-
-	$this->map(['GET', 'POST'], '/c/{f_name}/{f_catid}', function( $request, $response, $args ) {
-		return \Aimeos\Slim\Controller\Catalog::treeAction( $this, $request, $response, $args );
-	})->setName( 'aimeos_shop_tree' );
 
 	$this->map(['GET', 'POST'], '/basket', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Basket::indexAction( $this, $request, $response, $args );
@@ -167,6 +151,22 @@ $app->group( $config( 'routes/default', '' ), function() {
 	$this->map(['GET', 'POST'], '/confirm[/{code}]', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Checkout::confirmAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_confirm' );
+
+	$this->map(['GET', 'POST'], '/pin[/{pin_action}/{pin_id}[/{d_name}]]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_session_pinned' );
+
+	$this->map(['GET', 'POST'], '/{f_name}~{f_catid}', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Catalog::treeAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_tree' );
+
+	$this->map(['GET', 'POST'], '/{d_name}[/{d_pos:[0-9]+}]', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_detail' );
+
+	$this->map(['GET', 'POST'], '', function( $request, $response, $args ) {
+		return \Aimeos\Slim\Controller\Catalog::listAction( $this, $request, $response, $args );
+	})->setName( 'aimeos_shop_list' );
 
 });
 

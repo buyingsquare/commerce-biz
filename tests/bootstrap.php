@@ -44,9 +44,8 @@ class LocalWebTestCase extends \PHPUnit\Framework\TestCase
 				'jqadm' => '/{site}/admin/jqadm',
 				'jsonadm' => '/{site}/admin/jsonadm',
 				'jsonapi' => '/{site}/jsonapi',
-				'account' => '/{site}',
-				'default' => '/{site}',
-				'confirm' => '/{site}',
+				'account' => '/{site}/myaccount',
+				'default' => '/{site}/shop',
 				'update' => '/{site}',
 			),
 		);
