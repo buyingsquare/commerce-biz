@@ -30,7 +30,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos SlimPHP **2018.10 release and later**.
 
-- Beta release: 2019.01
+- Stable release: 2019.04
 - LTS release: 2018.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
@@ -46,7 +46,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2018.10",
+        "aimeos/aimeos-slim": "~2019.04",
         ...
     },
 ```
@@ -186,7 +186,8 @@ Simply execute this command in the base directory of your application:
 
 Point your browser to the list page of the shop using:
 
-http://127.0.0.1:8000/list
+Since 2019.04: http://127.0.0.1:8000/shop
+Until 2019.01: http://127.0.0.1:8000/list
 
 ## Admin
 
