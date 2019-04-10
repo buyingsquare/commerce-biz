@@ -1,6 +1,6 @@
 {
 	"name": "aimeos/aimeos-slim",
-	"description": "Professional, full-featured and high performance SlimPHP e-commerce package for online shops and TV-approved shop pages",
+	"description": "Professional, full-featured and ultra fast SlimPHP e-commerce package for (TV-approved) online shops",
 	"homepage": "https://aimeos.org/SlimPHP",
 	"type": "library",
 	"license": "LGPL-3.0-or-later",
@@ -11,12 +11,6 @@
 		"forum": "https://aimeos.org/help",
 		"wiki": "https://aimeos.org/docs"
 	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/aimeos/php-coveralls"
-		}
-	],
 	"prefer-stable": true,
 	"minimum-stability": "dev",
 	"require": {
