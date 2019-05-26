@@ -156,7 +156,7 @@ $app->group( $config( 'routes/default', '/shop' ), function() {
 		return \Aimeos\Slim\Controller\Catalog::detailAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_session_pinned' );
 
-	$this->map(['GET', 'POST'], '/{f_name:[^~]+}~{f_catid}', function( $request, $response, $args ) {
+	$this->map(['GET', 'POST'], '/{f_name}~{f_catid}', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Catalog::treeAction( $this, $request, $response, $args );
 	})->setName( 'aimeos_shop_tree' );
 
