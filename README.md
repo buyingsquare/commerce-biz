@@ -30,7 +30,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos SlimPHP **2018.10 release and later**.
 
-- Stable release: 2019.04
+- Stable release: 2019.07
 - LTS release: 2018.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
@@ -46,7 +46,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2019.04",
+        "aimeos/aimeos-slim": "~2019.07",
         ...
     },
 ```
