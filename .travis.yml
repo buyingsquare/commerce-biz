@@ -1,5 +1,9 @@
 sudo: false
+dist: xenial
 language: php
+
+services:
+  - mysql
 
 php:
   - 7.3
@@ -21,10 +25,8 @@ env:
   - SLIM_VERSION=3.4.*
 
 before_script:
-  - composer self-update
   - travis_retry composer require "slim/slim:${SLIM_VERSION}"
-  - mysql -e 'create database slim;'
-  - sed -i 's/utf8mb4/utf8/' src/aimeos-default.php
+  - mysql -e "CREATE DATABASE slim; GRANT ALL ON symfony.* TO 'slim'@'127.0.0.1' IDENTIFIED BY 'aimeos'"
   - php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-default.php unittest unittest
 
 script:
