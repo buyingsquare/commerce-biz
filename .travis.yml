@@ -26,7 +26,7 @@ env:
 
 before_script:
   - travis_retry composer require "slim/slim:${SLIM_VERSION}"
-  - mysql -e "CREATE DATABASE slim; GRANT ALL ON symfony.* TO 'slim'@'127.0.0.1' IDENTIFIED BY 'aimeos'"
+  - mysql -e "CREATE DATABASE slim; GRANT ALL ON slim.* TO 'aimeos'@'127.0.0.1' IDENTIFIED BY 'aimeos'"
   - php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-default.php unittest unittest
 
 script:
