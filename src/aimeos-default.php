@@ -8,7 +8,7 @@ return array(
 
 	'page' => array(
 		'account-index' => array( 'account/profile','account/subscription','account/history','account/favorite','account/watch','basket/mini','catalog/session' ),
-		'basket-index' => array( 'basket/standard','basket/related' ),
+		'basket-index' => array( 'basket/bulk', 'basket/standard','basket/related' ),
 		'catalog-count' => array( 'catalog/count' ),
 		'catalog-detail' => array( 'basket/mini','catalog/stage','catalog/detail','catalog/session' ),
 		'catalog-list' => array( 'basket/mini','catalog/filter','catalog/lists' ),
@@ -26,8 +26,8 @@ return array(
 			'host' => 'localhost',
 			'port' => '',
 			'database' => 'slim',
-			'username' => 'root',
-			'password' => '',
+			'username' => 'aimeos',
+			'password' => 'aimeos',
 			'stmt' => array("SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"),
 			'opt-persistent' => 0,
 			'limit' => 3,
