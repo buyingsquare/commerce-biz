@@ -11,7 +11,6 @@ php:
   - 7.1
   - 7.0
   - 5.6
-  - 5.5
 
 env:
   - SLIM_VERSION=3.12.*
@@ -26,7 +25,7 @@ env:
 
 before_script:
   - travis_retry composer require "slim/slim:${SLIM_VERSION}"
-  - mysql -e "CREATE DATABASE slim; GRANT ALL ON slim.* TO 'aimeos'@'127.0.0.1' IDENTIFIED BY 'aimeos'"
+  - mysql -e "CREATE DATABASE slim; GRANT ALL ON slim.* TO 'aimeos'@'localhost' IDENTIFIED BY 'aimeos'"
   - php vendor/aimeos/aimeos-core/setup.php --config=src/aimeos-default.php unittest unittest
 
 script:
@@ -39,4 +38,3 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: 5.6
-    - php: 5.5
