@@ -28,15 +28,14 @@ and customize anything to your needs.
 
 ## Installation or update
 
-This document is for the latest Aimeos SlimPHP **2018.10 release and later**.
+This document is for the latest Aimeos SlimPHP **2019.10 release and later**.
 
-- Stable release: 2019.07
-- LTS release: 2018.10
+- LTS release: 2019.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
 created by:
 
-```composer create-project slim/slim-skeleton [my-app-name]```
+```composer create-project slim/slim-skeleton:~3.1 [my-app-name]```
 
 The Aimeos Slim e-commerce package is a composer based library that can be
 installed easiest by using [Composer](https://getcomposer.org). Add these lines
@@ -46,7 +45,7 @@ to your `composer.json` of your Slim project:
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "aimeos/aimeos-slim": "~2019.07",
+        "aimeos/aimeos-slim": "~2019.10",
         ...
     },
 ```
