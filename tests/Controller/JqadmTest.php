@@ -42,8 +42,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 	{
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/delete/product/0' );
 
-		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'list-items', (string) $response->getBody() );
+		$this->assertEquals( 302, $response->getStatusCode() );
 	}
 
 
