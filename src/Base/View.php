@@ -9,7 +9,7 @@
 
 namespace Aimeos\Slim\Base;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -128,7 +128,7 @@ class View
 		$name = $request->getAttribute( 'csrf_name' );
 		$value = $request->getAttribute( 'csrf_value' );
 
-		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view, $name, $value );
+		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view, (string) $name, (string) $value );
 		$view->addHelper( 'csrf', $helper );
 
 		return $view;

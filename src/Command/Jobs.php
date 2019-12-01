@@ -86,10 +86,10 @@ class Jobs extends Base implements Iface
 	/**
 	 * Returns a new context object
 	 *
-	 * @param \Interop\Container\ContainerInterface $container Dependency injection container
+	 * @param \Psr\Container\ContainerInterface $container Dependency injection container
 	 * @return \Aimeos\MShop\Context\Item\Standard Context object
 	 */
-	protected static function getContext( \Interop\Container\ContainerInterface $container )
+	protected static function getContext( \Psr\Container\ContainerInterface $container )
 	{
 		$aimeos = $container->get( 'aimeos' );
 		$context = $container->get( 'aimeos.context' )->get( false, array(), 'command' );

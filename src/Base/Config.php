@@ -9,7 +9,7 @@
 
 namespace Aimeos\Slim\Base;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 
 /**
@@ -29,7 +29,7 @@ class Config
 	 *
 	 * @param ContainerInterface $container Dependency container
 	 */
-	public function __construct( ContainerInterface $container, $settings )
+	public function __construct( ContainerInterface $container, array $settings )
 	{
 		$this->container = $container;
 		$this->settings = $settings;
@@ -51,10 +51,10 @@ class Config
 			$config = new \Aimeos\MW\Config\Decorator\APC( $config, $config->get( 'apc_prefix', 'slim:' ) );
 		}
 
-		$config = new \Aimeos\MW\Config\Decorator\Memory( $config, $this->settings );
+		$config = new \Aimeos\MW\Config\Decorator\Memory( $config, (array) $this->settings );
 
 		if( isset( $this->settings[$type] ) ) {
-			$config = new \Aimeos\MW\Config\Decorator\Memory( $config, $this->settings[$type] );
+			$config = new \Aimeos\MW\Config\Decorator\Memory( $config, (array) $this->settings[$type] );
 		}
 
 		return $config;
