@@ -7,17 +7,17 @@ return array(
 	'uploaddir' => '/',
 
 	'page' => array(
-		'account-index' => array( 'account/profile','account/subscription','account/history','account/favorite','account/watch','basket/mini','catalog/session' ),
-		'basket-index' => array( 'basket/bulk', 'basket/standard','basket/related' ),
+		'account-index' => array( 'account/profile', 'account/subscription', 'account/history', 'account/favorite', 'account/watch', 'basket/mini', 'catalog/session' ),
+		'basket-index' => array( 'basket/bulk', 'basket/standard', 'basket/related' ),
 		'catalog-count' => array( 'catalog/count' ),
-		'catalog-detail' => array( 'basket/mini','catalog/stage','catalog/detail','catalog/session' ),
-		'catalog-list' => array( 'basket/mini','catalog/filter','catalog/lists' ),
+		'catalog-detail' => array( 'basket/mini', 'catalog/stage', 'catalog/detail', 'catalog/session' ),
+		'catalog-list' => array( 'basket/mini', 'catalog/filter', 'catalog/lists' ),
 		'catalog-stock' => array( 'catalog/stock' ),
 		'catalog-suggest' => array( 'catalog/suggest' ),
-		'catalog-tree' => array( 'basket/mini','catalog/filter','catalog/stage','catalog/lists' ),
+		'catalog-tree' => array( 'basket/mini', 'catalog/filter', 'catalog/stage', 'catalog/lists' ),
 		'checkout-confirm' => array( 'checkout/confirm' ),
 		'checkout-index' => array( 'checkout/standard' ),
-		'checkout-update' => array( 'checkout/update'),
+		'checkout-update' => array( 'checkout/update' ),
 	),
 
 	'resource' => array(
@@ -28,7 +28,7 @@ return array(
 			'database' => 'slim',
 			'username' => 'aimeos',
 			'password' => 'aimeos',
-			'stmt' => array("SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"),
+			'stmt' => array( "SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'" ),
 			'opt-persistent' => 0,
 			'limit' => 3,
 			'defaultTableOptions' => [

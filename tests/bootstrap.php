@@ -59,7 +59,7 @@ class LocalWebTestCase extends \PHPUnit\Framework\TestCase
 			'REQUEST_METHOD' => $method,
 			'REQUEST_URI' => $path,
 			'QUERY_STRING' => http_build_query( $params )
-		));
+		) );
 		$c['request'] = \Slim\Http\Request::createFromEnvironment( $env );
 		$c['request']->getBody()->write( $body );
 		$c['response'] = new \Slim\Http\Response();

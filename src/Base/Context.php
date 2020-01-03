@@ -58,7 +58,7 @@ class Context
 			$this->addMessageQueueManager( $context );
 			$this->addLogger( $context );
 			$this->addCache( $context );
-			$this->addMailer( $context);
+			$this->addMailer( $context );
 			$this->addProcess( $context );
 			$this->addSession( $context );
 			$this->addUser( $context );
@@ -205,7 +205,7 @@ class Context
 	 */
 	protected function addUser( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
-		$ipaddr = $this->container->request->getAttribute('ip_address');
+		$ipaddr = $this->container->request->getAttribute( 'ip_address' );
 
 		return $context->setEditor( $ipaddr ?: '' );
 	}
