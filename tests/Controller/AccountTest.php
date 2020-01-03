@@ -7,10 +7,10 @@ class AccountTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/myaccount' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'account-profile', (string) $response->getBody() );
-		$this->assertContains( 'account-history', (string) $response->getBody() );
-		$this->assertContains( 'account-favorite', (string) $response->getBody() );
-		$this->assertContains( 'account-watch', (string) $response->getBody() );
+		$this->assertStringContainsString( 'account-profile', (string) $response->getBody() );
+		$this->assertStringContainsString( 'account-history', (string) $response->getBody() );
+		$this->assertStringContainsString( 'account-favorite', (string) $response->getBody() );
+		$this->assertStringContainsString( 'account-watch', (string) $response->getBody() );
 	}
 
 
@@ -19,7 +19,7 @@ class AccountTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/myaccount/favorite' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'account-favorite', (string) $response->getBody() );
+		$this->assertStringContainsString( 'account-favorite', (string) $response->getBody() );
 	}
 
 
@@ -28,7 +28,7 @@ class AccountTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/myaccount/watch' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'account-watch', (string) $response->getBody() );
+		$this->assertStringContainsString( 'account-watch', (string) $response->getBody() );
 	}
 
 

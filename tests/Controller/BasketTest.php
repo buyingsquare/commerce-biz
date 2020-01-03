@@ -7,6 +7,6 @@ class BasketTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop/basket' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'basket-standard', (string) $response->getBody() );
+		$this->assertStringContainsString( 'basket-standard', (string) $response->getBody() );
 	}
 }

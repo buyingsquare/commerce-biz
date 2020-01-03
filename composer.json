@@ -31,7 +31,7 @@
 		"akrabat/ip-address-middleware": "^0.5"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^4.8.35||~5.0||~6.0",
+		"phpunit/phpunit": "~7.0||~8.0",
 		"php-coveralls/php-coveralls": "~2.0"
 	},
 	"autoload": {

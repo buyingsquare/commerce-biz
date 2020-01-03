@@ -16,14 +16,12 @@ class CacheTest extends \PHPUnit\Framework\TestCase
 	}
 
 
-	/**
-	 * @expectedException Aimeos\Slim\Command\Exception
-	 */
 	public function testRunHelp()
 	{
 		$cfgfile = dirname( dirname( __DIR__ ) ) . '/src/aimeos-default.php';
 		$argv = array( "cache.php", "--help" );
 
+		$this->expectException( \Aimeos\Slim\Command\Exception::class );
 		\Aimeos\Slim\Command\Cache::run( $argv );
 	}
 }

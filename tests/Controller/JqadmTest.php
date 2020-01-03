@@ -7,7 +7,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/file/css' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( '.aimeos', (string) $response->getBody() );
+		$this->assertStringContainsString( '.aimeos', (string) $response->getBody() );
 	}
 
 
@@ -16,7 +16,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/file/js' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'Aimeos = {', (string) $response->getBody() );
+		$this->assertStringContainsString( 'Aimeos = {', (string) $response->getBody() );
 	}
 
 
@@ -25,7 +25,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/copy/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'item-product', (string) $response->getBody() );
+		$this->assertStringContainsString( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -34,7 +34,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/create/product' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'item-product', (string) $response->getBody() );
+		$this->assertStringContainsString( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -51,7 +51,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/export/order' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'list-items', (string) $response->getBody() );
+		$this->assertStringContainsString( 'list-items', (string) $response->getBody() );
 	}
 
 
@@ -60,7 +60,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/get/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'item-product', (string) $response->getBody() );
+		$this->assertStringContainsString( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -69,7 +69,7 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'POST', '/unittest/admin/jqadm/save/product/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'item-product', (string) $response->getBody() );
+		$this->assertStringContainsString( 'item-product', (string) $response->getBody() );
 	}
 
 
@@ -78,6 +78,6 @@ class JqadmControllerTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/admin/jqadm/search/product' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'list-items', (string) $response->getBody() );
+		$this->assertStringContainsString( 'list-items', (string) $response->getBody() );
 	}
 }

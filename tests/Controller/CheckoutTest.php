@@ -7,7 +7,7 @@ class CheckoutTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop/confirm' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'checkout-confirm', (string) $response->getBody() );
+		$this->assertStringContainsString( 'checkout-confirm', (string) $response->getBody() );
 	}
 
 
@@ -16,7 +16,7 @@ class CheckoutTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop/checkout' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'checkout-standard', (string) $response->getBody() );
+		$this->assertStringContainsString( 'checkout-standard', (string) $response->getBody() );
 	}
 
 

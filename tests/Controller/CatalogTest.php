@@ -17,7 +17,7 @@ class CatalogTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop/test/0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'catalog-detail', (string) $response->getBody() );
+		$this->assertStringContainsString( 'catalog-detail', (string) $response->getBody() );
 	}
 
 
@@ -26,7 +26,7 @@ class CatalogTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop/pin' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'catalog-detail', (string) $response->getBody() );
+		$this->assertStringContainsString( 'catalog-detail', (string) $response->getBody() );
 	}
 
 
@@ -35,7 +35,7 @@ class CatalogTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'catalog-list', (string) $response->getBody() );
+		$this->assertStringContainsString( 'catalog-list', (string) $response->getBody() );
 	}
 
 
@@ -64,6 +64,6 @@ class CatalogTest extends \LocalWebTestCase
 		$response = $this->call( 'GET', '/unittest/shop/name~0' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
-		$this->assertContains( 'catalog-list', (string) $response->getBody() );
+		$this->assertStringContainsString( 'catalog-list', (string) $response->getBody() );
 	}
 }

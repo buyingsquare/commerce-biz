@@ -13,11 +13,9 @@ class JobsTest extends \PHPUnit\Framework\TestCase
 	}
 
 
-	/**
-	 * @expectedException Aimeos\Slim\Command\Exception
-	 */
 	public function testRunHelp()
 	{
+		$this->expectException( \Aimeos\Slim\Command\Exception::class );
 		\Aimeos\Slim\Command\Cache::run( array( "jobs.php", "--help" ) );
 	}
 }

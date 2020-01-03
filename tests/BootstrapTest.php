@@ -34,8 +34,6 @@ class BootstrapTest extends \PHPUnit\Framework\TestCase
 
 	public function testGetVersion()
 	{
-		$result = \Aimeos\Slim\Bootstrap::getVersion();
-
-		$this->assertInternalType( 'string', $result );
+		$this->assertIsString( \Aimeos\Slim\Bootstrap::getVersion() );
 	}
 }
