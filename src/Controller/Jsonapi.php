@@ -32,7 +32,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		return self::createClient( $container, $request, $response, $args )->delete( $request, $response );
 	}
@@ -47,7 +48,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function getAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		return self::createClient( $container, $request, $response, $args )->get( $request, $response );
 	}
@@ -62,7 +64,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function patchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function patchAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		return self::createClient( $container, $request, $response, $args )->patch( $request, $response );
 	}
@@ -77,7 +80,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function postAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function postAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		return self::createClient( $container, $request, $response, $args )->post( $request, $response );
 	}
@@ -92,7 +96,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function putAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function putAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		return self::createClient( $container, $request, $response, $args )->put( $request, $response );
 	}
@@ -107,7 +112,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function optionsAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function optionsAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		return self::createClient( $container, $request, $response, $args )->options( $request, $response );
 	}
@@ -122,7 +128,8 @@ class Jsonapi
 	 * @param array $args Associative list of route parameters
 	 * @return \Aimeos\Client\JsonApi\Iface JSON client controller
 	 */
-	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	protected static function createClient( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : \Aimeos\Client\JsonApi\Iface
 	{
 		$params = $request->getQueryParams();
 		$resource = ( isset( $args['resource'] ) ? $args['resource'] : ( isset( $params['resource'] ) ? $params['resource'] : null ) );

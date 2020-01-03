@@ -41,7 +41,7 @@ class I18n
 	 * @param array $languageIds List of two letter ISO language IDs
 	 * @return \Aimeos\MW\Translation\Iface[] List of translation objects
 	 */
-	public function get( array $languageIds )
+	public function get( array $languageIds ) : array
 	{
 		$config = $this->container->get( 'aimeos.config' )->get();
 		$i18nPaths = $this->container->get( 'aimeos' )->getI18nPaths();

@@ -31,7 +31,8 @@ class Basket
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'basket-index', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Basket/index.html.twig', $contents );

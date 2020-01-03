@@ -31,7 +31,8 @@ class Account
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'account-index', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Account/index.html.twig', $contents );
@@ -47,7 +48,8 @@ class Account
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function downloadAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function downloadAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$context = $container->get( 'aimeos.context' )->get( true, $args );
 		$langid = $context->getLocale()->getLanguageId();

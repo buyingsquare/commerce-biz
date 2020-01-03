@@ -23,7 +23,7 @@ class Cache extends Base implements Iface
 	 *
 	 * @return string Command usage and options
 	 */
-	public static function usage()
+	public static function usage() : string
 	{
 		return "Usage: php cache.php [--extdir=<path>]* [--config=<path>|<file>]* [\"sitecode1 [sitecode2]*\"]\n";
 	}
@@ -57,7 +57,7 @@ class Cache extends Base implements Iface
 	 * @param array $options Associative list of configuration options as key/value pairs
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	protected static function getContext( array $confPaths, array $options )
+	protected static function getContext( array $confPaths, array $options ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = array();
 		$ctx = new \Aimeos\MShop\Context\Item\Standard();

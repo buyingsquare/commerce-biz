@@ -40,7 +40,7 @@ class Bootstrap
 	 * @param string $path Absolute or relative path to the Aimeos route file
 	 * @return \Aimeos\Slim\Bootstrap Self instance
 	 */
-	public function routes( $path )
+	public function routes( $path ) : self
 	{
 		$app = $this->app;
 		$settings = $this->settings;
@@ -71,7 +71,7 @@ class Bootstrap
 	 * @param string $extdir Absolute or relative path to the Aimeos extension directory
 	 * @return \Aimeos\Slim\Bootstrap Self instance
 	 */
-	public function setup( $extdir = '../ext' )
+	public function setup( $extdir = '../ext' ) : self
 	{
 		$container = $this->app->getContainer();
 
@@ -127,7 +127,7 @@ class Bootstrap
 	 *
 	 * @return string Version string
 	 */
-	public static function getVersion()
+	public static function getVersion() : string
 	{
 		$basedir = dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . DIRECTORY_SEPARATOR;
 

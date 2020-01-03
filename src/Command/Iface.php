@@ -30,5 +30,5 @@ interface Iface
 	 *
 	 * @return string Command usage and options
 	 */
-	public static function usage();
+	public static function usage() : string;
 }

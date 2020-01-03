@@ -23,7 +23,7 @@ class Jobs extends Base implements Iface
 	 *
 	 * @return string Command usage and options
 	 */
-	public static function usage()
+	public static function usage() : string
 	{
 		return "Usage: php job.php [--extdir=<path>]* [--config=<path>|<file>]* [--routes=<file>] \"job1 [job2]*\" [\"sitecode1 [sitecode2]*\"]\n";
 	}
@@ -65,7 +65,7 @@ class Jobs extends Base implements Iface
 	 * @param array $options Associative list of given options
 	 * @return array Multi-dimensional array of configuration settings
 	 */
-	protected static function getConfig( array $options )
+	protected static function getConfig( array $options ) : array
 	{
 		$config = array();
 
@@ -87,9 +87,9 @@ class Jobs extends Base implements Iface
 	 * Returns a new context object
 	 *
 	 * @param \Psr\Container\ContainerInterface $container Dependency injection container
-	 * @return \Aimeos\MShop\Context\Item\Standard Context object
+	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	protected static function getContext( \Psr\Container\ContainerInterface $container )
+	protected static function getContext( \Psr\Container\ContainerInterface $container ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$aimeos = $container->get( 'aimeos' );
 		$context = $container->get( 'aimeos.context' )->get( false, array(), 'command' );
@@ -118,7 +118,7 @@ class Jobs extends Base implements Iface
 	 *
 	 * @param \Aimeos\Bootstrap $aimeos Aimeos bootstrap object
 	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
-	 * @param array $siteItems List of site items implementing \Aimeos\MShop\Locale\Site\Iface
+	 * @param array|string $siteItems List of site items implementing \Aimeos\MShop\Locale\Site\Iface
 	 */
 	protected static function execute( \Aimeos\Bootstrap $aimeos, \Aimeos\MShop\Context\Item\Iface $ctx, array $siteItems, $jobs )
 	{

@@ -42,11 +42,12 @@ class Locale
 	 * @param array $attributes Associative list of URL parameter
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public function get( \Aimeos\MShop\Context\Item\Iface $context, array $attributes )
+	public function get( \Aimeos\MShop\Context\Item\Iface $context, array $attributes ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		if( $this->locale === null )
 		{
-			$disableSites = $this->container->get( 'aimeos.config' )->get( 'disableSites', true );
+			$disableSites = $this->container->get( 'aimeos.config' )->get()->get( 'disableSites', true );
+print_r( $disableSites );
 
 			$site = ( isset( $attributes['site'] ) ? $attributes['site'] : 'default' );
 			$lang = ( isset( $attributes['locale'] ) ? $attributes['locale'] : '' );
@@ -67,7 +68,7 @@ class Locale
 	 * @param string $site Unique site code
 	 * @return \Aimeos\MShop\Locale\Item\Iface Locale item object
 	 */
-	public function getBackend( \Aimeos\MShop\Context\Item\Iface $context, $site )
+	public function getBackend( \Aimeos\MShop\Context\Item\Iface $context, string $site ) : \Aimeos\MShop\Locale\Item\Iface
 	{
 		$localeManager = \Aimeos\MShop::create( $context, 'locale' );
 

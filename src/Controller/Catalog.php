@@ -31,7 +31,8 @@ class Catalog
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function countAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function countAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'catalog-count', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Catalog/count.html.twig', $contents );
@@ -50,7 +51,8 @@ class Catalog
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function detailAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function detailAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'catalog-detail', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Catalog/detail.html.twig', $contents )
@@ -67,7 +69,8 @@ class Catalog
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function listAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function listAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'catalog-list', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Catalog/list.html.twig', $contents )
@@ -84,7 +87,8 @@ class Catalog
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function stockAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function stockAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'catalog-stock', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Catalog/stock.html.twig', $contents );
@@ -103,7 +107,8 @@ class Catalog
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function suggestAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function suggestAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'catalog-suggest', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Catalog/suggest.html.twig', $contents );
@@ -122,7 +127,8 @@ class Catalog
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function treeAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function treeAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'catalog-tree', $request, $response, $args );
 		return $container->get( 'view' )->render( $response, 'Catalog/tree.html.twig', $contents )

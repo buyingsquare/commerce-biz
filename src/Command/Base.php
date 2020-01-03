@@ -24,7 +24,7 @@ class Base
 	 * @param array &$params List of parameters
 	 * @return array Associative list of option name and value(s)
 	 */
-	protected static function getOptions( array &$params )
+	protected static function getOptions( array &$params ) : array
 	{
 		$options = array();
 
@@ -62,7 +62,7 @@ class Base
 	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
 	 * @param string|null $sites List of site codes separated by a space
 	 */
-	protected static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $ctx, $sites )
+	protected static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $ctx, string $sites = null ) : array
 	{
 		$manager = \Aimeos\MShop::create( $ctx, 'locale/site' );
 		$search = $manager->createSearch();

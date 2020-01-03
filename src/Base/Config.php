@@ -42,7 +42,7 @@ class Config
 	 * @param string $type Configuration type ("frontend" or "backend")
 	 * @return \Aimeos\MW\Config\Iface Config object
 	 */
-	public function get( $type = 'frontend' )
+	public function get( string $type = 'frontend' ) : \Aimeos\MW\Config\Iface
 	{
 		$paths = $this->container->get( 'aimeos' )->getConfigPaths();
 		$config = new \Aimeos\MW\Config\PHPArray( array(), $paths );

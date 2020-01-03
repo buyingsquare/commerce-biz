@@ -31,7 +31,8 @@ class Checkout
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function confirmAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function confirmAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'checkout-confirm', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Checkout/confirm.html.twig', $contents );
@@ -49,7 +50,8 @@ class Checkout
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function indexAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'checkout-index', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Checkout/index.html.twig', $contents );
@@ -67,7 +69,8 @@ class Checkout
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface $response Modified response object with generated output
 	 */
-	public static function updateAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function updateAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = $container->get( 'shop' )->get( 'checkout-update', $request, $response, $args );
 		$response = $container->get( 'view' )->render( $response, 'Checkout/update.html.twig', $contents );

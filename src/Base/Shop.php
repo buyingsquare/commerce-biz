@@ -45,7 +45,7 @@ class Shop
 	 * @param array Associative list of URI attributes
 	 * @return array Associative list with body and header output separated by client name
 	 */
-	public function get( $pageName, ServerRequestInterface $request, ResponseInterface $response, array $attr )
+	public function get( $pageName, ServerRequestInterface $request, ResponseInterface $response, array $attr ) : array
 	{
 		$tmplPaths = $this->container->get( 'aimeos' )->getCustomPaths( 'client/html/templates' );
 		$context = $this->container->get( 'aimeos.context' )->get( true, $attr );

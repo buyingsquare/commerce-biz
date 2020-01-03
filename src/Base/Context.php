@@ -38,12 +38,13 @@ class Context
 	/**
 	 * Returns the current context
 	 *
-	 * @param boolean $locale True to add locale object to context, false if not
+	 * @param bool $locale True to add locale object to context, false if not
 	 * @param array $attributes Associative list of URL parameter
 	 * @param string $type Configuration type ("frontend" or "backend")
 	 * @return \Aimeos\MShop\Context\Item\Iface Context object
 	 */
-	public function get( $locale = true, array $attributes = array(), $type = 'frontend' )
+	public function get( bool $locale = true, array $attributes = array(),
+		string $type = 'frontend' ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = $this->container->get( 'aimeos.config' )->get( $type );
 
@@ -84,7 +85,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object including config
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addCache( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addCache( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$cache = new \Aimeos\MAdmin\Cache\Proxy\Standard( $context );
 
@@ -98,7 +99,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addDatabaseManager( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addDatabaseManager( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$dbm = new \Aimeos\MW\DB\Manager\DBAL( $context->getConfig() );
 
@@ -112,7 +113,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addFilesystemManager( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addFilesystemManager( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$fs = new \Aimeos\MW\Filesystem\Manager\Standard( $context->getConfig() );
 
@@ -126,7 +127,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addLogger( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addLogger( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$logger = \Aimeos\MAdmin::create( $context, 'log' );
 
@@ -141,7 +142,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addMailer( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addMailer( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$mail = new \Aimeos\MW\Mail\Swift( $this->container->get( 'mailer' ) );
 
@@ -155,7 +156,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addMessageQueueManager( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addMessageQueueManager( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$mq = new \Aimeos\MW\MQueue\Manager\Standard( $context->getConfig() );
 
@@ -169,7 +170,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addProcess( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addProcess( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$config = $context->getConfig();
 		$max = $config->get( 'pcntl_max', 4 );
@@ -188,7 +189,7 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addSession( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addSession( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$session = new \Aimeos\MW\Session\PHP();
 
@@ -202,10 +203,10 @@ class Context
 	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
 	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
 	 */
-	protected function addUser( \Aimeos\MShop\Context\Item\Iface $context )
+	protected function addUser( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
 	{
 		$ipaddr = $this->container->request->getAttribute('ip_address');
 
-		return $context->setEditor( $ipaddr );
+		return $context->setEditor( $ipaddr ?: '' );
 	}
 }

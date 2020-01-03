@@ -32,7 +32,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function fileAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function fileAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$contents = '';
 		$files = array();
@@ -77,7 +78,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function copyAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function copyAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -98,7 +100,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function createAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function createAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -119,7 +122,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function deleteAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -140,7 +144,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function exportAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function exportAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -161,7 +166,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function getAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function getAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -182,7 +188,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function saveAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function saveAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -203,7 +210,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	public static function searchAction( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	public static function searchAction( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : ResponseInterface
 	{
 		$cntl = self::createAdmin( $container, $request, $response, $args );
 
@@ -224,7 +232,8 @@ class Jqadm
 	 * @param array $args Associative list of route parameters
 	 * @return \Aimeos\Admin\JQAdm\Iface JQAdm client
 	 */
-	protected static function createAdmin( ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response, array $args )
+	protected static function createAdmin( ContainerInterface $container, ServerRequestInterface $request,
+		ResponseInterface $response, array $args ) : \Aimeos\Admin\JQAdm\Iface
 	{
 		$aimeos = $container->get( 'aimeos' );
 		$templatePaths = $aimeos->getCustomPaths( 'admin/jqadm/templates' );
@@ -258,7 +267,8 @@ class Jqadm
 	 * @param string $content Content from admin client
 	 * @return ResponseInterface Modified response object with generated output
 	 */
-	protected static function getHtml( ContainerInterface $container, ResponseInterface $response, $content )
+	protected static function getHtml( ContainerInterface $container, ResponseInterface $response,
+		string $content ) : ResponseInterface
 	{
 		return $container->get( 'view' )->render( $response, 'Jqadm/index.html.twig', array( 'content' => $content ) );
 	}
