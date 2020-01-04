@@ -27,7 +27,7 @@ return array(
 		// 'jqadm' => '/admin/{site}/jqadm',
 		// 'jsonadm' => '/admin/{site}/jsonadm',
 		// 'jsonapi' => '/jsonapi',
-		// 'account' => '/myaccount',
+		// 'account' => '/profile',
 		// 'default' => '/shop',
 		// 'update' => '',
 	),

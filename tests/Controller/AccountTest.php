@@ -4,7 +4,7 @@ class AccountTest extends \LocalWebTestCase
 {
 	public function testIndexAction()
 	{
-		$response = $this->call( 'GET', '/unittest/myaccount' );
+		$response = $this->call( 'GET', '/unittest/profile' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertStringContainsString( 'account-profile', (string) $response->getBody() );
@@ -16,7 +16,7 @@ class AccountTest extends \LocalWebTestCase
 
 	public function testIndexActionFavorite()
 	{
-		$response = $this->call( 'GET', '/unittest/myaccount/favorite' );
+		$response = $this->call( 'GET', '/unittest/profile/favorite' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertStringContainsString( 'account-favorite', (string) $response->getBody() );
@@ -25,7 +25,7 @@ class AccountTest extends \LocalWebTestCase
 
 	public function testIndexActionWatch()
 	{
-		$response = $this->call( 'GET', '/unittest/myaccount/watch' );
+		$response = $this->call( 'GET', '/unittest/profile/watch' );
 
 		$this->assertEquals( 200, $response->getStatusCode() );
 		$this->assertStringContainsString( 'account-watch', (string) $response->getBody() );
@@ -34,7 +34,7 @@ class AccountTest extends \LocalWebTestCase
 
 	public function testDownloadAction()
 	{
-		$response = $this->call( 'GET', '/unittest/myaccount/download/0' );
+		$response = $this->call( 'GET', '/unittest/profile/download/0' );
 
 		$this->assertEquals( 401, $response->getStatusCode() );
 	}

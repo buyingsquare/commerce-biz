@@ -105,7 +105,7 @@ $app->group( $config( 'routes/jsonapi', '/jsonapi' ), function() use ( $config )
 });
 
 
-$app->group( $config( 'routes/account', '/myaccount' ), function() {
+$app->group( $config( 'routes/account', '/profile' ), function() {
 
 	$this->map( ['GET', 'POST'], '', function( $request, $response, $args ) {
 		return \Aimeos\Slim\Controller\Account::indexAction( $this, $request, $response, $args );
