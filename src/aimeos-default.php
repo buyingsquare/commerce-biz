@@ -7,17 +7,17 @@ return [
 	'uploaddir' => '/',
 
 	'page' => [
-		'account-index' => [ 'account/profile', 'account/subscription', 'account/history', 'account/favorite', 'account/watch', 'basket/mini', 'catalog/session' ],
-		'basket-index' => [ 'basket/bulk', 'basket/standard', 'basket/related' ],
-		'catalog-count' => [ 'catalog/count' ],
-		'catalog-detail' => [ 'basket/mini', 'catalog/stage', 'catalog/detail', 'catalog/session' ],
-		'catalog-list' => [ 'basket/mini', 'catalog/filter', 'catalog/lists' ],
-		'catalog-stock' => [ 'catalog/stock' ],
-		'catalog-suggest' => [ 'catalog/suggest' ],
-		'catalog-tree' => [ 'basket/mini', 'catalog/filter', 'catalog/stage', 'catalog/lists' ],
-		'checkout-confirm' => [ 'checkout/confirm' ],
-		'checkout-index' => [ 'checkout/standard' ],
-		'checkout-update' => [ 'checkout/update' ],
+		'account-index' => ['account/profile', 'account/subscription', 'account/history', 'account/favorite', 'account/watch', 'basket/mini', 'catalog/session'],
+		'basket-index' => ['basket/bulk', 'basket/standard', 'basket/related'],
+		'catalog-count' => ['catalog/count'],
+		'catalog-detail' => ['basket/mini', 'catalog/stage', 'catalog/detail', 'catalog/session'],
+		'catalog-list' => ['basket/mini', 'catalog/filter', 'catalog/lists'],
+		'catalog-stock' => ['catalog/stock'],
+		'catalog-suggest' => ['catalog/suggest'],
+		'catalog-tree' => ['basket/mini', 'catalog/filter', 'catalog/stage', 'catalog/lists'],
+		'checkout-confirm' => ['checkout/confirm'],
+		'checkout-index' => ['checkout/standard'],
+		'checkout-update' => ['checkout/update'],
 	],
 
 	'resource' => [
@@ -28,7 +28,7 @@ return [
 			'database' => 'slim',
 			'username' => 'aimeos',
 			'password' => 'aimeos',
-			'stmt' => [ "SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED" ],
+			'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED"],
 			'opt-persistent' => 0,
 			'limit' => 3,
 			'defaultTableOptions' => [
