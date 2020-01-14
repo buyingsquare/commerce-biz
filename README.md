@@ -30,6 +30,7 @@ and customize anything to your needs.
 
 This document is for the latest Aimeos SlimPHP **2019.10 release and later**.
 
+- Beta release: 2020.01
 - LTS release: 2019.10
 
 This tutorial assumes a directory layout as used in the Slim skeleton application
