@@ -2,3 +2,4 @@ composer.lock
 ext/*
 vendor/
 tests/coverage.xml
+.phpunit.result.cache
