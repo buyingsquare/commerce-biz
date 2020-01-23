@@ -102,7 +102,7 @@ class Jobs extends Base implements Iface
 		$view = $container->get( 'aimeos.view' )->create( $context, $request, $response, array(), $tmplPaths );
 
 		$langManager = \Aimeos\MShop::create( $context, 'locale/language' );
-		$langids = array_keys( $langManager->searchItems( $langManager->createSearch( true ) ) );
+		$langids = $langManager->searchItems( $langManager->createSearch( true ) )->keys()->toArray();
 		$i18n = $container->get( 'aimeos.i18n' )->get( $langids );
 
 		$context->setEditor( 'aimeos:jobs' );
