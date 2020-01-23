@@ -98,9 +98,9 @@ class Cache extends Base implements Iface
 	 * Removes the cached data for the given sites
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
-	 * @param array $siteItems List of site items implementing \Aimeos\MShop\Locale\Site\Iface
+	 * @param \Aimeos\Map $siteItems List of site items implementing \Aimeos\MShop\Locale\Site\Iface
 	 */
-	protected static function clear( \Aimeos\MShop\Context\Item\Iface $ctx, array $siteItems )
+	protected static function clear( \Aimeos\MShop\Context\Item\Iface $ctx, \Aimeos\Map $siteItems )
 	{
 		$localeManager = \Aimeos\MShop::create( $ctx, 'locale' );
 

@@ -61,8 +61,9 @@ class Base
 	 *
 	 * @param \Aimeos\MShop\Context\Item\Iface $ctx Context object
 	 * @param string|null $sites List of site codes separated by a space
+	 * @return \Aimeos\Map List of site items implementing \Aimeos\MShop\Locale\Item\Site\Interface
 	 */
-	protected static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $ctx, string $sites = null ) : array
+	protected static function getSiteItems( \Aimeos\MShop\Context\Item\Iface $ctx, string $sites = null ) : \Aimeos\Map
 	{
 		$manager = \Aimeos\MShop::create( $ctx, 'locale/site' );
 		$search = $manager->createSearch();
