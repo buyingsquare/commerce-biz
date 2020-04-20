@@ -3,3 +3,4 @@ ext/*
 vendor/
 tests/coverage.xml
 .phpunit.result.cache
+.idea

@@ -121,27 +121,4 @@ class Bootstrap
 		return $this;
 	}
 
-
-	/**
-	 * Returns the version of the Aimeos package
-	 *
-	 * @return string Version string
-	 */
-	public static function getVersion() : string
-	{
-		$basedir = dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . DIRECTORY_SEPARATOR;
-
-		if( ( $content = @file_get_contents( $basedir . 'composer.lock' ) ) !== false
-			&& ( $content = json_decode( $content, true ) ) !== null && isset( $content['packages'] )
-		) {
-			foreach( (array) $content['packages'] as $item )
-			{
-				if( $item['name'] === 'aimeos/aimeos-slim' ) {
-					return $item['version'];
-				}
-			}
-		}
-
-		return '';
-	}
 }
