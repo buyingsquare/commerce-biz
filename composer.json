@@ -16,6 +16,10 @@
 	"require": {
 		"php": "~7.1",
 		"buyingsquare/commerce-core": "dev-master",
+		"buyingsquare/commerce-ext-slim": "dev-master",
+		"buyingsquare/commerce-ext-monolog": "dev-master",
+		"buyingsquare/commerce-ext-gettext": "dev-master",
+		"buyingsquare/commerce-ext-twig": "dev-master",
 		"slim/twig-view": "~2.0",
 		"slim/slim": "~3.3",
 		"akrabat/ip-address-middleware": "^0.5"
@@ -25,6 +29,21 @@
 		"php-coveralls/php-coveralls": "~2.0"
 	},
 	"autoload": {
-		"psr-4": { "Aimeos\\Slim\\": "src/" }
+		"psr-4": {
+			"Aimeos\\Client\\Html\\": "client/html/src/Client/Html/",
+			"Aimeos\\Client\\JsonApi\\": "client/jsonapi/src/Client/JsonApi/",
+			"Aimeos\\Controller\\Frontend\\": "controller/frontend/src/Controller/Frontend/",
+			"Aimeos\\Controller\\Common\\": "controller/jobs/src/Controller/Common/",
+			"Aimeos\\Controller\\Jobs\\": "controller/jobs/src/Controller/Jobs/",
+			"Aimeos\\MW\\": "lib/MW/"
+		}
+	},
+	"scripts": {
+		"pre-update-cmd": [
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+		],
+		"post-update-cmd": [
+			"@php -r \"file_exists('vendor/buyingsquare/commerce-core/.env') || copy('vendor/buyingsquare/commerce-core/.env.example', 'vendor/buyingsquare/commerce-core/.env');\""
+		]
 	}
 }
