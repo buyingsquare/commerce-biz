@@ -19,10 +19,7 @@
 		"buyingsquare/commerce-ext-slim": "dev-master",
 		"buyingsquare/commerce-ext-monolog": "dev-master",
 		"buyingsquare/commerce-ext-gettext": "dev-master",
-		"buyingsquare/commerce-ext-twig": "dev-master",
-		"slim/twig-view": "~2.0",
-		"slim/slim": "~3.3",
-		"akrabat/ip-address-middleware": "^0.5"
+		"buyingsquare/commerce-ext-twig": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~7.0||~8.0",
