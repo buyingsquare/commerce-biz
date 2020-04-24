@@ -1,8 +1,6 @@
 <?php
 
-use Dotenv\Dotenv;
-
-function __aimeos_settings__(Dotenv $env) {
+function __aimeos_settings__(array $env) {
 
     return [
 

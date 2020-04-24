@@ -21,13 +21,13 @@ class Bootstrap
 	private $settings;
 
 
-	/**
-	 * Initializes the object
-	 *
-	 * @param \Slim\App $app Slim application
-	 * @param array $settings Multi-dimensional array of configuration settings
-	 */
-	public function __construct( \Slim\App $app, Dotenv $env)
+    /**
+     * Initializes the object
+     *
+     * @param \Slim\App $app Slim application
+     * @param array $env .env variables
+     */
+	public function __construct( \Slim\App $app, array $env)
 	{
         require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-default.php';
         require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-settings.php';
