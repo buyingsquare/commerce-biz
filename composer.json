@@ -21,7 +21,7 @@
 		"buyingsquare/commerce-ext-gettext": "dev-master",
 		"buyingsquare/commerce-ext-twig": "dev-master",
 		"slim/slim": "~3.3",
-		"slim/csrf": "^1.0",
+		"slim/csrf": "~0.8",
 		"slim/twig-view": "~2.0",
 		"akrabat/ip-address-middleware": "^0.5"
 	},
