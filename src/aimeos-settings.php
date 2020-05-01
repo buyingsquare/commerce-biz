@@ -1,7 +1,6 @@
 <?php
 
-function __aimeos_settings__(array $env) {
-
+return function (array $env) {
     return [
 
         // 'apc_enabled' => false,
@@ -91,4 +90,4 @@ function __aimeos_settings__(array $env) {
         ],
 
     ];
-}
+};

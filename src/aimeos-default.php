@@ -1,7 +1,6 @@
 <?php
 
-function __aimeos_default__() {
-
+return function () {
     return [
         'apc_enabled' => false,
         'apc_prefix' => 'slim:',
@@ -285,4 +284,4 @@ function __aimeos_default__() {
         ],
 
     ];
-}
+};

@@ -29,11 +29,10 @@ class Bootstrap
      */
 	public function __construct( \Slim\App $app, array $env)
 	{
-        require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-default.php';
-        require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-settings.php';
+        $setting = require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-settings.php';
 
 		$this->app = $app;
-		$this->settings = __aimeos_settings__($env);
+		$this->settings = $setting($env);
 	}
 
 
@@ -86,8 +85,8 @@ class Bootstrap
 			return new \Swift_Mailer( new \Swift_SendmailTransport() );
 		};
 
-		$default = __aimeos_default__();
-		$settings = array_replace_recursive( $default, $this->settings );
+        $default = require __DIR__ . DIRECTORY_SEPARATOR . 'aimeos-default.php';
+		$settings = array_replace_recursive( $default(), $this->settings );
 
 		$container['aimeos'] = function( $c ) use ( $extdir ) {
 			return new \Aimeos\Bootstrap( (array) $extdir, false );
