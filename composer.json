@@ -20,6 +20,8 @@
 		"buyingsquare/commerce-ext-monolog": "dev-master",
 		"buyingsquare/commerce-ext-gettext": "dev-master",
 		"buyingsquare/commerce-ext-twig": "dev-master",
+		"buyingsquare/commerce-ext-laravel": "dev-master",
+		"buyingsquare/commerce-ext-swiftmailer": "dev-master",
 		"slim/slim": "~3.3",
 		"slim/csrf": "~0.8",
 		"slim/twig-view": "~2.0",
