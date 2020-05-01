@@ -33,12 +33,5 @@
 		"psr-4": {
 			"Aimeos\\Slim\\": "src/"
 		}
-	},
-	"scripts": {
-		"post-update-cmd": [
-			"@php -r \"file_exists('vendor/buyingsquare/commerce-core/.env') || copy('vendor/buyingsquare/commerce-core/.env.example', 'vendor/buyingsquare/commerce-core/.env');\"",
-			"App\\Composer::configure",
-			"@php -r \"file_exists('.env') || copy('vendor/buyingsquare/commerce-core/.env', '.env');\""
-		]
 	}
 }

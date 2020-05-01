@@ -77,8 +77,16 @@ return function (array $env) {
         ],
 
         'mshop' => [
+            'customer' => [
+                'manager' => [
+                    'name' => 'Laravel',
+                    'password' => [
+                        'name' => 'Bcrypt',
+                    ],
+                    'salt' => $env['APP_KEY'],
+                ]
+            ]
         ],
-
 
         'command' => [
         ],
