@@ -79,7 +79,7 @@ return function (array $env) {
         'mshop' => [
             'customer' => [
                 'manager' => [
-                    'name' => 'Laravel',
+                    'name' => 'Standard',
                     'password' => [
                         'name' => 'Bcrypt',
                     ],
