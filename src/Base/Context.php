@@ -61,8 +61,7 @@ class Context
 			$this->addMailer( $context );
 			$this->addProcess( $context );
 			$this->addSession( $context );
-			$this->addUser( $context );
-
+            $this->addCookie( $context );
 			$this->context = $context;
 		}
 
@@ -196,17 +195,17 @@ class Context
 		return $context->setSession( $session );
 	}
 
+    /**
+     * Adds the cookie object to the context
+     *
+     * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+     * @return \Aimeos\MShop\Context\Item\Iface Modified context object
+     */
+    protected function addCookie( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
+    {
+        $cookie = new \Aimeos\MW\Cookie\SecurePHP();
 
-	/**
-	 * Adds user information to the context
-	 *
-	 * @param \Aimeos\MShop\Context\Item\Iface $context Context object
-	 * @return \Aimeos\MShop\Context\Item\Iface Modified context object
-	 */
-	protected function addUser( \Aimeos\MShop\Context\Item\Iface $context ) : \Aimeos\MShop\Context\Item\Iface
-	{
-		$ipaddr = $this->container->request->getAttribute( 'ip_address' );
+        return $context->setCookie( $cookie );
+    }
 
-		return $context->setEditor( $ipaddr ?: '' );
-	}
 }

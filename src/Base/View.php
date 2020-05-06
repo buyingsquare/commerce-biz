@@ -69,7 +69,20 @@ class View
 		$config = $context->getConfig();
 		$session = $context->getSession();
 
-		$this->addAccess( $view );
+		$groups = [];
+		if ($context->getUserId() !== null) {
+            $manager = \Aimeos\MShop::create( $context, 'customer/group' );
+            foreach ($context->getGroupIds() as $key => $id) {
+                try {
+                    $item = $manager->getItem($id);
+                    $groups[] = $item->getCode();
+                } catch (\Aimeos\MShop\Exception $e) {
+                    continue;
+                }
+            }
+        }
+
+		$this->addAccess( $view, $groups );
 		$this->addConfig( $view, $config );
 		$this->addCsrf( $view, $request );
 		$this->addNumber( $view, $config, $locale );
@@ -88,11 +101,12 @@ class View
 	 * Adds the "access" helper to the view object
 	 *
 	 * @param \Aimeos\MW\View\Iface $view View object
+     * @param array $groups Group code array
 	 * @return \Aimeos\MW\View\Iface Modified view object
 	 */
-	protected function addAccess( \Aimeos\MW\View\Iface $view ) : \Aimeos\MW\View\Iface
+	protected function addAccess( \Aimeos\MW\View\Iface $view, array $groups = []) : \Aimeos\MW\View\Iface
 	{
-		$helper = new \Aimeos\MW\View\Helper\Access\All( $view );
+		$helper = new \Aimeos\MW\View\Helper\Access\Standard( $view, $groups );
 		$view->addHelper( 'access', $helper );
 
 		return $view;
@@ -125,7 +139,7 @@ class View
 	 */
 	protected function addCsrf( \Aimeos\MW\View\Iface $view, ServerRequestInterface $request ) : \Aimeos\MW\View\Iface
 	{
-		$name = $request->getAttribute( 'csrf_name' );
+	    $name = $request->getAttribute( 'csrf_name' );
 		$value = $request->getAttribute( 'csrf_value' );
 
 		$helper = new \Aimeos\MW\View\Helper\Csrf\Standard( $view, (string) $name, (string) $value );

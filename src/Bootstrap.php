@@ -100,6 +100,10 @@ class Bootstrap
 			return new \Aimeos\Slim\Base\Context( $c );
 		};
 
+		$container['aimeos.auth'] = function ( $c ) {
+            return new \Aimeos\Slim\Base\Auth( $c );
+        };
+
 		$container['aimeos.i18n'] = function( $c ) {
 			return new \Aimeos\Slim\Base\I18n( $c );
 		};

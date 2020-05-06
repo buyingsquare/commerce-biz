@@ -23,7 +23,7 @@
 		"buyingsquare/commerce-ext-laravel": "dev-master",
 		"buyingsquare/commerce-ext-swiftmailer": "dev-master",
 		"slim/slim": "~3.3",
-		"slim/csrf": "~0.8",
+		"slim/csrf": "^0.8",
 		"slim/twig-view": "~2.0",
 		"akrabat/ip-address-middleware": "^0.5"
 	},
