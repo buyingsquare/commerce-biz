@@ -103,7 +103,13 @@ class Auth
         return array('error_code' => 0, 'error_msg' => 'login success');
     }
 
-    public function webLoginCheck(\Aimeos\MShop\Context\Item\Iface $context) : bool
+    /**
+     * Checking for web login
+     *
+     * @param \Aimeos\MShop\Context\Item\Iface $context Context object
+     * @return bool
+     */
+    public function webLoginConfirm(\Aimeos\MShop\Context\Item\Iface $context) : bool
     {
         try {
             $loginInfo = $context->getSession()->get('PHPTOKEN');
